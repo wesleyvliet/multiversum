@@ -1,0 +1,69 @@
+<?php
+include "classes/Database.php";
+
+define('DATABASE_HOST', 'localhost');
+define('DATABASE_NAME', 'phpForms');
+define('DATABASE_USERNAME', 'root');
+define('DATABASE_PASSWORD', '');
+define('LOG_FILE', "C:/dev/log.txt");
+
+function dbg($text) {
+    file_put_contents(LOG_FILE, "\n".$text, FILE_APPEND);
+}
+
+function portalShutDownFunction() {
+    $error = error_get_last();
+    if ($error['type'] === E_ERROR) {
+        dbg('FATAL ERROR: '.$error['message'].' in '.$error['file'].' on line '.$error['line']);
+        die('Er is een ernstige fout opgetreden.');
+    }
+}
+
+register_shutdown_function('portalShutDownFunction');
+
+class url {
+	static function findUrl() {
+		$lowerCaseUrl = strtolower($_GET['url']);
+		switch($lowerCaseUrl){
+			case "index.php": mainController::CreateView('Home'); break;
+			case "ajax-tariev-select": TarievController::selectTariev(); break;
+			case "ajax-tariev-insert": TarievController::insertTariev(); break;
+			default:
+				//echo $_SERVER['REQUEST_URI'];
+				//echo "<br>Sorry cannot find your page :(" ;
+				mainController::CreateView('invalidLink'); break;
+			break;
+		}
+	}
+}
+
+class router {
+	static function findRoute() {
+		$url = $_POST['action'];
+		switch ($url) {
+            case 'fetchUsersSearch': mainController::fetchUsersSearch(); return;
+            case 'fetchUsers': mainController::fetchUsers(); return;
+			case 'deleteUser': mainController::deleteUser(); return;
+            case 'checkForm': mainController::checkLogin(); return;
+			default: echo 'No action was taken'; break;
+		}
+	}
+}
+
+try {
+	if(isset($_POST['action'])) {
+		router::findRoute($_POST['action']);
+	} else {
+		$check = $_GET['url'];
+		if($check == 'ajaxPost.php') {
+		mainController::storeImg();
+		} else {
+			url::findUrl();
+		}
+	}
+}
+catch(Exception $ex) {
+    dbg("CAUGHT ERROR: ".$ex->getMessage()."\nin ".$ex->getFile()." on line ".$ex->getLine()."\n".$ex->getTraceAsString());
+}
+
+?>
