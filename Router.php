@@ -11,7 +11,6 @@ function dbg($text) {
 }
 
 function portalShutDownFunction() {
-    }
 }
 
 register_shutdown_function('portalShutDownFunction');
