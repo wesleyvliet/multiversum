@@ -8,14 +8,9 @@ define('DATABASE_PASSWORD', '');
 define('LOG_FILE', "C:/dev/log.txt");
 
 function dbg($text) {
-    file_put_contents(LOG_FILE, "\n".$text, FILE_APPEND);
 }
 
 function portalShutDownFunction() {
-    $error = error_get_last();
-    if ($error['type'] === E_ERROR) {
-        dbg('FATAL ERROR: '.$error['message'].' in '.$error['file'].' on line '.$error['line']);
-        die('Er is een ernstige fout opgetreden.');
     }
 }
 
@@ -26,6 +21,7 @@ class url {
 		$lowerCaseUrl = strtolower($_GET['url']);
 		switch($lowerCaseUrl){
 			case "index.php": mainController::CreateView('Home'); break;
+			case "contact": mainController::CreateView('Contact'); break;
 			case "ajax-tariev-select": TarievController::selectTariev(); break;
 			case "ajax-tariev-insert": TarievController::insertTariev(); break;
 			default:
