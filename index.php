@@ -21,6 +21,7 @@ if (strpos($_SERVER['REQUEST_URI'], $key) == false) {
 	if(isset($_POST['action'])) {
 	}else{
 		require_once ('views/Header.php');
+        require_once ('views/Nav.php');
 	}
 }
 
