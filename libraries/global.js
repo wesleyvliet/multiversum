@@ -1,143 +1,58 @@
-
 $( function() {
-	init_submisions();
+	init_slideHeader();
 });
-
-function init_submisions() {
-	checkForm();
-	loadUsers();
-	fetchId();
-}
-
-function fetchId() {
-	$('#buttonId').click( function() {
-		//console.log('button click');
-		checkInput();
-	});
-	$('#inputId').on('keypress', function (e) {
-         if(e.which === 13){
-			 //console.log('a enter???');
-			 checkInput();
-         }
-    });
-   	function checkInput() {
-		var input = $('#inputId').val();
-		if(input == "") {
-			$('#searchResult').html('Zoekveld is leeg :(');
+function init_slideHeader() {
+	var slides = document.querySelectorAll('#slides .slide');
+	var dots = document.querySelectorAll('#dots .dot');
+	var currentSlide = 0;
+	var dotSlide = 0;
+	var slideInterval = setInterval(nextSlide,6000);
+	function nextSlide() {
+		stopOnce = $('#slides').attr('stop');
+		if(stopOnce == 'true') {
+			$('#slides').attr('stop', 'false');
 		} else {
-			//var re = /^[A-Za-z]+$/;
-			var re = /^[1234567890]+$/;
-			if(re.test(input)) {
-				var post = {};
-				post.action = 'fetchUsersSearch';
-				post.input = input;
-				console.log(post);
-				$.ajax({
-					type: "POST",
-					url: 'Router.php',
-					data: post,
-					success: function(data){
-						var results = JSON.parse(data);
-						console.log(results.length);
-			            var html = "";
-						if(results.length == 0) {
-							html = 'geen resultaat gevonden.';
-						} else {
-							for(var i = 0; i < results.length ; i++){
-								html += 'ID: ' + results[i]['id'] + '<br>Name: ' + results[i]['name'] + '<br>lastName: ' + results[i]['secondName'] + '<hr>';
-							}
-						}
-						$('#searchResult').html(html);
-					}
-				});
-			} else {
-				$('#searchResult').html('alleen nummers zijn toegestaan!');
-			}
+			slides[0].className = 'slide';
+			slides[1].className = 'slide';
+			slides[2].className = 'slide';
+			slides[3].className = 'slide';
+			slides[4].className = 'slide';
+			currentSlide = (currentSlide+1)%slides.length;
+			slides[currentSlide].className = 'slide showing';
+
+			dots[0].className = 'dot';
+			dots[1].className = 'dot';
+			dots[2].className = 'dot';
+			dots[3].className = 'dot';
+			dots[4].className = 'dot';
+			dotSlide = (dotSlide+1)%slides.length;
+			dots[dotSlide].className = 'dot selected';
 		}
 	}
-}
+	$('#dot1').click( function() { $('#slides').attr('stop', 'true'); displaySlide(0); })
+	$('#dot2').click( function() { $('#slides').attr('stop', 'true'); displaySlide(1); })
+	$('#dot3').click( function() { $('#slides').attr('stop', 'true'); displaySlide(2); })
+	$('#dot4').click( function() { $('#slides').attr('stop', 'true'); displaySlide(3); })
+	$('#dot5').click( function() { $('#slides').attr('stop', 'true'); displaySlide(4); })
+	function displaySlide(slide) {
+		var slides = document.querySelectorAll('#slides .slide');
+		currentSlide = slide;
+		slides[0].className = 'slide';
+		slides[1].className = 'slide';
+		slides[2].className = 'slide';
+		slides[3].className = 'slide';
+		slides[4].className = 'slide';
+		currentSlide = (currentSlide=slide)%slides.length;
+		slides[currentSlide].className = 'slide showing';
 
-function loadUsers() {
-	var post = {};
-	post.action = 'fetchUsers';
-	console.log(post);
-	$.ajax({
-		type: "POST",
-		url: 'Router.php',
-		data: post,
-		success: function(data){
-			var results = JSON.parse(data);
-            var html = "";
-            for(var i = 0; i < results.length ; i++){
-				html += '<div class="user" userId=' + results[i]['id'] + '>ID: ' + results[i]['id'] + '<br>Name: ' + results[i]['name'] + '<br>lastName: ' + results[i]['secondName'];
-				html +=  '<br><button class="userButton">Delete</button>' + '</div><hr>'
-			}
-			$('#userBox').html(html);
-			$('.user .userButton').click( function() {
-				var parentDiv = $(this).parent();
-				var userId = $(parentDiv).attr("userId");
-				var post = {};
-				post.action = 'deleteUser';
-				post.id = userId;
-				console.log(post);
-				$.ajax({
-					type: "POST",
-					url: 'Router.php',
-					data: post,
-					success: function(data){
-						loadUsers();
-					}
-				});
-			});
-		}
-	});
-}
-
-function checkForm() {
-	$('#sendForm').click( function(){
-		check = true;
-		var name = $('#formName').val();
-		var lastName = $('#formLastName').val();
-		var html = "";
-
-		if(name == "") {
-			html += 'voornaam is leeg. <br>';
-			check = false;
-		} else {
-			var re = /^[A-Za-z]+$/;
-			if(re.test(name)) {
-				//console.log('name is valid');
-			} else {
-				check = false;
-				html += 'voornaam bevat geen geldige tekens. <br>';
-			}
-		}
-		if(lastName == "") {
-			html += 'achternaam is leeg. <br>';
-			check = false;
-		} else {
-			var re = /^[A-Za-z]+$/;
-			if(re.test(lastName)) {
-			} else {
-				check = false;
-				html += 'achternaam bevat geen geldige tekens. <br>';
-			}
-		}
-		$('#formWarning').html(html);
-		if(check === true) {
-			var post = {};
-			post.action = 'checkForm';
-			post.name = name;
-			post.lastName = lastName;
-			console.log(post);
-			$.ajax({
-				type: "POST",
-				url: 'Router.php',
-				data: post,
-				success: function(data){
-					loadUsers();
-				}
-			});
-		}
-	})
+		var dots = document.querySelectorAll('#dots .dot');
+		dotSlide = slide;
+		dots[0].className = 'dot';
+		dots[1].className = 'dot';
+		dots[2].className = 'dot';
+		dots[3].className = 'dot';
+		dots[4].className = 'dot';
+		dotSlide = (dotSlide=slide)%slides.length;
+		dots[dotSlide].className = 'dot selected';
+	}
 }

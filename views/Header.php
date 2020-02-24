@@ -6,17 +6,17 @@
 		<link rel="stylesheet" type="text/css" href="views/css/home.css">
     </head>
 	<body>
-        <div class="slideshow-container">
-
-            <div class="mySlides fade">
-              <div class="numbertext">1 / 3</div>
-              <img src="./libraries/img/header3.png" style="width:100%; height:200px">
-              <div class="text">Caption Text</div>
-            </div>
-
-            <div class="dot-box" style="text-align:center">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
+        <div id="dots" style="text-align:center">
+            <p class="dot selected" id="dot1"></p>
+            <p class="dot" id="dot2"></p>
+            <p class="dot" id="dot3"></p>
+            <p class="dot" id="dot4"></p>
+            <p class="dot" id="dot5"></p>
         </div>
+        <ul id="slides" stop="false">
+            <li class="slide showing"><h1 class="sliderText">Welkom bij mijn Portfolio</h1></li>
+            <li class="slide"><h1 class="sliderText">Welkom bij mijn Portfolio</h1></li>
+            <li class="slide"><h1 class="sliderText">Welkom bij mijn Portfolio</h1></li>
+            <li class="slide"><h1 class="sliderText">Welkom bij mijn Portfolio</h1></li>
+            <li class="slide"><h1 class="sliderText">Welkom bij mijn Portfolio</h1></li>
+        </ul>
