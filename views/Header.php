@@ -6,6 +6,13 @@
 		<link rel="stylesheet" type="text/css" href="views/css/home.css">
     </head>
 	<body>
+        <ul id="slides" stop="false">
+            <li class="slide showing"><h1 class="sliderText brandName">Multiversum</h1></li>
+            <li class="slide"><h1 class="sliderText brandName">Multiversum</h1></li>
+            <li class="slide"><h1 class="sliderText brandName">Multiversum</h1></li>
+            <li class="slide"><h1 class="sliderText brandName">Multiversum</h1></li>
+            <li class="slide"><h1 class="sliderText brandName">Multiversum</h1></li>
+        </ul>
         <div id="dots" style="text-align:center">
             <p class="dot selected" id="dot1"></p>
             <p class="dot" id="dot2"></p>
@@ -13,10 +20,3 @@
             <p class="dot" id="dot4"></p>
             <p class="dot" id="dot5"></p>
         </div>
-        <ul id="slides" stop="false">
-            <li class="slide showing"><h1 class="sliderText">Welkom bij mijn Portfolio</h1></li>
-            <li class="slide"><h1 class="sliderText">Welkom bij mijn Portfolio</h1></li>
-            <li class="slide"><h1 class="sliderText">Welkom bij mijn Portfolio</h1></li>
-            <li class="slide"><h1 class="sliderText">Welkom bij mijn Portfolio</h1></li>
-            <li class="slide"><h1 class="sliderText">Welkom bij mijn Portfolio</h1></li>
-        </ul>
