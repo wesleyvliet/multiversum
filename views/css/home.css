@@ -11,8 +11,8 @@ html {
 	-ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
-body { margin: 0px; font-family: monospace; font-size: 18px}
-.brandName { font-family: Quicksand; }
+body { margin: 0px; font-family: monospace; font-size: 18px; color: white;}
+footer { position: absolute; bottom: 0px; background: var(--grey); width: 100%; text-align: center;}
 ul { list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: var(--grey);}
 li { float: left; }
 li a {
@@ -23,6 +23,10 @@ li a {
   text-decoration: none;
 }
 li a:hover { background-color: #111; }
+span {display: block; width: 100%; background: var(--green); text-align: center;}
+span > h1 { padding: 10px; padding-bottom: 0px;}
+span > p { padding: 10px; padding-top: 0px;}
+.brandName { font-family: Quicksand;}
 #slides { position: relative; height: 400px; padding: 0px; margin: 0px; z-index: -1; }
 .slide {
 	position: absolute;
@@ -66,13 +70,14 @@ li a:hover { background-color: #111; }
 .sliderText {
 	background-color: var(--grey);
     width: 300px;
-    font-size: 36px;
+    font-size: 46px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 	padding-top: 5px;
     padding-bottom: 5px;
     box-shadow: 0px 0px 20px 10px rgba(0,0,0,.13);
+	font-stretch: expanded;
 }
 .slide:nth-of-type(1) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(/multiversum/multiversum/libraries/img/header1.jpeg); }
 .slide:nth-of-type(2) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(/multiversum/multiversum/libraries/img/header2.jpeg); }

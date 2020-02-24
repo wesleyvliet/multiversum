@@ -19,6 +19,7 @@ class url {
 	static function findUrl() {
 		$lowerCaseUrl = strtolower($_GET['url']);
 		switch($lowerCaseUrl){
+			case "home":
 			case "index.php": mainController::CreateView('Home'); break;
 			case "contact": mainController::CreateView('Contact'); break;
 			case "ajax-tariev-select": TarievController::selectTariev(); break;
