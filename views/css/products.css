@@ -1,0 +1,30 @@
+#products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+.item {
+    width: fit-content;
+    margin: 30px;
+    background: red;
+}
+.item > h1 {
+    background: var(--grey);
+    margin: 0;
+    padding: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.item > img {
+    width: 300px;
+    height: 150px;
+}
+.item > p {
+    padding: 20px;
+    background: var(--green);
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

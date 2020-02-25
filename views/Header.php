@@ -1,9 +1,11 @@
 <html>
     <head>
         <script src="libraries/jquery-1.11.2.min.js"></script>
-		<script src="libraries/global.js"></script>
+        <script src="libraries/global.js"></script>
+		<script src="libraries/products.js"></script>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
 		<link rel="stylesheet" type="text/css" href="views/css/home.css">
+        <link rel="stylesheet" type="text/css" href="views/css/products.css">
     </head>
 	<body>
         <ul id="slides" stop="false">

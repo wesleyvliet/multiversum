@@ -79,8 +79,8 @@ span > p { padding: 10px; padding-top: 0px;}
     box-shadow: 0px 0px 20px 10px rgba(0,0,0,.13);
 	font-stretch: expanded;
 }
-.slide:nth-of-type(1) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(/multiversum/multiversum/libraries/img/header1.jpeg); }
-.slide:nth-of-type(2) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(/multiversum/multiversum/libraries/img/header2.jpeg); }
-.slide:nth-of-type(3) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(/multiversum/multiversum/libraries/img/header3.jpeg); }
-.slide:nth-of-type(4) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(/multiversum/multiversum/libraries/img/header4.jpeg); }
-.slide:nth-of-type(5) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(/multiversum/multiversum/libraries/img/header5.jpeg); }
+.slide:nth-of-type(1) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(../../libraries/img/header1.jpeg); }
+.slide:nth-of-type(2) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(../../libraries/img/header2.jpeg); }
+.slide:nth-of-type(3) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(../../libraries/img/header3.jpeg); }
+.slide:nth-of-type(4) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(../../libraries/img/header4.jpeg); }
+.slide:nth-of-type(5) { background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(../../libraries/img/header5.jpeg); }
