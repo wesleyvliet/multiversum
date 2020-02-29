@@ -12,7 +12,7 @@ html {
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 body { margin: 0px; font-family: monospace; font-size: 18px; color: white;}
-footer { position: absolute; bottom: 0px; background: var(--grey); width: 100%; text-align: center;}
+footer { position: absolute; background: var(--grey); width: 100%; text-align: center;}
 ul { list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: var(--grey);}
 li { float: left; }
 li a {
@@ -26,6 +26,24 @@ li a:hover { background-color: #111; }
 span {display: block; width: 100%; background: var(--green); text-align: center;}
 span > h1 { padding: 10px; padding-bottom: 0px;}
 span > p { padding: 10px; padding-top: 0px;}
+input {
+	background: var(--green);
+    color: white;
+    border: 1px solid var(--green);
+	font-size: 24px;
+    height: 34px;
+	width: 60px;
+    box-shadow: 0px 2px 8px 0px #888888;
+	position: relative;
+	top: -4px;
+	text-align: center;
+}
+input[type="button"] {
+	top: 0px;
+	font-size: 30px;
+	height: 34px;
+	width: 34px;
+}
 .brandName { font-family: Quicksand;}
 #slides { position: relative; height: 400px; padding: 0px; margin: 0px; z-index: -1; }
 .slide {
