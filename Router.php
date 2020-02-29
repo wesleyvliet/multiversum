@@ -2,7 +2,7 @@
 include "classes/Database.php";
 
 define('DATABASE_HOST', 'localhost');
-define('DATABASE_NAME', 'phpForms');
+define('DATABASE_NAME', 'multiversum');
 define('DATABASE_USERNAME', 'root');
 define('DATABASE_PASSWORD', '');
 define('LOG_FILE', "C:/dev/log.txt");
@@ -37,7 +37,7 @@ class router {
 	static function findRoute() {
 		$url = $_POST['action'];
 		switch ($url) {
-            case 'fetchUsersSearch': mainController::fetchUsersSearch(); return;
+            case 'fetchProducts': mainController::fetchProducts(); return;
             case 'fetchUsers': mainController::fetchUsers(); return;
 			case 'deleteUser': mainController::deleteUser(); return;
             case 'checkForm': mainController::checkLogin(); return;

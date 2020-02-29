@@ -4,6 +4,7 @@
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    min-height: 672px;
 }
 .item {
     width: 300px;

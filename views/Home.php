@@ -5,8 +5,14 @@
     </span>
     <div id='products'></div>
     <div class="buttons">
-        <input type="button" value="<">
-        <input value="1">
-        <input type="button" value=">">
+        <input id="buttonBackward" type="button" value="<">
+        <input id="inputPage" value="1" maxlength="3">
+        <input id="buttonForward" type="button" value=">">
     </div>
 </div>
+<footer>
+    <p>© 1999-2020 multiversum.com b.v.</p>
+</footer>
+</body>
+
+</html>

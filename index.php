@@ -26,5 +26,4 @@ if (strpos($_SERVER['REQUEST_URI'], $key) == false) {
 }
 
 require_once ("Router.php");
-require_once ("views/Footer.php")
 ?>
