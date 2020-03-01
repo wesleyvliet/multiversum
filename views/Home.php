@@ -1,7 +1,7 @@
 <div class="wrapper">
     <span>
-        <h1>This is a banner</h1>
-        <p>use this for text section :)</p>
+        <h1>Welkome bij multiversum.com</h1>
+        <p>Bekijk onze wijde selectie aan Vr-Brillen!</p>
     </span>
     <div id='products'></div>
     <div class="buttons">
