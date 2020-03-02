@@ -1,7 +1,4 @@
-    <head>
-      <link rel="stylesheet" href="./css/contact.css">
-    </head>
-    
+
     <span>
     <div class="wrapper">
         <h2 id="title">Contactgegevens</h2>
