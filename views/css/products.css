@@ -70,3 +70,34 @@
     width: 500px;
     margin-left: -250px;
 }
+#productDetails {
+    display: none;
+    min-width: 100%;
+    min-height: 100%;
+    position: static;
+    left: 50%;
+    margin-left: -100px;
+    background: red;
+    top: 50%;
+    background: lightgray;
+    opacity: 0.9;
+}
+#productDetails > div > div > table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+productDetails > div > div > th, td {
+  padding: 15px;
+  text-align: left;
+}
+#productDetails > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: black;
+    position: absolute;
+    background: white;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 80%;
+    margin-top: 30px;
+}

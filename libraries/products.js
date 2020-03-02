@@ -85,7 +85,7 @@ function init_display() {
 	display = results.slice(arrStart, arrEnd);
 	var html = "";
 	for(var i = 0; i < Object.keys(display).length; i++){
-        html += "<div class='item'>";
+        html += "<div class='item' productId='" + display[i]['id'] + "' >";
 			html += "<h1>" + display[i]['title'] + "</h1>";
 			html += "<img src='http://localhost/multiversum/multiversum/libraries/img/products/" + display[i]['id'] + ".jpeg'>";
 			html += "<p>Platform: " + display[i]['platform'] + "</p>";
@@ -100,5 +100,29 @@ function init_display() {
 		html += "</div>";
 	}
 	$('#products').html(html);
+	$('#products .item').click( function() {
+		var html = "";
+		var id = $(this).attr('productId');
+		html += "<div>";
+
+		html += 	"<div>";
+		html += 		"<h1>" + "Specificaties en productafbeeldingen" + "</h1>";
+		html +=			'<table style="width:100%">';
+		html +=				"<tr><th>Firstname</th></tr>";
+		html += 			"<tr><td>Jill</td></tr>";
+		html +=				"<tr><td>Eve</td></tr>";
+		html +=				"<tr><td>John</td></tr>";
+		html +=			"</table>";
+		html +=		"</div>";
+
+		html += 	"<div>";
+		html += 		"<h1>" + "Specificaties en productafbeeldingen" + "</h1>";
+		html +=		"</div>";
+
+		html += "</div>"
+		$('#productDetails').css('display', 'block');
+		$('#productDetails').html(html);
+		$('.wrapper').css('display', 'none');
+	});
 	reloadButtons();
 }
