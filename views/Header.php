@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
 		<link rel="stylesheet" type="text/css" href="views/css/home.css">
         <link rel="stylesheet" type="text/css" href="views/css/products.css">
+        <link rel="stylesheet" type="text/css" href="views/css/contact.css">
     </head>
 	<body>
         <ul id="slides" stop="false">
