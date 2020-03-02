@@ -30,3 +30,41 @@
     padding-bottom: 5px;
 }
 .buttons {text-align: center; margin-bottom: 20px; margin-top: 10px; color: black;}
+
+.noItem {
+    position: absolute;
+    text-align: center;
+    background: white;
+    box-shadow: 0px 4px 20px 4px #888888;
+    left: 50%;
+    border-radius: 50px;
+    width: 500px;
+    margin-left: -250px;
+    margin-top: 120px;
+}
+.noItem > h1 {
+    margin: 0;
+    padding: 20px;
+    background: var(--grey);
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+}
+.noItem > p {
+    padding: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: black;
+}
+.noItem > button {
+    background: var(--green);
+    color: white;
+    border: 1px solid var(--green);
+    font-size: 24px;
+    height: 34px;
+    width: 120px;
+    box-shadow: 0px 2px 8px 0px #888888;
+    position: relative;
+    top: -4px;
+    text-align: center;
+    margin-bottom: 20px;
+}
