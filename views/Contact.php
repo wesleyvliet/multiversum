@@ -1,32 +1,21 @@
 
     <span>
-    <div class="wrapper">
-        <h2 id="title">Contactgegevens</h2>
-        <p id="info1">
-        Gegevens eigenaar: <br>
-        Eigenaar: Jack Jones, <br>
-        email:<a href="mailto:jack.jones@multiversum.com">jack.jones@multiversum.com</a>
-        </p>
-        <p id="info2">
-        locatie:
-        Straat: 1861 Jan Pieterszoon Coenstraat, <br>
-        City: Maasdriel, <br>
-        State: Zeeland,
-        Postcode: 69217
-
+        <h1>Contactgegevens</h1>
         <div class="grid-container">
         <div class="item1">Gegevens eigenaar</div>
-        <div class="item2">Eigenaar: Jack Jones,</div>
-        <div class="item3">email:<a href="mailto:jack.jones@multiversum.com">jack.jones@multiversum.com</a></div>  
-        <div class="item4">4</div>
-        <div class="item5">5</div>
-        <div class="item6">6</div>
-        <div class="item7">7</div>
-        <div class="item8">8</div>  
+        <div class="item2"> locatie:</div>
+        <div class="item3">Eigenaar: Jack Jones,</div>
+        <div class="item4">Straat: 1861 Jan Pieterszoon Coenstraat,</div>
+        <div class="item5">email:<a href="mailto:jack.jones@multiversum.com">jack.jones@multiversum.com</a></div>
+        <div class="item6">City: Maasdriel,</div>
+        <div class="item7"></div>
+        <div class="item8"> Stad: Zeeland,</div>
+            <div class="item7"></div>
+            <a href="./libraries/img/location.png">
+        <div class="item8"> Postcode: 69217</div></a>
         </div>
-        
-        </p>
     </div>
+
     </body>
     </span>
     <footer>

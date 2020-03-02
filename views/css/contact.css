@@ -1,3 +1,8 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
