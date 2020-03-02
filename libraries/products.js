@@ -18,6 +18,7 @@ function init_fetch() {
 		data: post,
 		success: function(data){
 			results = JSON.parse(data);
+			console.log(data);
 			init_display();
 		}
 	});
@@ -54,6 +55,8 @@ function init_buttons() {
 
 function init_display() {
 	var page = parseInt($('#inputPage').val());
+	var lastPage = page;
+	console.log(lastPage);
 	var arrEnd = page * 10;
 	var arrStart = arrEnd - 10;
 	display = results.slice(arrStart, arrEnd);
@@ -66,5 +69,11 @@ function init_display() {
 			html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
 		html += "</div>";
     }
+	if(Object.keys(display).length == 1) {
+		html += "<div class='noItem'>";
+		html += "<h1>" + "Nog geen producten" + "<br>";
+		html += "<p>" + "bekijk onze laastse producten op de begin pagina." + "</p>";
+		html += "</div>";
+	}
 	$('#products').html(html);
 }
