@@ -56,6 +56,27 @@ function init_buttons() {
 		}
 	});
 }
+function reloadButtons() {
+	$('#lastProducts').click( function() {
+		console.log('i was clicked');
+		var page = parseInt($('#inputPage').val());
+		var arrEnd = lastPage * 10;
+		var arrStart = lastPage - 10;
+		display = results.slice(arrStart, arrEnd);
+		var html = "";
+		for(var i = 0; i < Object.keys(display).length; i++){
+	        html += "<div class='item'>";
+				html += "<h1>" + display[i]['title'] + "</h1>";
+				html += "<img src='http://localhost/multiversum/multiversum/libraries/img/products/" + display[i]['id'] + ".jpeg'>";
+				html += "<p>Platform: " + display[i]['platform'] + "</p>";
+				html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
+			html += "</div>";
+	    }
+		$('#products').html(html);
+		$('#inputPage').val(lastPage);
+		reloadButtons();
+	})
+}
 
 function init_display() {
 	var page = parseInt($('#inputPage').val());
@@ -71,11 +92,13 @@ function init_display() {
 			html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
 		html += "</div>";
     }
-	if(Object.keys(display).length == 1) {
-		html += "<div class='noItem'>";
-		html += "<h1>" + "Nog geen producten" + "<br>";
-		html += "<p>" + "bekijk" + "hier onze laaste producten." + "</p>";
+	if(Object.keys(display).length == 0) {
+		html += "<div class='noItem proPage'>";
+		html += "<h1>" + "Nog geen producten" + "</h1>";
+		html += "<p>" + "Bekijk onze laatste producten beneden" + "</p>";
+		html += "<button id='lastProducts'>" + "Producten" + "</button>";
 		html += "</div>";
 	}
 	$('#products').html(html);
+	reloadButtons();
 }

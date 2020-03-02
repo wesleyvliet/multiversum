@@ -150,3 +150,10 @@ input[type="button"] {
     margin-left: -18px;
     top: 0;
 }
+.wrapper {
+	min-height: 100%;
+}
+.invalidUrl {
+	width: 650px;
+	margin-left: -325px;
+}
