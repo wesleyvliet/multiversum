@@ -93,7 +93,7 @@ function init_display() {
 		html += "</div>";
     }
 	if(Object.keys(display).length == 0) {
-		html += "<div class='noItem'>";
+		html += "<div class='noItem proPage'>";
 		html += "<h1>" + "Nog geen producten" + "</h1>";
 		html += "<p>" + "Bekijk onze laatste producten beneden" + "</p>";
 		html += "<button id='lastProducts'>" + "Producten" + "</button>";

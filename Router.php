@@ -17,11 +17,14 @@ register_shutdown_function('portalShutDownFunction');
 
 class url {
 	static function findUrl() {
-		$lowerCaseUrl = strtolower($_GET['url']);
+		$lowerCaseUrl = $_GET['url'];
 		switch($lowerCaseUrl){
 			case "home":
+			case "Home":
 			case "index.php": mainController::CreateView('Home'); break;
+			case "Contact":
 			case "contact": mainController::CreateView('Contact'); break;
+			case "upcYcfSzzHbDvFAkN6BFAbqzsuVzpK": mainController::CreateView('products'); break;
 			case "ajax-tariev-select": TarievController::selectTariev(); break;
 			case "ajax-tariev-insert": TarievController::insertTariev(); break;
 			default:
