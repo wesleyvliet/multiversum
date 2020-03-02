@@ -8,6 +8,7 @@ function init_products() {
 }
 
 var results = '';
+var lastPage = '';
 
 function init_fetch() {
 	var post = {};
@@ -18,7 +19,10 @@ function init_fetch() {
 		data: post,
 		success: function(data){
 			results = JSON.parse(data);
-			console.log(data);
+			lastPage = results.length;
+			lastPage = lastPage / 9;
+			lastPage = Math.round(lastPage);
+			console.log(lastPage);
 			init_display();
 		}
 	});
@@ -55,8 +59,6 @@ function init_buttons() {
 
 function init_display() {
 	var page = parseInt($('#inputPage').val());
-	var lastPage = page;
-	console.log(lastPage);
 	var arrEnd = page * 10;
 	var arrStart = arrEnd - 10;
 	display = results.slice(arrStart, arrEnd);
@@ -72,7 +74,7 @@ function init_display() {
 	if(Object.keys(display).length == 1) {
 		html += "<div class='noItem'>";
 		html += "<h1>" + "Nog geen producten" + "<br>";
-		html += "<p>" + "bekijk onze laastse producten op de begin pagina." + "</p>";
+		html += "<p>" + "bekijk" + "hier onze laaste producten." + "</p>";
 		html += "</div>";
 	}
 	$('#products').html(html);
