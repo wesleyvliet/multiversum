@@ -107,16 +107,24 @@ function init_display() {
 
 		html += 	"<div>";
 		html += 		"<h1>" + "Specificaties en productafbeeldingen" + "</h1>";
-		html +=			'<table style="width:100%">';
-		html +=				"<tr><th>Firstname</th></tr>";
-		html += 			"<tr><td>Jill</td></tr>";
-		html +=				"<tr><td>Eve</td></tr>";
-		html +=				"<tr><td>John</td></tr>";
+		html +=			'<table class="detail-table">';
+		html +=				"<tr><th style='background: var(--grey);'>Populaire specificaties</th></tr>";
+		html += 			"<tr><td>Platform (VR-brillen):</td></tr>";
+		html +=				"<tr><td>Eigen display:</td></tr>";
+		html +=				"<tr><td>Resolutie:</td></tr>";
+		html +=				"<tr><td>Functies (VR-bril):</td></tr>";
+		html +=				"<tr><td>Aansluitingen VR-bril:</td></tr>";
+		html +=			"</table>";
+		html +=			'<table class="detail-table">';
+		html +=				"<tr><th style='background: var(--grey);'>Platform</th></tr>";
+		html += 			"<tr><td>Platform (VR-brillen):</td></tr>";
 		html +=			"</table>";
 		html +=		"</div>";
 
 		html += 	"<div>";
-		html += 		"<h1>" + "Specificaties en productafbeeldingen" + "</h1>";
+		html += 		"<h1>" + " Prijs €615,00 " + "<button>" + "Koop Nu!" + "</button></h1>";
+		html += 		"<div class='DetailsImgOverlay' style='background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(../multiversum/libraries/img/header1.jpeg)'>";
+		html +=			"</div>";
 		html +=		"</div>";
 
 		html += "</div>"
