@@ -74,12 +74,14 @@
     display: none;
     min-width: 100%;
     min-height: 100%;
-    position: static;
-    left: 50%;
-    margin-left: -100px;
+    position: relative;
+    /* left: 50%; */
+    /* margin-left: -100px; */
     background: red;
-    top: 50%;
+    /* top: 50%; */
     background: lightgray;
+    padding-top: 40px;
+    padding-bottom: 40px;
     opacity: 0.9;
 }
 #productDetails > div > div > table, th, td {
@@ -100,12 +102,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     color: black;
-    position: absolute;
+    /* position: static; */
     background: white;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    /* left: 50%; */
+    /* transform: translate(-50%, 0%); */
     width: 90%;
-    margin-top: 30px;
+    /* margin-top: 30px; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    margin: auto;
 }
 #productDetails > div > div {
     margin: 20px;
@@ -124,6 +129,7 @@
 .DetailsImgOverlay {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
     width: 90%;
     height: 70%;
     max-height: 300px;

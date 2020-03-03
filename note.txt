@@ -1,0 +1,8 @@
+fat models skiny controllers
+controllers do all the running around takes information from the modals en bring it to the views
+keep as much busines logic(denk werk aka rekenen) in the model layer.
+controllers are noth alawed to make important decisions.
+models mogen niet met de view praten.
+
+
+http requeast komt bij controllers gaat naar readContact return contact controller haalt dan de view en display het
