@@ -1,4 +1,11 @@
-        <div id="productDetails"></div>
+
+        <ul id="slidesProducts" stop="false">
+            <li class="slideProducts showing"><h1 class="sliderText">test</h1></li>
+            <li class="slideProducts showing"><h1 class="sliderText">test</h1></li>
+            <li class="slideProducts showing"><h1 class="sliderText">test</h1></li>
+            <li class="slideProducts"><h1 class="sliderText">test</h1></li>
+        </ul>
+        <div id="actionsBox"></div>
         <div class="wrapper">
             <span>
                 <h1>Welkome bij multiversum.com</h1>

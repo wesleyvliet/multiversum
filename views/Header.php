@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="views/css/home.css">
         <link rel="stylesheet" type="text/css" href="views/css/products.css">
         <link rel="stylesheet" type="text/css" href="views/css/contact.css">
+        <link rel="stylesheet" type="text/css" href="views/css/actions.css">
     </head>
 	<body>
         <ul id="slides" stop="false">

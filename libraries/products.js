@@ -26,6 +26,18 @@ function init_fetch() {
 			init_display();
 		}
 	});
+	var post = {};
+	post.action = 'fetchProductsAction';
+	$.ajax({
+		type: "POST",
+		url: 'Router.php',
+		data: post,
+		success: function(data){
+			results = JSON.parse(data);
+			console.log(results);
+			//init_display();
+		}
+	});
 }
 
 function init_buttons() {

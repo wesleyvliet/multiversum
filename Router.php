@@ -41,7 +41,7 @@ class router {
 		$url = $_POST['action'];
 		switch ($url) {
             case 'fetchProducts': mainController::fetchProducts(); return;
-            case 'fetchUsers': mainController::fetchUsers(); return;
+            case 'fetchProductsAction': mainController::fetchProductsAction(); return;
 			case 'deleteUser': mainController::deleteUser(); return;
             case 'checkForm': mainController::checkLogin(); return;
 			default: echo 'No action was taken'; break;
