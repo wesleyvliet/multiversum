@@ -68,6 +68,21 @@ function init_buttons() {
 	});
 }
 function reloadButtons() {
+	$('#actionButtonLeft').click( function() {
+		var view = parseInt($('#actionsBox').attr('view'));
+		var view = view - 1;
+		$('#actionsBox').attr('view', view);
+		$('#actionsBox').attr('clicked', 'left');
+		init_actions();
+	});
+	$('#actionButtonRight').click( function() {
+		console.log('right');
+		var view = parseInt($('#actionsBox').attr('view'));
+		var view = view + 1;
+		$('#actionsBox').attr('view', view);
+		$('#actionsBox').attr('clicked', 'right');
+		init_actions();
+	})
 	$('#lastProducts').click( function() {
 		console.log('i was clicked');
 		var page = parseInt($('#inputPage').val());
@@ -181,10 +196,32 @@ function init_actions() {
 		var arrEnd = page * 3;
 		var arrStart = arrEnd - 3;
 		display = actionArray.slice(arrStart, arrEnd);
-		console.log(display);
+		if(display.length == 0) {
+			var clicked = $('#actionsBox').attr('clicked');
+			if(clicked == 'right') {
+				$('#actionsBox').attr('view', '1');
+				console.log('test')
+				display = actionArray.slice(0, 3);
+			}
+			if(clicked == 'left') {
+				lastPage = Math.round(actionArray.length / 3);
+				$('#actionsBox').attr('view', lastPage);
+				var endView = parseInt(actionArray.length);
+				var nearEndView = parseInt(lastPage - 1);
+				nearEndView = nearEndView * 3;
+				console.log(nearEndView)
+				display = actionArray.slice(nearEndView, endView);
+			}
+		}
+		switch (display.length) {
+			case 1: $('#actionsBox').css('grid-template-columns', '30% 40% 30%'); break;
+			case 2: $('#actionsBox').css('grid-template-columns', '15% 35% 35% 15%'); break;
+			case 3: $('#actionsBox').css('grid-template-columns', '12.5% 25% 25% 25% 12.5%'); break;
+			default: console.log('NAN');
+		}
 		var html = "";
 		html += "<button id='actionButtonLeft'>" + '<' + "</button>";
-		for(var i = 0; i < Object.keys(display).length; i++){
+		for(var i = 0; i < Object.keys(display).length; i++) {
 			html += "<div class='item' productId='" + display[i]['id'] + "' >";
 				html += "<h1>" + display[i]['title'] + "</h1>";
 				html += "<img src='http://localhost/multiversum/multiversum/libraries/img/products/" + display[i]['id'] + ".jpeg'>";
@@ -196,4 +233,5 @@ function init_actions() {
 		$('#actionsBox').html(html);
 	}
 	actionDisplay();
+	reloadButtons()
 }
