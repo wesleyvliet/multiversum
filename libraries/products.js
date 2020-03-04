@@ -9,6 +9,7 @@ function init_products() {
 
 var results = '';
 var lastPage = '';
+var actionArray = '';
 
 function init_fetch() {
 	var post = {};
@@ -22,7 +23,6 @@ function init_fetch() {
 			lastPage = results.length;
 			lastPage = lastPage / 9;
 			lastPage = Math.round(lastPage);
-			console.log(lastPage);
 			init_display();
 		}
 	});
@@ -33,9 +33,8 @@ function init_fetch() {
 		url: 'Router.php',
 		data: post,
 		success: function(data){
-			results = JSON.parse(data);
-			console.log(results);
-			//init_display();
+			actionArray = JSON.parse(data);
+			init_actions();
 		}
 	});
 }
@@ -175,4 +174,26 @@ function init_display() {
 		$('.wrapper').css('display', 'none');
 	});
 	reloadButtons();
+}
+function init_actions() {
+	function actionDisplay() {
+		var page = parseInt($('#actionsBox').attr('view'));
+		var arrEnd = page * 3;
+		var arrStart = arrEnd - 3;
+		display = actionArray.slice(arrStart, arrEnd);
+		console.log(display);
+		var html = "";
+		html += "<button id='actionButtonLeft'>" + '<' + "</button>";
+		for(var i = 0; i < Object.keys(display).length; i++){
+			html += "<div class='item' productId='" + display[i]['id'] + "' >";
+				html += "<h1>" + display[i]['title'] + "</h1>";
+				html += "<img src='http://localhost/multiversum/multiversum/libraries/img/products/" + display[i]['id'] + ".jpeg'>";
+				html += "<p>Platform: " + display[i]['platform'] + "</p>";
+				html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
+			html += "</div>";
+		}
+		html += "<button id='actionButtonRight'>" + ">" + "</button>";
+		$('#actionsBox').html(html);
+	}
+	actionDisplay();
 }

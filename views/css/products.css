@@ -142,3 +142,22 @@
     margin-left: auto;
     margin-right: auto;
 }
+#actionsBox {
+    display: grid;
+    grid-template-columns: 12.5% 25% 25% 25% 12.5%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#actionButtonLeft {
+    font-size: 80px;
+    height: min-content;
+    margin: auto;
+    margin-left: 60%;
+}
+#actionButtonRight {
+    font-size: 80px;
+    height: min-content;
+    margin: auto;
+    margin-right: 60%;
+}
