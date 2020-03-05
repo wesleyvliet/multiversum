@@ -11,12 +11,14 @@
         <div class="item7"></div>
         <div class="item8"> Stad: Zeeland,</div>
             <div class="item7"></div>
-            <a href="./libraries/img/location.png">
+            <a href="https://www.google.nl/maps/place/Jan+Pieterszoon+Coenstraat,+Utrecht/@52.0910521,5.0953237,17z/data=!3m1!4b1!4m5!3m4!1s0x47c66f65451cd7b3:0xa52fd8e5ccf60705!8m2!3d52.0910488!4d5.0975124" target="_blank">
         <div class="item8"> Postcode: 69217</div></a>
         </div>
     </div>
     </span>
+    <a href="https://www.google.nl/maps/place/Jan+Pieterszoon+Coenstraat,+Utrecht/@52.0910521,5.0953237,17z/data=!3m1!4b1!4m5!3m4!1s0x47c66f65451cd7b3:0xa52fd8e5ccf60705!8m2!3d52.0910488!4d5.0975124" target="_blank">
         <img src="./libraries/img/location.png" class="center" alt="locatie">
+    </a>
     </body>
     </span>
     <footer>
