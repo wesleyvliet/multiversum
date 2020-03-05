@@ -27,7 +27,70 @@ function init_loop() {
 		$('#actionsBox').attr('clicked', 'false');
 	}
 }
+function specy() {
+	var html = "";
+	var id = $(this).attr('productId');
+	html += '<button class="exitButton"><a href="home">X</a></button>';
+	html += "<div>";
 
+	html += 	"<div>";
+	html += 		"<h1>" + "Specificaties en productafbeeldingen" + "</h1>";
+	html +=			'<table class="detail-table">';
+	html +=				"<tr><th style='background: var(--grey);'>Populaire specificaties</th></tr>";
+	html += 			"<tr><td>Platform (VR-brillen):</td></tr>";
+	html +=				"<tr><td>Eigen display:</td></tr>";
+	html +=				"<tr><td>Resolutie:</td></tr>";
+	html +=				"<tr><td>Functies (VR-bril):</td></tr>";
+	html +=				"<tr><td>Aansluitingen VR-bril:</td></tr>";
+	html +=			"</table>";
+	html +=			'<table class="detail-table">';
+	html +=				"<tr><th style='background: var(--grey);'>Platform</th></tr>";
+	html += 			"<tr><td>Platform (VR-brillen):</td></tr>";
+	html +=			"</table>";
+	html +=			'<table class="detail-table">';
+	html +=				"<tr><th style='background: var(--grey);'>Scherm</th></tr>";
+	html += 			"<tr><td>Eigen display:</td></tr>";
+	html += 			"<tr><td>Resolutie:</td></tr>";
+	html += 			"<tr><td>Refresh rate:</td></tr>";
+	html +=			"</table>";
+	html +=			'<table class="detail-table">';
+	html +=				"<tr><th style='background: var(--grey);'>Functies</th></tr>";
+	html += 			"<tr><td>Functies (VR-bril):</td></tr>";
+	html +=			"</table>";
+	html +=			'<table class="detail-table">';
+	html +=				"<tr><th style='background: var(--grey);'>Verbindingen</th></tr>";
+	html += 			"<tr><td>Aansluitingen VR-bril:</td></tr>";
+	html +=			"</table>";
+	html +=		"</div>";
+
+	html += 	"<div>";
+	html += 		"<h1>" + " Prijs €615,00 " + "<button style='display:none;'>" + "Koop Nu!" + "</button></h1>";
+	html += 		"<div class='DetailsImgOverlay' style='background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(../multiversum/libraries/img/header1.jpeg)'>";
+	html +=			"</div>";
+	html +=			'<table class="detail-table">';
+	html +=				"<tr><th style='background: var(--grey);'>Accu en accessories</th></tr>";
+	html += 			"<tr><td>Meegeleverde VR-bril accessoires:</td></tr>";
+	html +=			"</table>";
+	html +=			'<table class="detail-table">';
+	html +=				"<tr><th style='background: var(--grey);'>Garantie</th></tr>";
+	html += 			"<tr><td>Fabrieksgarantie:</td></tr>";
+	html +=			"</table>";
+	html +=			'<table class="detail-table">';
+	html +=				"<tr><th style='background: var(--grey);'>Meer informatie</th></tr>";
+	html += 			"<tr><td>Product:</td></tr>";
+	html += 			"<tr><td>Merk:</td></tr>";
+	html += 			"<tr><td>Tweakers ID:</td></tr>";
+	html += 			"<tr><td>EAN:</td></tr>";
+	html += 			"<tr><td>SKU:</td></tr>";
+	html +=			"</table>";
+	html +=		"</div>";
+
+	html += "</div>"
+	html += '<button class="exitButton" style="bottom: 3.6%;"><a href="home">X</a></button>';
+	$('#productDetails').css('display', 'block');
+	$('#productDetails').html(html);
+	$('.wrapper').css('display', 'none');
+}
 function init_fetch() {
 	var post = {};
 	post.action = 'fetchProducts';
@@ -158,68 +221,7 @@ function init_display() {
 	}
 	$('#products').html(html);
 	$('#products .item').click( function() {
-		var html = "";
-		var id = $(this).attr('productId');
-		html += '<button class="exitButton"><a href="home">X</a></button>';
-		html += "<div>";
-
-		html += 	"<div>";
-		html += 		"<h1>" + "Specificaties en productafbeeldingen" + "</h1>";
-		html +=			'<table class="detail-table">';
-		html +=				"<tr><th style='background: var(--grey);'>Populaire specificaties</th></tr>";
-		html += 			"<tr><td>Platform (VR-brillen):</td></tr>";
-		html +=				"<tr><td>Eigen display:</td></tr>";
-		html +=				"<tr><td>Resolutie:</td></tr>";
-		html +=				"<tr><td>Functies (VR-bril):</td></tr>";
-		html +=				"<tr><td>Aansluitingen VR-bril:</td></tr>";
-		html +=			"</table>";
-		html +=			'<table class="detail-table">';
-		html +=				"<tr><th style='background: var(--grey);'>Platform</th></tr>";
-		html += 			"<tr><td>Platform (VR-brillen):</td></tr>";
-		html +=			"</table>";
-		html +=			'<table class="detail-table">';
-		html +=				"<tr><th style='background: var(--grey);'>Scherm</th></tr>";
-		html += 			"<tr><td>Eigen display:</td></tr>";
-		html += 			"<tr><td>Resolutie:</td></tr>";
-		html += 			"<tr><td>Refresh rate:</td></tr>";
-		html +=			"</table>";
-		html +=			'<table class="detail-table">';
-		html +=				"<tr><th style='background: var(--grey);'>Functies</th></tr>";
-		html += 			"<tr><td>Functies (VR-bril):</td></tr>";
-		html +=			"</table>";
-		html +=			'<table class="detail-table">';
-		html +=				"<tr><th style='background: var(--grey);'>Verbindingen</th></tr>";
-		html += 			"<tr><td>Aansluitingen VR-bril:</td></tr>";
-		html +=			"</table>";
-		html +=		"</div>";
-
-		html += 	"<div>";
-		html += 		"<h1>" + " Prijs €615,00 " + "<button style='display:none;'>" + "Koop Nu!" + "</button></h1>";
-		html += 		"<div class='DetailsImgOverlay' style='background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(../multiversum/libraries/img/header1.jpeg)'>";
-		html +=			"</div>";
-		html +=			'<table class="detail-table">';
-		html +=				"<tr><th style='background: var(--grey);'>Accu en accessories</th></tr>";
-		html += 			"<tr><td>Meegeleverde VR-bril accessoires:</td></tr>";
-		html +=			"</table>";
-		html +=			'<table class="detail-table">';
-		html +=				"<tr><th style='background: var(--grey);'>Garantie</th></tr>";
-		html += 			"<tr><td>Fabrieksgarantie:</td></tr>";
-		html +=			"</table>";
-		html +=			'<table class="detail-table">';
-		html +=				"<tr><th style='background: var(--grey);'>Meer informatie</th></tr>";
-		html += 			"<tr><td>Product:</td></tr>";
-		html += 			"<tr><td>Merk:</td></tr>";
-		html += 			"<tr><td>Tweakers ID:</td></tr>";
-		html += 			"<tr><td>EAN:</td></tr>";
-		html += 			"<tr><td>SKU:</td></tr>";
-		html +=			"</table>";
-		html +=		"</div>";
-
-		html += "</div>"
-		html += '<button class="exitButton" style="bottom: 3.6%;"><a href="home">X</a></button>';
-		$('#productDetails').css('display', 'block');
-		$('#productDetails').html(html);
-		$('.wrapper').css('display', 'none');
+		specy();
 	});
 	reloadButtons();
 }
@@ -264,6 +266,10 @@ function init_actions() {
 		}
 		html += "<button id='actionButtonRight'>" + ">" + "</button>";
 		$('#actionsBox').html(html);
+		$('#actionsBox .item').click( function() {
+			specy();
+		});
+
 	}
 	actionDisplay();
 	reloadButtons()
