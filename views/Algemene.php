@@ -1,5 +1,4 @@
-
-    <span>
+<span>
         <h1 id="title">Contactgegevens</h1>
         <div class="grid-container">
         <div class="item1">Gegevens eigenaar</div>

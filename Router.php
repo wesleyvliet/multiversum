@@ -24,6 +24,8 @@ class url {
 			case "index.php": mainController::CreateView('Home'); break;
 			case "Contact":
 			case "contact": mainController::CreateView('Contact'); break;
+			case "Algemene":
+			case "algemene": mainController::CreateView('Algemene'); break;
 			case "upcYcfSzzHbDvFAkN6BFAbqzsuVzpK": mainController::CreateView('products'); break;
 			case "ajax-tariev-select": TarievController::selectTariev(); break;
 			case "ajax-tariev-insert": TarievController::insertTariev(); break;
