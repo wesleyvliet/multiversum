@@ -5,11 +5,28 @@ function init_products() {
 	init_fetch();
     init_display();
 	init_buttons();
+	setInterval(init_loop, 10000);
 }
 
 var results = '';
 var lastPage = '';
 var actionArray = '';
+
+function init_loop() {
+	var clicked = $('#actionsBox').attr('clicked');
+	if(clicked == 'false') {
+		var page = parseInt($('#actionsBox').attr('view'));
+		page = page + 1;
+		var arrEnd = page * 3;
+		var arrStart = arrEnd - 3;
+		var display = actionArray.slice(arrStart, arrEnd);
+		if(display.length == 0) {page = 1;}
+		$('#actionsBox').attr('view', page);
+		init_actions();
+	} else {
+		$('#actionsBox').attr('clicked', 'false');
+	}
+}
 
 function init_fetch() {
 	var post = {};
@@ -71,16 +88,30 @@ function reloadButtons() {
 	$('#actionButtonLeft').click( function() {
 		var view = parseInt($('#actionsBox').attr('view'));
 		var view = view - 1;
+		var arrEnd = view * 3;
+		var arrStart = arrEnd - 3;
+		var display = actionArray.slice(arrStart, arrEnd);
+		if(display.length == 0) {
+			view = lastPage;
+		}
 		$('#actionsBox').attr('view', view);
 		$('#actionsBox').attr('clicked', 'left');
+		$('#actionsBox').attr('clicked', 'true');
 		init_actions();
 	});
 	$('#actionButtonRight').click( function() {
 		console.log('right');
 		var view = parseInt($('#actionsBox').attr('view'));
 		var view = view + 1;
+		var arrEnd = view * 3;
+		var arrStart = arrEnd - 3;
+		var display = actionArray.slice(arrStart, arrEnd);
+		if(display.length == 0) {
+			view = 1;
+		}
 		$('#actionsBox').attr('view', view);
 		$('#actionsBox').attr('clicked', 'right');
+		$('#actionsBox').attr('clicked', 'true');
 		init_actions();
 	})
 	$('#lastProducts').click( function() {
@@ -129,6 +160,7 @@ function init_display() {
 	$('#products .item').click( function() {
 		var html = "";
 		var id = $(this).attr('productId');
+		html += '<button class="exitButton">X</button>'
 		html += "<div>";
 
 		html += 	"<div>";
@@ -162,7 +194,7 @@ function init_display() {
 		html +=		"</div>";
 
 		html += 	"<div>";
-		html += 		"<h1>" + " Prijs €615,00 " + "<button>" + "Koop Nu!" + "</button></h1>";
+		html += 		"<h1>" + " Prijs €615,00 " + "<button style='display:none;'>" + "Koop Nu!" + "</button></h1>";
 		html += 		"<div class='DetailsImgOverlay' style='background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url(../multiversum/libraries/img/header1.jpeg)'>";
 		html +=			"</div>";
 		html +=			'<table class="detail-table">';
@@ -184,6 +216,7 @@ function init_display() {
 		html +=		"</div>";
 
 		html += "</div>"
+		html += '<button class="exitButton" style="bottom: 3.6%;">X</button>';
 		$('#productDetails').css('display', 'block');
 		$('#productDetails').html(html);
 		$('.wrapper').css('display', 'none');
@@ -191,34 +224,19 @@ function init_display() {
 	reloadButtons();
 }
 function init_actions() {
-	var stop = false;
-	var slideInterval = setInterval(actionDisplay,6000);
+	var page = parseInt($('#actionsBox').attr('view'));
 	function actionDisplay() {
-		if(stop == false) {
-			var page = parseInt($('#actionsBox').attr('view'));
-			page = page + 1;
-			var arrEnd = page * 3;
-			var arrStart = arrEnd - 3;
-			display = actionArray.slice(arrStart, arrEnd);
-			if(display.length == 0) {
-				page = 1;
-			}
-			$('#actionsBox').attr('view', page)
-		}
-		var page = parseInt($('#actionsBox').attr('view'));
 		var arrEnd = page * 3;
 		var arrStart = arrEnd - 3;
-		display = actionArray.slice(arrStart, arrEnd);
+		var display = actionArray.slice(arrStart, arrEnd);
 		if(display.length == 0) {
 			var clicked = $('#actionsBox').attr('clicked');
 			if(clicked == 'right') {
-				stop = true;
 				$('#actionsBox').attr('view', '1');
 				console.log('test')
 				display = actionArray.slice(0, 3);
 			}
 			if(clicked == 'left') {
-				stop = true;
 				lastPage = Math.round(actionArray.length / 3);
 				$('#actionsBox').attr('view', lastPage);
 				var endView = parseInt(actionArray.length);
