@@ -160,7 +160,7 @@ function init_display() {
 	$('#products .item').click( function() {
 		var html = "";
 		var id = $(this).attr('productId');
-		html += '<button class="exitButton">X</button>'
+		html += '<button class="exitButton"><a href="home">X</a></button>';
 		html += "<div>";
 
 		html += 	"<div>";
@@ -216,7 +216,7 @@ function init_display() {
 		html +=		"</div>";
 
 		html += "</div>"
-		html += '<button class="exitButton" style="bottom: 3.6%;">X</button>';
+		html += '<button class="exitButton" style="bottom: 3.6%;"><a href="home">X</a></button>';
 		$('#productDetails').css('display', 'block');
 		$('#productDetails').html(html);
 		$('.wrapper').css('display', 'none');

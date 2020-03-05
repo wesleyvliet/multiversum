@@ -249,3 +249,7 @@
     float: right;
     right: 5%;
 }
+.exitButton > a {
+    color: white;
+    text-decoration: none;
+}
