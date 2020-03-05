@@ -191,7 +191,20 @@ function init_display() {
 	reloadButtons();
 }
 function init_actions() {
+	var stop = false;
+	var slideInterval = setInterval(actionDisplay,6000);
 	function actionDisplay() {
+		if(stop == false) {
+			var page = parseInt($('#actionsBox').attr('view'));
+			page = page + 1;
+			var arrEnd = page * 3;
+			var arrStart = arrEnd - 3;
+			display = actionArray.slice(arrStart, arrEnd);
+			if(display.length == 0) {
+				page = 1;
+			}
+			$('#actionsBox').attr('view', page)
+		}
 		var page = parseInt($('#actionsBox').attr('view'));
 		var arrEnd = page * 3;
 		var arrStart = arrEnd - 3;
@@ -199,11 +212,13 @@ function init_actions() {
 		if(display.length == 0) {
 			var clicked = $('#actionsBox').attr('clicked');
 			if(clicked == 'right') {
+				stop = true;
 				$('#actionsBox').attr('view', '1');
 				console.log('test')
 				display = actionArray.slice(0, 3);
 			}
 			if(clicked == 'left') {
+				stop = true;
 				lastPage = Math.round(actionArray.length / 3);
 				$('#actionsBox').attr('view', lastPage);
 				var endView = parseInt(actionArray.length);
