@@ -1,4 +1,4 @@
-        <div id="productDetails" clicked=""></div>
+        <div id="productDetails" clicked="none"></div>
         <div class="wrapper">
             <div id="actionsBox" view="1"></div>
             <span>
