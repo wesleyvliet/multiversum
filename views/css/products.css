@@ -6,11 +6,13 @@
     min-height: 672px;
     width: 100%;
 }
+
 .item {
     margin: 30px;
     box-shadow: 0px 4px 20px 4px #888888
 }
-.item > h1 {
+
+.item>h1 {
     background: var(--grey);
     margin: 0;
     font-size: 24px;
@@ -18,18 +20,26 @@
     padding-bottom: 10px;
     padding-top: 10px;
 }
-.item > img {
+
+.item>img {
     width: 100%;
     max-height: 300px;
 }
-.item > p {
+
+.item>p {
     padding: 20px;
     background: var(--green);
     margin: 0;
     padding-top: 5px;
     padding-bottom: 5px;
 }
-.buttons {text-align: center; margin-bottom: 20px; margin-top: 10px; color: black;}
+
+.buttons {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color: black;
+}
 
 .noItem {
     position: absolute;
@@ -40,20 +50,23 @@
     border-radius: 50px;
     margin-top: 120px;
 }
-.noItem > h1 {
+
+.noItem>h1 {
     margin: 0;
     padding: 20px;
     background: var(--grey);
     border-top-right-radius: 50px;
     border-top-left-radius: 50px;
 }
-.noItem > p {
+
+.noItem>p {
     padding: 20px;
     padding-top: 0px;
     padding-bottom: 0px;
     color: black;
 }
-.noItem > button {
+
+.noItem>button {
     background: var(--green);
     color: white;
     border: 1px solid var(--green);
@@ -66,11 +79,14 @@
     text-align: center;
     margin-bottom: 20px;
 }
+
 .proPage {
     width: 500px;
     margin-left: -250px;
 }
-.addForm > input[type=text], select {
+
+.addForm>input[type=text],
+select {
     width: 20%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -80,11 +96,11 @@
     box-sizing: border-box;
 }
 
-.addForm > label {
+.addForm>label {
     color: var(--green);
 }
 
-.addForm > input[type=submit] {
+.addForm>input[type=submit] {
     width: 20%;
     background-color: #0f8870;
     color: white;
@@ -97,17 +113,17 @@
     height: fit-content;
 }
 
-.addForm > input[type=submit]:hover {
+.addForm>input[type=submit]:hover {
     background-color: #13a286;
 }
 
-.addForm > div {
+.addForm>div {
     border-radius: 5px;
     background-color: white;
     padding: 20px;
 }
 
-.addForm > span {
+.addForm>span {
     display: block;
     width: 100%;
     text-align: center;
@@ -149,21 +165,27 @@
     padding-bottom: 40px;
     opacity: 0.9;
 }
-#productDetails > div > div > table, th, td {
+
+#productDetails>div>div>table,
+th,
+td {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 10px;
     font-size: 16px;
     margin-bottom: 20px;
 }
-#productDetails > div > div > th, td {
+
+#productDetails>div>div>th,
+td {
     padding: 15px;
     text-align: left;
     font-size: 16px;
     background: var(--green);
     opacity: 0.8;
 }
-#productDetails > div {
+
+#productDetails>div {
     display: grid;
     grid-template-columns: 1fr 1fr;
     color: black;
@@ -177,12 +199,14 @@
     /* margin-right: auto; */
     margin: auto;
 }
-#productDetails > div > div {
+
+#productDetails>div>div {
     margin: 20px;
     min-height: 90%;
     text-align: center;
 }
-#productDetails > div > div > h1 {
+
+#productDetails>div>div>h1 {
     background: var(--grey);
     width: 90%;
     margin-left: auto;
@@ -191,6 +215,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .DetailsImgOverlay {
     margin-left: auto;
     margin-right: auto;
@@ -202,11 +227,13 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .detail-table {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
+
 #actionsBox {
     display: grid;
     grid-template-columns: 12.5% 25% 25% 25% 12.5%;
@@ -214,64 +241,98 @@
     margin-left: auto;
     margin-right: auto;
 }
-#actionsBox > div {
+
+#actionsBox>div {
     margin-top: 25px;
     font-size: 21px;
     text-align: center;
 
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-         -o-animation: fadein 2s; /* Opera < 12.1 */
-            animation: fadein 2s;
+    -webkit-animation: fadein 2s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s;
+    /* Firefox < 16 */
+    -ms-animation: fadein 2s;
+    /* Internet Explorer */
+    -o-animation: fadein 2s;
+    /* Opera < 12.1 */
+    animation: fadein 2s;
 }
 
 @keyframes fadein {
-    from { opacity: 0.5; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Firefox < 16 */
 @-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Internet Explorer */
 @-ms-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Opera < 12.1 */
 @-o-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
+
 #actionButtonLeft {
     font-size: 80px;
     height: min-content;
     margin: auto;
     margin-left: 60%;
 }
+
 #actionButtonRight {
     font-size: 80px;
     height: min-content;
     margin: auto;
     margin-right: 60%;
 }
+
 .exitButton {
     position: absolute;
     float: right;
     right: 5%;
 }
-.exitButton > a {
+
+.exitButton>a {
     color: white;
     text-decoration: none;
 }
