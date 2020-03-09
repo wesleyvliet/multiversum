@@ -1,6 +1,9 @@
-
+<html>
+<body>
     <span>
         <h1>Toevoegen</h1>
+    </span>
+    <span class="addForm">
         <div class="addForm">
             <form class="addForm" action="index.html" method="post">
                 <label for="productName">Product naam</label> <br>
