@@ -113,6 +113,28 @@
     text-align: center;
 }
 
+.addform > input[type=file] {
+    width: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.addfomr > label[for=file]{
+    width: 20%;
+    background-color: #0f8870;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    height: fit-content;
+}
+
+
 #productDetails {
     display: none;
     min-width: 100%;
