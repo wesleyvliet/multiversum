@@ -10,11 +10,9 @@ class ContactsLogic {
     }
 
     public function __destruct() {}
-    public function createContact() {
-        $title = 'test';
-        $platform = 'test';
-        $resulatie = 'test';
-        $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`) VALUES (NULL, 'Oculus Rift xl34', '699,99', 'Pc', '1', '2560x1440 (Quad HD)', '0', 'Koptelefoon', '3.5mm', '80Hz', 'Controller(s), Kabels', '2 jaar carry in', 'Oculus Rift S', 'Oculus', '1329634', '0815820020387', '301-00178-01')";
+    public function createContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct) {
+        $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`)
+        VALUES (NULL, '$title', '$prijs', '$platform', '$eigenDisplay', '$resulatie', '$actie', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', 'Oculus', '1329634', '0815820020387', '301-00178-01')";
         $res = $this->dataHandler->createData($sql);
         return $res;
     }
