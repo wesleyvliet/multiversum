@@ -24,8 +24,10 @@ function init_js() {
 			}
 			var html = "";
 			for (var i = 0; i < display.length; i++) {
+				var discount = parseInt(display[i]['prijs']);
+				discount = discount - parseInt(display[i]['korting']);
 				html += "<div class='item'>";
-					html += "<h1>" + display[i]['title'] + '<h1>€ '+ display[i]['prijs'] + "</h1></h1>";
+					html += "<h1>" + display[i]['title'] + '</h1><h1><p style="margin: 0; float: left;">€ ' + discount + ' </p><p style="margin: 0; font-size: 14px; padding-bottom: 10px; color: var(--green);">-' + display[i]['korting'] + "</p></h1>";
 					html += "<img src='view/assets/img/products/" + display[i]['id'] + ".jpeg'>";
 					html += "<p>Platform: " + display[i]['platform'] + "</p>";
 					html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
@@ -80,8 +82,10 @@ function displayActions(view) {
 	}
 	var html = "";
 	for (var i = 0; i < display.length; i++) {
+		var discount = parseInt(display[i]['prijs']);
+		discount = discount - parseInt(display[i]['korting']);
 		html += "<div class='item'>";
-			html += "<h1>" + display[i]['title'] + '<h1>€ '+ display[i]['prijs'] + "</h1></h1>";
+			html += "<h1>" + display[i]['title'] + '</h1><h1><p style="margin: 0; float: left;">€ ' + discount + ' </p><p style="margin: 0; font-size: 14px; padding-bottom: 10px; color: var(--green);">-' + display[i]['korting'] + "</p></h1>";
 			html += "<img src='view/assets/img/products/" + display[i]['id'] + ".jpeg'>";
 			html += "<p>Platform: " + display[i]['platform'] + "</p>";
 			html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";

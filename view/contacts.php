@@ -6,8 +6,10 @@ $html = "<div class='product-display-actions'>";
 $html .= "<button onclick='actionBackword()'><</button>";
 $html .= "<div id='actions' class='display-actions' display='1' stop='true' clicked='none' >";
 for($i = 0; $i < 3; $i++){
+    $discount = intval($actions[$i]['prijs']);
+    $discount = $discount - intval($actions[$i]['korting']);
     $html .= "<div class='item' id=" . $actions[$i]['id'] . ">";
-        $html .= "<h1>" . $actions[$i]['title'] . '<h1>€ '. $actions[$i]['prijs'] . "</h1></h1>";
+        $html .= "<h1>" . $actions[$i]['title'] . '</h1><h1><p style="margin: 0; float: left;">€ '. $discount . ' </p><p style="margin: 0; font-size: 14px; padding-bottom: 10px; color: var(--green);">-' . $actions[$i]['korting'] . "</p></h1>";
         $html .= "<img src='view/assets/img/products/" . $actions[$i]['id'] . ".jpeg'>";
         $html .= "<p>Platform: " . $actions[$i]['platform'] . "</p>";
         $html .= "<p>Resulatie: " . $actions[$i]['resulatie'] . "</p>";
