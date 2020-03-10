@@ -2,7 +2,7 @@
 
 include 'header.php';
 
-//$html = '<button class="exitButton"><a href="home">X</a></button>';
+$html = '<button class="exitButton"><a href="home">X</a></button>';
 $html = "<div style='background: #d3d3d3a1;
     padding-top: 50px;
     padding-bottom: 50px;'>";
@@ -61,8 +61,8 @@ $html .=		"</div>";
 
 $html .= "</div>";
 $html .= "</div>";
-//$html .= '<button class="exitButton" style="bottom: 3.6%;"><a href="home">X</a></button>';
 echo $html;
 include 'footer.php';
 
 ?>
+
