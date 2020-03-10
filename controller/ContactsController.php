@@ -12,7 +12,7 @@ class ContactsController {
             $op = isset($_REQUEST['op'])?$_REQUEST['op']:null;
             switch ($op) {
                 case 'create':
-                $this->collectCreateContact($_REQUEST['title'], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct']);
+                $this->collectCreateContact($_REQUEST['title'], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU']);
                 break;
                 case 'reads':
                 $this->collectDisplayContacts($_REQUEST['page']);
@@ -34,8 +34,8 @@ class ContactsController {
             $errors = $e->getErrors();
         }
     }
-    public function collectCreateContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct){
-        $contacts = $this->ContactsLogic->createContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct);
+    public function collectCreateContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU){
+        $contacts = $this->ContactsLogic->createContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU);
         var_dump($contacts);
         //include 'view/admin.php';
     }

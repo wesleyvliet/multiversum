@@ -401,3 +401,18 @@
 .addform-buttons > button {
     margin: auto;
 }
+#actie-korting {
+    top: 4px;
+    width: 70%;
+    min-height: 100%;
+}
+#actie-select {
+    width: 30%;
+    background: none;
+    border: none;
+    height: 100%;
+    margin: 0;
+    border-right: 1px solid black;
+    border-radius: 0px;
+    outline: none;
+}

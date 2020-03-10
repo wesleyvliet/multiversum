@@ -10,9 +10,9 @@ class ContactsLogic {
     }
 
     public function __destruct() {}
-    public function createContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct) {
-        $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`)
-        VALUES (NULL, '$title', '$prijs', '$platform', '$eigenDisplay', '$resulatie', '$actie', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', 'Oculus', '1329634', '0815820020387', '301-00178-01')";
+    public function createContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU) {
+        $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `korting`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`)
+        VALUES (NULL, '$title', '$prijs', '$platform', '$eigenDisplay', '$resulatie', '$actie', '$korting', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', '$infoMerk', '$infoTweakers', '$infoEAN', '$infoSKU')";
         $res = $this->dataHandler->createData($sql);
         return $res;
     }
