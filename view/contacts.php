@@ -20,7 +20,7 @@ $html .= "<button onclick='actionForward()'>></button>";
 $html .= "</div>";
 echo $html;
 
-$html = "<span>";
+$html = "<span style='margin-top: 3%!important;'>";
     $html .= "<h1>Welkome bij multiversum.com</h1>";
     $html .= "<p>Bekijk onze wijde selectie aan Vr-Brillen!</p>";
 $html .= "</span>";
