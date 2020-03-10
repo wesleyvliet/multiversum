@@ -283,7 +283,8 @@
 .product-display-actions {
     display: grid;
     grid-template-columns: 10% 80% 10%;;
-    height: 40% !important;
+    height: fit-content;
+    margin-top: 2%;
 }
 .product-display-actions > button {
     font-size: 100px;

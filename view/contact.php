@@ -18,7 +18,7 @@ $html .= '</div>';
 $html .= '</div>';
 $html .= '</span>';
 $html .= '<a href="https://www.google.nl/maps/place/Jan+Pieterszoon+Coenstraat,+Utrecht/@52.0910521,5.0953237,17z/data=!3m1!4b1!4m5!3m4!1s0x47c66f65451cd7b3:0xa52fd8e5ccf60705!8m2!3d52.0910488!4d5.0975124" target="_blank">';
-$html .= '<img src="../temp/view/assets/img/locatie.png" class="center" alt="locatie">';
+$html .= '<img src="../multiversum/view/assets/img/locatie.png" class="center" alt="locatie">';
 $html .= '</a>';
 $html .= '</body>';
 $html .= '</span>';
