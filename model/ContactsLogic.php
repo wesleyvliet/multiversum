@@ -11,9 +11,20 @@ class ContactsLogic {
 
     public function __destruct() {}
     public function createContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU) {
-        $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `korting`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`)
-        VALUES (NULL, '$title', '$prijs', '$platform', '$eigenDisplay', '$resulatie', '$actie', '$korting', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', '$infoMerk', '$infoTweakers', '$infoEAN', '$infoSKU')";
+        $newPlatform = "";
+        $i = 0;
+        $last = count($platform);
+        foreach ($platform as $value) {
+            $i++;
+            if($i == $last) {
+                $newPlatform .= $value;
+            } else {
+                $newPlatform .= $value . ", ";
+            }
+        }
+        $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `korting`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`) VALUES (NULL, '$title', '$prijs', '$newPlatform', '$eigenDisplay', '$resulatie', '$actie', '$korting', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', '$infoMerk', '$infoTweakers', '$infoEAN', '$infoSKU')";
         $res = $this->dataHandler->createData($sql);
+        
         return $res;
     }
     public function readContact($id) {

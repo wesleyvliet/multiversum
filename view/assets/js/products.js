@@ -137,3 +137,6 @@ function display(view) {
 		document.getElementById("products").innerHTML = html;
 	}
 }
+function removeMessage() {
+	document.getElementByClass("form-after-box").setAttribute("style", 'display: none');
+}

@@ -35,9 +35,10 @@ class ContactsController {
         }
     }
     public function collectCreateContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU){
-        $contacts = $this->ContactsLogic->createContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU);
-        var_dump($contacts);
-        //include 'view/admin.php';
+        $productId = $this->ContactsLogic->createContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU);
+        $checkId = $this->ContactsLogic->readContact($productId);
+        $checkId = $checkId[0]['id'];
+        include 'view/adminAfter.php';
     }
     public function collectReadContact($id){
         $contacts = $this->ContactsLogic->readContact($id);
