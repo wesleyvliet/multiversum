@@ -2,7 +2,7 @@
 
 include 'header.php';
 
-$html .= '<span>'; 
+$html = '<span>'; 
 $html .= '<h1 id="title">Contactgegevens</h1>';
 $html .= '<div class="grid-container">';
 $html .= '<form action="/action_page.php">';

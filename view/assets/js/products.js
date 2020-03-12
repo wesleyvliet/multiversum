@@ -138,5 +138,8 @@ function display(view) {
 	}
 }
 function removeMessage() {
-	document.getElementByClass("form-after-box").setAttribute("style", 'display: none');
+	setTimeout(function(){
+		document.getElementById("afterBox").setAttribute('style', 'display: none');
+	}, 3000);
+	//document.getElementByClass("form-after-box").setAttribute("style", 'display: none');
 }
