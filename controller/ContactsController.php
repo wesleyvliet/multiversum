@@ -12,7 +12,10 @@ class ContactsController {
             $op = isset($_REQUEST['op'])?$_REQUEST['op']:null;
             switch ($op) {
                 case 'create':
-                $this->collectCreateContact($_REQUEST['title'], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU']);
+                $this->collectCreateContact($_REQUEST['title'], $_FILES["fileToUpload"], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU']);
+                break;
+                case 'upload':
+                $this->collectUploadImg($_FILES["fileToUpload"]);
                 break;
                 case 'reads':
                 $this->collectDisplayContacts($_REQUEST['page']);
@@ -34,10 +37,12 @@ class ContactsController {
             $errors = $e->getErrors();
         }
     }
-    public function collectCreateContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU){
+    public function collectCreateContact($title, $file, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU){
         $productId = $this->ContactsLogic->createContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU);
         $checkId = $this->ContactsLogic->readContact($productId);
         $checkId = $checkId[0]['id'];
+        $upload = $this->ContactsLogic->uploadImg($file, $checkId);
+        //$uploadImg = $this->ContactsLogic->uploadImg($file, $checkId);
         include 'view/adminAfter.php';
     }
     public function collectReadContact($id){
@@ -71,6 +76,10 @@ class ContactsController {
         }
         include $include;
         //include 'view/' . $view . '.php';
+    }
+    public function collectUploadImg($file) {
+        $id = 1;
+        $upload = $this->ContactsLogic->uploadImg($file, $id);
     }
     public function collectUpdateContact(){}
     public function collectDeleteContact(){}

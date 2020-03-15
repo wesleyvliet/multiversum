@@ -24,7 +24,7 @@ class ContactsLogic {
         }
         $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `korting`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`) VALUES (NULL, '$title', '$prijs', '$newPlatform', '$eigenDisplay', '$resulatie', '$actie', '$korting', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', '$infoMerk', '$infoTweakers', '$infoEAN', '$infoSKU')";
         $res = $this->dataHandler->createData($sql);
-        
+
         return $res;
     }
     public function readContact($id) {
@@ -85,6 +85,30 @@ class ContactsLogic {
             default: break;
         }
         return $include;
+    }
+    public function uploadImg($file, $id) {
+        $id = $id;
+        $setter = 1;
+        $filename = "$id-$setter";
+        $temp = explode(".", $file["name"]);
+        $newfilename = $filename . '.' . end($temp);
+        $target_dir = "view/assets/img/products";
+        $target_file = $target_dir . basename($file["name"]);
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        if (file_exists('view/assets/img/products/' . $newfilename)) {
+            $counter = 999;
+            for ($i=0; $i < $counter; $i++) {
+                if (file_exists('view/assets/img/products/' . $newfilename)) {
+                    $setter = $setter + 1;
+                    $filename = "$id-$setter";
+                    $newfilename = $filename . '.' . end($temp);
+                    echo $newfilename;
+                } else {
+                    $counter = 999;
+                }
+            }
+        }
+        move_uploaded_file($file["tmp_name"], "view/assets/img/products/" . $newfilename);
     }
 public function updateContact(){}
 public function deleteContact(){}

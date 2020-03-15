@@ -8,13 +8,17 @@ $html .= '<p>alle gegevens zijn verijst om ingevuld te worden behalve de actie l
 $html .= '</span>';
 echo $html;
 //$html = '<button class="exitButton"><a href="home">X</a></button>';
-$html = "<form method='POST' action='?op=create' style='padding-top: 50px; padding-bottom: 50px;'>";
+$html = "<form method='POST' action='?op=create' enctype='multipart/form-data' style='padding-top: 50px; padding-bottom: 50px;'>";
 $html .= "<input style='display: none;' name='op' placeholder='Naam:' value='create'>";
 $html .= "<div class='product-addForm'>";
 $html .= 	"<div>";
 $html .= 	   '<table class="detail-table">';
 $html .=	       "<tr><th style='background: var(--grey);'>Naam product</th></tr>";
 $html .= 	       "<tr><td><input name='title' placeholder='Naam:' required></td></tr>";
+$html .=	   "</table>";
+$html .= 	   '<table class="detail-table">';
+$html .=	       "<tr><th style='background: var(--grey);'>Naam product</th></tr>";
+$html .= 	       "<tr><td><input type='file' name='fileToUpload' id='fileToUpload'></td></tr>";
 $html .=	   "</table>";
 $html .= 	   '<table class="detail-table">';
 $html .=	       "<tr><th style='background: var(--grey);'>Platform (VR-brillen)</th></tr>";

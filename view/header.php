@@ -11,11 +11,11 @@
 </head>
 <body>
 <ul id="slides" stop="false">
-    <li class="slide showing"><div class="logoLine1"></div><div class="logoBackground"><img src="../multiversum/view/assets/img/logo.png" class="headerLogo"></div><div class="logoLine2"></li>
-    <li class="slide"><div class="logoLine1"></div><div class="logoBackground"><img src="../multiversum/view/assets/img/logo.png" class="headerLogo"></div><div class="logoLine2"></li>
-    <li class="slide"><div class="logoLine1"></div><div class="logoBackground"><img src="../multiversum/view/assets/img/logo.png" class="headerLogo"></div><div class="logoLine2"></li>
-    <li class="slide"><div class="logoLine1"></div><div class="logoBackground"><img src="../multiversum/view/assets/img/logo.png" class="headerLogo"></div><div class="logoLine2"></li>
-    <li class="slide"><div class="logoLine1"></div><div class="logoBackground"><img src="../multiversum/view/assets/img/logo.png" class="headerLogo"></div><div class="logoLine2"></li>
+    <li class="slide showing"><div class="logoLine1"></div><div class="logoBackground"><img src="../multiversum/view/assets/img/logo.svg" class="headerLogo"><p class="brandName">multiversum</p></div><div class="logoLine2"></li>
+    <li class="slide"><div class="logoLine1"></div><div class="logoBackground"><img src="../multiversum/view/assets/img/logo.svg" class="headerLogo"><p class="brandName">multiversum</p></div><div class="logoLine2"></li>
+    <li class="slide"><div class="logoLine1"></div><div class="logoBackground"><img src="../multiversum/view/assets/img/logo.svg" class="headerLogo"><p class="brandName">multiversum</p></div><div class="logoLine2"></li>
+    <li class="slide"><div class="logoLine1"></div><div class="logoBackground"><img src="../multiversum/view/assets/img/logo.svg" class="headerLogo"><p class="brandName">multiversum</p></div><div class="logoLine2"></li>
+    <li class="slide"><div class="logoLine1"></div><div class="logoBackground"><img src="../multiversum/view/assets/img/logo.svg" class="headerLogo"><p class="brandName">multiversum</p></div><div class="logoLine2"></li>
 </ul>
 <div id="dots" style="text-align:center">
     <p class="dot selected" id="dot1"></p>
