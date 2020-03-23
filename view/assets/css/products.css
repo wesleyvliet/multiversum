@@ -368,6 +368,10 @@
 .product-addForm > div > table > tbody > tr > td > input[type="checkbox"] {
     height: 100px;
 }
+.product-addForm > div > table > tbody > tr > td > textarea {
+    resize: vertical;
+    width: 100%;
+}
 .product-form {
     width: 80%;
     margin: auto;

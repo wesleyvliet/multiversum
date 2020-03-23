@@ -32,7 +32,7 @@
             $html .=    "<li><a href='?op=view&view=home'>Home</a></li>";
             $html .=    "<li><a href='?op=view&view=contact'>Contact</a></li>";
             $html .=    "<li><a href='?op=view&view=li8cehj792rqh8px7dsa3r768dy'>Nieuw Product</a></li>";
-            $html .=    "<li><a href='?op=view&view=contact'>Pagina Content</a></li>";
+            $html .=    "<li><a href='?op=view&view=pageContent'>Pagina Content</a></li>";
             $html .=  "</ul>";
         $html .=  "</nav>";
     } else {

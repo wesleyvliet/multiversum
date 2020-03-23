@@ -1,11 +1,4 @@
 <?php
-if ((function_exists('session_status') && session_status() !== PHP_SESSION_ACTIVE) || !session_id()) {
-    session_start();
-    $_SESSION['name'] = 'guest';
-    $_SESSION['pass']   = 'guest';
-} else {
-    echo 'new user';
-}
 $page = 1;
 require_once 'model/ContactsLogic.php';
 class ContactsController {

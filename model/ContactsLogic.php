@@ -97,6 +97,7 @@ class ContactsLogic {
             case 'algemene': $include = 'view/algemene.php'; break;
             case 'privacy': $include = 'view/privacy.php'; break;
             case 'cookies': $include = 'view/cookie.php'; break;
+            case 'pageContent': $include = 'view/pageContent.php'; break;
             case 'li8cehj792rqh8px7dsa3r768dy': $include = 'view/admin.php'; break;
             case 'admin': $include = 'view/login.php'; break;
             default: break;
