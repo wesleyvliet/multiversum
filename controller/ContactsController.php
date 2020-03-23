@@ -23,6 +23,9 @@ class ContactsController {
                 case 'read':
                 $this->collectReadContact($_REQUEST['id']);
                 break;
+                case 'login':
+                $this->collectReadAdmin($_REQUEST['name'], $_REQUEST['pass']);
+                break;
                 case 'update':
                 $this->collectUpdateContact();
                 break;
@@ -44,6 +47,14 @@ class ContactsController {
         $upload = $this->ContactsLogic->uploadImg($file, $checkId);
         //$uploadImg = $this->ContactsLogic->uploadImg($file, $checkId);
         include 'view/adminAfter.php';
+    }
+    public function collectReadAdmin($name, $pass) {
+        $admin = $this->ContactsLogic->readAdmin($name, $pass);
+        if(!isset($_SESSION)) {
+            echo 'not set';
+        } else {
+            echo 'set';
+        }
     }
     public function collectReadContact($id){
         $contacts = $this->ContactsLogic->readContact($id);

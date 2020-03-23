@@ -24,7 +24,6 @@ class ContactsLogic {
         }
         $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `korting`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`) VALUES (NULL, '$title', '$prijs', '$newPlatform', '$eigenDisplay', '$resulatie', '$actie', '$korting', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', '$infoMerk', '$infoTweakers', '$infoEAN', '$infoSKU')";
         $res = $this->dataHandler->createData($sql);
-
         return $res;
     }
     public function readContact($id) {
@@ -32,6 +31,24 @@ class ContactsLogic {
             $sql = 'SELECT * FROM producten WHERE id =' . $id;
             $res = $this->dataHandler->readData($sql);
             $results = $res->fetchAll();
+            return $results;
+        }catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function readAdmin($name, $pass) {
+        try {
+            $sql = "SELECT * FROM `admin` WHERE name = '$name' AND pass = '$pass'";
+            $res = $this->dataHandler->readData($sql);
+            $results = $res->fetchAll();
+            if($results !== empty) {
+                $results[0]['id'];
+                if($results >= 1) {
+                    session_start();
+                    $_SESSION["name"] = "$name";
+                    $_SESSION["pass"] = "$pass";
+                }
+            }
             return $results;
         }catch (Exception $e) {
             throw $e;
@@ -82,6 +99,7 @@ class ContactsLogic {
             case 'privacy': $include = 'view/privacy.php'; break;
             case 'cookies': $include = 'view/cookie.php'; break;
             case 'li8cehj792rqh8px7dsa3r768dy': $include = 'view/admin.php'; break;
+            case 'admin': $include = 'view/login.php'; break;
             default: break;
         }
         return $include;
