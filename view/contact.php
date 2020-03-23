@@ -9,10 +9,10 @@ include 'header.php';
 <h1 id=title>Contactgegevens</h1>
 <p>Send E-mail</p>
 <form action="contactform.php" method="post">
-  <input type="text" name="name" placeholder="Volledige naam">
-  <input type="text" name="mail" placeholder="Jouw e-mail">
-  <input type="text" name="subject" placeholder="Onderwerp">
-  <textarea name="message" placeholder="Bericht"></textarea>
+  <input type="text" name="name" placeholder="Volledige naam"><br>
+  <input type="text" name="mail" placeholder="Jouw e-mail"><br>
+  <input type="text" name="subject" placeholder="Onderwerp"><br>
+  <textarea name="message" placeholder="Bericht"></textarea><br>
   <button type="submit" name="submit">Stuur Mail</button>
 </form>
 </body>
