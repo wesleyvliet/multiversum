@@ -1,7 +1,13 @@
 <?php
+if ((function_exists('session_status') && session_status() !== PHP_SESSION_ACTIVE) || !session_id()) {
+    session_start();
+    $_SESSION['name'] = 'guest';
+    $_SESSION['pass']   = 'guest';
+} else {
+    echo 'new user';
+}
 $page = 1;
 require_once 'model/ContactsLogic.php';
-
 class ContactsController {
     public function __construct(){
         $this->ContactsLogic = new ContactsLogic();
@@ -22,6 +28,9 @@ class ContactsController {
                 break;
                 case 'read':
                 $this->collectReadContact($_REQUEST['id']);
+                break;
+                case 'login':
+                $this->collectReadAdmin($_REQUEST['name'], $_REQUEST['pass']);
                 break;
                 case 'update':
                 $this->collectUpdateContact();
@@ -44,6 +53,20 @@ class ContactsController {
         $upload = $this->ContactsLogic->uploadImg($file, $checkId);
         //$uploadImg = $this->ContactsLogic->uploadImg($file, $checkId);
         include 'view/adminAfter.php';
+    }
+    public function collectReadAdmin($name, $pass) {
+        $admin = $this->ContactsLogic->readAdmin($name, $pass);
+        //echo $_SESSION['name'];
+        if($_SESSION['name'] == 'guest') {
+            //echo 'not set';
+            include 'view/loginError.php';
+        } else {
+            //echo 'set';
+            $contacts = $this->ContactsLogic->readContacts();
+            $actions = $this->ContactsLogic->readContactsActions();
+            $page = 1;
+            include 'view/contacts.php';
+        }
     }
     public function collectReadContact($id){
         $contacts = $this->ContactsLogic->readContact($id);
