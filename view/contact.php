@@ -7,7 +7,7 @@ include 'header.php';
 </head>
 <body>
 <h1 id=title>Contactgegevens</h1>
-<p>Send E-mail</p>
+<p>Stuur een E-mail met u vraag of klacht</p>
 <form action="contactform.php" method="post">
   <input type="text" name="name" placeholder="Volledige naam"><br>
   <input type="text" name="mail" placeholder="Jouw e-mail"><br>
