@@ -41,12 +41,11 @@ class ContactsLogic {
             $sql = "SELECT * FROM `admin` WHERE name = '$name' AND pass = '$pass'";
             $res = $this->dataHandler->readData($sql);
             $results = $res->fetchAll();
-            if($results !== empty) {
+            if (!empty($results)) {
                 $results[0]['id'];
                 if($results >= 1) {
-                    session_start();
-                    $_SESSION["name"] = "$name";
-                    $_SESSION["pass"] = "$pass";
+                    $_SESSION['name'] = $results[0]['name'];
+                    $_SESSION['pass'] = $results[0]['pass'];
                 }
             }
             return $results;

@@ -2,8 +2,8 @@
 include 'header.php';
 
 $html = '<span>';
-$html .= '<h1 id="title">Admin Login</h1>';
-$html .= '<p>Geen admin? klick dan op de home knop om terug te gaan.</p>';
+$html .= '<h1 id="title">Fout bij inlogen</h1>';
+$html .= '<p>verkeerde Wachtwoord of Naam gebruikt.</p>';
 $html .= '</span>';
 echo $html;
 //$html = '<button class="exitButton"><a href="home">X</a></button>';

@@ -1,7 +1,10 @@
 <?php
+if(!isset(apc_fetch('name'))) {
+    $bar = 'BAR';
+    apc_store('name', $bar);
+}
 $page = 1;
 require_once 'model/ContactsLogic.php';
-
 class ContactsController {
     public function __construct(){
         $this->ContactsLogic = new ContactsLogic();
@@ -50,10 +53,16 @@ class ContactsController {
     }
     public function collectReadAdmin($name, $pass) {
         $admin = $this->ContactsLogic->readAdmin($name, $pass);
-        if(!isset($_SESSION)) {
-            echo 'not set';
+        //echo $_SESSION['name'];
+        if($_SESSION['name'] == 'guest') {
+            //echo 'not set';
+            include 'view/loginError.php';
         } else {
-            echo 'set';
+            //echo 'set';
+            $contacts = $this->ContactsLogic->readContacts();
+            $actions = $this->ContactsLogic->readContactsActions();
+            $page = 1;
+            include 'view/contacts.php';
         }
     }
     public function collectReadContact($id){

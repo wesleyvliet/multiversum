@@ -24,9 +24,25 @@
     <p class="dot" id="dot4"></p>
     <p class="dot" id="dot5"></p>
 </div>
-<nav>
-    <ul>
-        <li><a href="?op=view&view=home">Home</a></li>
-        <li><a href="?op=view&view=contact">Contact</a></li>
-    </ul>
-</nav>
+<?php
+    if($_SESSION['name'] !== 'guest') {
+        //echo 'set';
+        $html =  "<nav>";
+            $html .=  "<ul>";
+            $html .=    "<li><a href='?op=view&view=home'>Home</a></li>";
+            $html .=    "<li><a href='?op=view&view=contact'>Contact</a></li>";
+            $html .=    "<li><a href='?op=view&view=li8cehj792rqh8px7dsa3r768dy'>Nieuw Product</a></li>";
+            $html .=    "<li><a href='?op=view&view=contact'>Pagina Content</a></li>";
+            $html .=  "</ul>";
+        $html .=  "</nav>";
+    } else {
+        $html =  "<nav>";
+            $html .=  "<ul>";
+            $html .=    "<li><a href='?op=view&view=home'>Home</a></li>";
+            $html .=    "<li><a href='?op=view&view=contact'>Contact</a></li>";
+            $html .=  "</ul>";
+        $html .=  "</nav>";
+    }
+    echo $html;
+    echo $_SESSION['name'];
+?>
