@@ -21,8 +21,8 @@ $html .= "</div>";
 echo $html;
 
 $html = "<span style='margin-top: 3%!important;'>";
-    $html .= "<h1>Welkome bij multiversum.com</h1>";
-    $html .= "<p>Bekijk onze wijde selectie aan Vr-Brillen!</p>";
+    $html .= "<h1>" . $content[0]['title'] . "</h1>";
+    $html .= "<p>" . $content[0]['text'] . "</p>";
 $html .= "</span>";
 echo $html;
 

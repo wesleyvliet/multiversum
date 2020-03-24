@@ -26,7 +26,7 @@ class ContactsController {
                 $this->collectReadAdmin($_REQUEST['name'], $_REQUEST['pass']);
                 break;
                 case 'update':
-                $this->collectUpdateContact();
+                $this->collectUpdateContact($_REQUEST['title1'], $_REQUEST['text1'], $_REQUEST['title2'], $_REQUEST['text2']);
                 break;
                 case 'view':
                 $this->collectLoadView($_REQUEST['view']);
@@ -58,6 +58,7 @@ class ContactsController {
             $contacts = $this->ContactsLogic->readContacts();
             $actions = $this->ContactsLogic->readContactsActions();
             $page = 1;
+            $content = $this->ContactsLogic->displayContent(1);
             include 'view/contacts.php';
         }
     }
@@ -81,14 +82,22 @@ class ContactsController {
         $contacts = $this->ContactsLogic->readContacts();
         $actions = $this->ContactsLogic->readContactsActions();
         $page = 1;
+        $content = $this->ContactsLogic->displayContent(1);
         include 'view/contacts.php';
     }
     public function collectLoadView($view) {
         $include = $this->ContactsLogic->readView($view);
         if($include == 'view/contacts.php') {
+            $content = $this->ContactsLogic->displayContent(1);
             $contacts = $this->ContactsLogic->readContacts();
             $actions = $this->ContactsLogic->readContactsActions();
             $page = 1;
+        } else {
+            $content = $this->ContactsLogic->displayContent(2);
+        }
+        if($include == 'view/pageContent.php') {
+            $contentPage1 = $this->ContactsLogic->displayContent(1);
+            $contentPage2 = $this->ContactsLogic->displayContent(2);
         }
         include $include;
         //include 'view/' . $view . '.php';
@@ -97,7 +106,10 @@ class ContactsController {
         $id = 1;
         $upload = $this->ContactsLogic->uploadImg($file, $id);
     }
-    public function collectUpdateContact(){}
+    public function collectUpdateContact($title1, $text1, $title2, $text2){
+        $update = $this->ContactsLogic->updateContent($title1, $text1, $title2, $text2);
+        $this->collectLoadView('pageContent');
+    }
     public function collectDeleteContact(){}
 }
  ?>

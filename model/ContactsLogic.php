@@ -26,6 +26,14 @@ class ContactsLogic {
         $res = $this->dataHandler->createData($sql);
         return $res;
     }
+    public function updateContent($title1, $text1, $title2, $text2) {
+        //$sql = "UPDATE content SET lastname='Doe' WHERE id=2";
+        $sql = "UPDATE content SET title = '$title1', text = '$text1' WHERE id = 1";
+        $res = $this->dataHandler->createData($sql);
+        $sql = "UPDATE content SET title = '$title2', text = '$text2' WHERE id = 3";
+        $res = $this->dataHandler->createData($sql);
+        return $res;
+    }
     public function readContact($id) {
         try {
             $sql = 'SELECT * FROM producten WHERE id =' . $id;
@@ -127,6 +135,12 @@ class ContactsLogic {
             }
         }
         move_uploaded_file($file["tmp_name"], "view/assets/img/products/" . $newfilename);
+    }
+    public function displayContent($content) {
+        $sql = 'SELECT * FROM content WHERE page =' . $content;
+        $res = $this->dataHandler->readsData($sql);
+        $results = $res->fetchAll();
+        return $results;
     }
 public function updateContact(){}
 public function deleteContact(){}
