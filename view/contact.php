@@ -9,7 +9,7 @@ $html .= "</span>";
 echo $html;
 
 ?>
-
+<div class="form">
 <form action="contactform.php" method="post">
   <input type="text" name="name" placeholder="Volledige naam"><br>
   <input type="text" name="mail" placeholder="Jouw e-mail"><br>
@@ -17,7 +17,7 @@ echo $html;
   <textarea name="message" placeholder="Bericht"></textarea><br>
   <button type="submit" name="submit">Stuur Mail</button>
 <form>
-
+</div>
 <?php
 include 'footer.php';
 
