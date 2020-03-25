@@ -5,14 +5,60 @@ body {
 }
 
 button {
-  background-color: black;
+  margin: 0px;
+  background-color: white;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50px;
+  width: 600px;
+
 }
 
-.form {
-    margin: 20px;
-    display: block;
-    height: 500px;
-    width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+textarea {
+  display: block;
+  height: 150px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+input {
+  color: black;
+  display: block;
+  height: 50px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+.contact {
+  margin-top: 15;
+  color: black;
+  text-align: left;
+  border: 3px solid rgb(33, 94, 173);;
+  width: 600px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+.location {
+  color: black;
+  text-align: left;
+  border: 3px solid rgb(33, 94, 173);
+  width: 600px;
+  background-color: white;
+  overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clearfix {
+  overflow: auto;
+}
+img {
+  margin-left: auto;
+  margin-right: auto;
+}
