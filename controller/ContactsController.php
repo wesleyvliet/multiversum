@@ -11,7 +11,7 @@ class ContactsController {
             $op = isset($_REQUEST['op'])?$_REQUEST['op']:null;
             switch ($op) {
                 case 'create':
-                $this->collectCreateContact($_REQUEST['title'], $_FILES["fileToUpload"], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU']);
+                $this->collectCreateContact($_REQUEST['title'], $_FILES["upload"], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU']);
                 break;
                 case 'upload':
                 $this->collectUploadImg($_FILES["fileToUpload"]);
@@ -44,8 +44,9 @@ class ContactsController {
         $checkId = $this->ContactsLogic->readContact($productId);
         $checkId = $checkId[0]['id'];
         $upload = $this->ContactsLogic->uploadImg($file, $checkId);
+        var_dump($upload);
         //$uploadImg = $this->ContactsLogic->uploadImg($file, $checkId);
-        include 'view/adminAfter.php';
+        //include 'view/adminAfter.php';
     }
     public function collectReadAdmin($name, $pass) {
         $admin = $this->ContactsLogic->readAdmin($name, $pass);

@@ -113,28 +113,34 @@ class ContactsLogic {
         return $include;
     }
     public function uploadImg($file, $id) {
-        $id = $id;
-        $setter = 1;
-        $filename = "$id-$setter";
-        $temp = explode(".", $file["name"]);
-        $newfilename = $filename . '.' . end($temp);
-        $target_dir = "view/assets/img/products";
-        $target_file = $target_dir . basename($file["name"]);
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        if (file_exists('view/assets/img/products/' . $newfilename)) {
-            $counter = 999;
-            for ($i=0; $i < $counter; $i++) {
-                if (file_exists('view/assets/img/products/' . $newfilename)) {
-                    $setter = $setter + 1;
-                    $filename = "$id-$setter";
-                    $newfilename = $filename . '.' . end($temp);
-                    echo $newfilename;
-                } else {
-                    $counter = 999;
+        var_dump($file);
+        $total = count($file['name']);
+        // Loop through each file
+        for( $i=0 ; $i < $total ; $i++ ) {
+            //Get the temp file path
+            $tmpFilePath = $file['tmp_name'][$i];
+            //Make sure we have a file path
+            if ($tmpFilePath != ""){
+                $counter = 1;
+                //Setup our new file path
+                //$newFilePath = "view/assets/img/products/" . $file['name'][$i];
+                $newfilename = $id . "-" . $counter;
+                $end = 10;
+                for ($i=0; $i < $end; $i++) {
+                    $path = 'view/assets/img/products/' . $newfilename . '.jpg';
+                    if (file_exists($path)) {
+                        $counter = $counter + 1;
+                        $newfilename = $id . "-" . $counter;
+                        echo 'new file name<br>';
+                    } else {
+                        $end = 1;
+                        echo 'free name<br>';
+                    }
                 }
+                echo $newfilename . "<br>";
+                move_uploaded_file($tmpFilePath, "view/assets/img/products/" . $newfilename . ".jpg");
             }
         }
-        move_uploaded_file($file["tmp_name"], "view/assets/img/products/" . $newfilename);
     }
     public function displayContent($content) {
         $sql = 'SELECT * FROM content WHERE page =' . $content;

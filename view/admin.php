@@ -18,7 +18,7 @@ $html .= 	       "<tr><td><input name='title' placeholder='Naam:' required></td>
 $html .=	   "</table>";
 $html .= 	   '<table class="detail-table">';
 $html .=	       "<tr><th style='background: var(--grey);'>Naam product</th></tr>";
-$html .= 	       "<tr><td><input type='file' name='fileToUpload' id='fileToUpload'></td></tr>";
+$html .= 	       "<tr><td><input name='upload[]' id='fileToUpload' type='file' multiple='multiple' /></td></tr>";
 $html .=	   "</table>";
 $html .= 	   '<table class="detail-table">';
 $html .=	       "<tr><th style='background: var(--grey);'>Platform (VR-brillen)</th></tr>";
