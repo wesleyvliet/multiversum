@@ -4,26 +4,61 @@ body {
     font-family: Arial, Helvetica, sans-serif #444444;
 }
 
-#title {
-    text-align: center;
-    margin: 0px;
-    padding: 0px;
-    color: black;
+button {
+  margin: 0px;
+  background-color: white;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50px;
+  width: 600px;
+
 }
 
-.grid-container {
-    display: grid;
-    background-color: blue;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    padding: 10px;
-  }
- 
-.center {
-    margin: 20px;
-    display: block;
-    height: 500px;
-    width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+textarea {
+  display: block;
+  height: 150px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+input {
+  color: black;
+  display: block;
+  height: 50px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+.contact {
+  margin-top: 15;
+  color: black;
+  text-align: left;
+  border: 3px solid rgb(33, 94, 173);;
+  width: 600px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+.location {
+  color: black;
+  text-align: left;
+  border: 3px solid rgb(33, 94, 173);
+  width: 600px;
+  background-color: white;
+  overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clearfix {
+  overflow: auto;
+}
+img {
+  margin-left: auto;
+  margin-right: auto;
+}
