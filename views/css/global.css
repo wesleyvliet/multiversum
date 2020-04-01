@@ -13,11 +13,12 @@ html {
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 body { margin: 0px; font-family: monospace; font-size: 18px; color: white;}
-footer { background: var(--grey); width: 100%; text-align: center; height: 5%;}
+footer { background: var(--grey); width: 100%; text-align: center; height: max-content; height: 5%;}
 footer > p {
 	float: left;
 	margin-left: 30px;
 	margin-top: 0.5%;
+	margin-bottom: 0;
 }
 footer > div {
 	float: left;

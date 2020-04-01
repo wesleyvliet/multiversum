@@ -1,11 +1,13 @@
 <html>
 <head>
-<!--<script src="assets/jquery-1.11.2.min.js"></script>-->
-<link rel="stylesheet" type="text/css" href="views/css/global.css">
-<link rel="stylesheet" type="text/css" href="views/css/home.css">
-<link rel="stylesheet" type="text/css" href="views/css/contact.css">
-<link rel="stylesheet" type="text/css" href="views/css/admin.css">
-<link rel="stylesheet" type="text/css" href="views/css/invalidLink.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../multiversum/views/js/global.js"></script>
+    <script src="../multiversum/views/js/products.js"></script>
+    <link rel="stylesheet" type="text/css" href="views/css/global.css">
+    <link rel="stylesheet" type="text/css" href="views/css/home.css">
+    <link rel="stylesheet" type="text/css" href="views/css/contact.css">
+    <link rel="stylesheet" type="text/css" href="views/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="views/css/invalidLink.css">
 </head>
 <body>
     <div class="header">

@@ -1,0 +1,101 @@
+#products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 100%;
+    grid-row-gap: 5%;
+    margin-bottom: 4%;
+    margin-top: 3%;
+}
+.item {
+    margin: 30px;
+    box-shadow: 0px 4px 20px 4px #888888;
+    height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: grid;
+    grid-template-rows: min-content 20% 40% 10% 10%;
+}
+.item > h1 {
+    background: var(--grey);
+    margin: 0;
+    font-size: 20px;
+    padding: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.item > p {
+    padding: 20px;
+    background: var(--green);
+    margin: 0;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    height: fit-content;
+    margin-bottom: 25px;
+}
+.product-display-actions {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;;
+    height: fit-content;
+    margin-top: 2%;
+}
+.product-display-actions > button {
+    font-size: 100px;
+    height: fit-content;
+    margin: auto;
+    background: var(--grey);
+    color: var(--yellow);
+    border: none;
+    box-shadow: 0 0 6px 0px black;
+}
+.display-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 4%;
+}
+.display-actions > div {
+    -webkit-animation: fadein 2s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s;
+    /* Firefox < 16 */
+    -ms-animation: fadein 2s;
+    /* Internet Explorer */
+    -o-animation: fadein 2s;
+    /* Opera < 12.1 */
+    animation: fadein 2s;
+}
+@keyframes fadein {
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+.buttons {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 35% 30% 35%;
+    width: 45%;
+    margin: auto;
+}
+.buttons > button {
+    font-size: 74px;
+    height: min-content;
+    margin: auto;
+    background: var(--grey);
+    color: var(--yellow);
+    border: none;
+    box-shadow: 0 0 6px 0px black;
+    width: 55%;
+    padding: 0;
+    margin-bottom: 10%;
+}
