@@ -1,0 +1,84 @@
+:root {
+	--green: #238b76;
+	--yellow: #f1c40f;
+	--grey: #233241;
+	--greyLight: #2c3e50;
+}
+html {
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+body { margin: 0px; font-family: monospace; font-size: 18px; color: white;}
+footer { background: var(--grey); width: 100%; text-align: center; height: 5%;}
+footer > p {
+	float: left;
+	margin-left: 30px;
+	margin-top: 0.5%;
+}
+footer > div {
+	float: left;
+	margin-left: 30px;
+	margin-top: 0.5%;
+}
+nav { width: 100%; height: 5%; margin: 0; background: var(--grey); position: relative; z-index: 1;}
+nav > ul {
+	margin: 0;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 5% 10%;
+    align-content: center;
+}
+li { float: left; list-style: none;}
+li a {
+  color: white;
+  text-decoration: none;
+}
+li a:hover {
+	color: var(--yellow);
+}
+.wrapper {
+	min-height: 65%;
+}
+.header {
+	height: 25%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url('../img/header.jpg');
+}
+.header > div {
+	width: 25%;
+    height: 100%;
+    margin: auto;
+}
+.logo-line-up {height: 21%; background: var(--grey); width: 7%; margin: auto; box-shadow: 0px -14px 10px 0px black; z-index: 1; position: relative;}
+.logo-line-below {height: 25%; background: var(--grey); width: 7%; margin: auto; box-shadow: 0px 14px 10px 0px black; z-index: 1; position: relative;}
+.logo {background: var(--grey); height: 50%; width: 50%; margin: auto; border-radius: 15%; padding: 3%; box-shadow: 0px 0px 14px 0px black; z-index: 2;}
+.logo > img {
+	margin: auto;
+	width: 100%;
+	height: 96%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.span {
+	display: block;
+    background: var(--green);
+    color: white;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: 1%;
+	height: 8%;
+}
+.span > h1 {
+	margin: 0;
+}
+.span > p {
+	margin: 0;
+}

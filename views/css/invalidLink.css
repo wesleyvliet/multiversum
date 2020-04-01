@@ -1,0 +1,16 @@
+.invalid-link {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    width: 70%;
+    margin: auto;
+    color: black;
+    margin-top: 5%;
+}
+.invalidLink > div {
+    text-align: center;
+}
+.sad-face {
+    transform: rotate(90deg);
+    font-size: 80px;
+    font-weight: bolder;
+}
