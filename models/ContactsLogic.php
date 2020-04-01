@@ -6,7 +6,7 @@ class ContactsLogic {
 
     public function __construct()
     {
-        $this->dataHandler = new DataHandler("localhost","mysql","mvc2","root","");
+        $this->dataHandler = new DataHandler("localhost","mysql","multiversum","root","");
     }
 
     public function __destruct() {}
