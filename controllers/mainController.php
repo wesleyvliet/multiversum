@@ -46,7 +46,7 @@ class ContactsController {
     public function collectCreateContact(){}
     public function collectReadContact(){
         $page = 1;
-        $products = $this->ContactsLogic->readProducts($page);
+        $products = $this->ContactsLogic->displayProducts($page);
         $actions = $this->ContactsLogic->readActions();
         $content = $this->ContactsLogic->readContent(1);
         include 'views/home.php';

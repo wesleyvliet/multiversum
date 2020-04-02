@@ -1,7 +1,7 @@
 function init_js() {
 
 	$('.item').click( function() {
-		//console.log('magic! wou weee!');
+		console.log('magic! wou weee!');
 		var parentDiv = this;
 		var id = parentDiv.getAttribute("id");
 		console.log(id)
@@ -28,7 +28,7 @@ function init_js() {
 				discount = discount - parseInt(display[i]['korting']);
 				html += "<div class='item'>";
 					html += "<h1>" + display[i]['title'] + '</h1><h1><p style="margin: 0; float: left;">€ ' + discount + ' </p><p style="margin: 0; font-size: 14px; padding-bottom: 10px; color: var(--green);">-' + display[i]['korting'] + "</p></h1>";
-					html += "<img src='view/assets/img/products/" + display[i]['id'] + ".jpeg'>";
+					html += "<img src='views/img/products/" + display[i]['id'] + ".jpg'>";
 					html += "<p>Platform: " + display[i]['platform'] + "</p>";
 					html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
 				html += "</div>";
@@ -86,7 +86,7 @@ function displayActions(view) {
 		discount = discount - parseInt(display[i]['korting']);
 		html += "<div class='item'>";
 			html += "<h1>" + display[i]['title'] + '</h1><h1><p style="margin: 0; float: left;">€ ' + discount + ' </p><p style="margin: 0; font-size: 14px; padding-bottom: 10px; color: var(--green);">-' + display[i]['korting'] + "</p></h1>";
-			html += "<img src='view/assets/img/products/" + display[i]['id'] + ".jpeg'>";
+			html += "<img src='views/img/products/" + display[i]['id'] + ".jpg'>";
 			html += "<p>Platform: " + display[i]['platform'] + "</p>";
 			html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
 		html += "</div>";
@@ -111,12 +111,12 @@ function backword() {
 }
 function display(view) {
 	if(view >= 1) {
-		var arrEnd = view * 10;
-		var arrStart = arrEnd - 10;
+		var arrEnd = view * 9;
+		var arrStart = arrEnd - 9;
 		var display = products.slice(arrStart, arrEnd);
 		if(display.length == 0) {
-			var arrStart = arrStart - 10;
-			var arrEnd = arrEnd - 10;
+			var arrStart = arrStart - 9;
+			var arrEnd = arrEnd - 9;
 			var display = products.slice(arrStart, arrEnd);
 			console.log(display);
 			view = view - 1;
@@ -125,11 +125,20 @@ function display(view) {
 			document.getElementById("page-display").innerHTML = view;
 			document.getElementById("products").setAttribute("display", view)
 		}
+		if(display.length <= 3) {
+			document.getElementById("products").setAttribute('style', 'grid-template-rows: 1fr; height: 33.3%;');
+		} else {
+			if(display.length <= 6) {
+				document.getElementById("products").setAttribute('style', 'grid-template-rows: 1fr 1fr; height: 66.6%;');
+			} else {
+				document.getElementById("products").setAttribute('style', 'grid-template-rows: 1fr 1fr 1fr; height: 100%;');
+			}
+		}
 		var html = "";
 		for (var i = 0; i < display.length; i++) {
 			html += "<div class='item'>";
 				html += "<h1>" + display[i]['title'] + '<h1>€ '+ display[i]['prijs'] + "</h1></h1>";
-				html += "<img src='view/assets/img/products/" + display[i]['id'] + ".jpeg'>";
+				html += "<img src='views/img/products/" + display[i]['id'] + ".jpg'>";
 				html += "<p>Platform: " + display[i]['platform'] + "</p>";
 				html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
 			html += "</div>";

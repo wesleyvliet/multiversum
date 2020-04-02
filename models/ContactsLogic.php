@@ -63,7 +63,7 @@ class ContactsLogic {
     }
     public function readProducts($page) {
         try {
-            $sql = 'SELECT * FROM producten ORDER BY id ASC';
+            $sql = 'SELECT id, title, prijs, platform, resulatie FROM producten ORDER BY id ASC';
             $res = $this->dataHandler->readsData($sql);
             $results = $res->fetchAll();
             $arrEnd = $page * 9;
@@ -87,18 +87,7 @@ class ContactsLogic {
             $sql = 'SELECT * FROM producten ORDER BY id ASC';
             $res = $this->dataHandler->readsData($sql);
             $results = $res->fetchAll();
-            $arrEnd = $page * 9;
-            $arrStart = $arrEnd - 9;
-            $display = array_slice($results, $arrStart, $arrEnd);
-            $count = count($display);
-            if($count !== 0) {
-                return $display;
-            } else {
-                $arrEnd = $arrEnd - 9;
-                $arrStart = $arrStart - 9;
-                $display = array_slice($results, $arrStart, $arrEnd);
-                $page = $page - 1;
-            }
+            return $results;
         }catch (Exception $e) {
             throw $e;
         }

@@ -54,10 +54,27 @@ echo $html;
 </div>
 <?php
 include 'footer.php';
+
+function utf8ize($d) {
+    if (is_array($d))
+        foreach ($d as $k => $v)
+            $d[$k] = utf8ize($v);
+
+     else if(is_object($d))
+        foreach ($d as $k => $v)
+            $d->$k = utf8ize($v);
+
+     else
+        return utf8_encode($d);
+
+    return $d;
+}
+
 ?>
 
 <script type="text/javascript">
-    const products = <?php echo json_encode($products); ?>;
+    const products = <?php echo json_encode(utf8ize($products)); ?>;
+    console.log(products.length);
     const actions = <?php echo json_encode($actions); ?>;
     init_js();
 </script>
