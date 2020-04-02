@@ -13,13 +13,15 @@ class ContactsController {
             $op = isset($_REQUEST['op'])?$_REQUEST['op']:null;
             $lowerCaseUrl = strtolower($_GET['url']);
     		switch($lowerCaseUrl){
-                case "home": $this->collectUpdateContact(); break;
-    			case "contact": Controller::CreateView('contact'); break;
-                case "admin": Controller::CreateView('admin'); break;
+                case "":
+                case "index.php":
+                case "home": $this->collectReadContact(); break;
+    			case "contact": $this->collectLoadContact(); break;
+                case "admin": $this->collectLoadAdmin(); break;
     			default:
     				//echo $_SERVER['REQUEST_URI'];
     				//echo "<br>Sorry cannot find your page :(" ;
-    				Controller::CreateView('invalidLink'); $lowerCaseUrl; break;
+    				Controller::CreateView('invalidLink'); echo $lowerCaseUrl; break;
     			break;
     		}
             switch ($op) {
@@ -36,7 +38,7 @@ class ContactsController {
                 $this->collectUpdateContact();
                 break;
                 default:
-                $this->collectReadContact();
+                //$this->collectReadContact();
                 break;
             }
         } catch (ValidationException $e) {
@@ -54,6 +56,12 @@ class ContactsController {
     public function collectUpdateContact(){
     }
     public function collectDeleteContact(){}
+    public function collectLoadContact() {
+        include 'views/contact.php';
+    }
+    public function collectLoadAdmin() {
+        include 'views/admin.php';
+    }
 }
 
 ?>
