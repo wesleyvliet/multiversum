@@ -19,9 +19,28 @@
             <div class="logo-line-below"></div>
         </div>
     </div>
-    <nav>
-        <ul>
-            <li><a href="home">Home</a></li>
-            <li><a href="contact">Contact</a></li>
-        </ul>
-    </nav>
+<?php
+
+    if($_SESSION['name'] == 'webmaster' || $_SESSION['pass'] == 'test') {
+        $html = '<nav>';
+        $html .= '<ul style="grid-template-columns: 7% 10% 14% 14% 15% 15%">';
+        $html .= '<li><a href="home">Home</a></li>';
+        $html .= '<li><a href="contact">Contact</a></li>';
+        $html .= '<li><a href="home">Nieuw Product</a></li>';
+        $html .= '<li><a href="contact">Update Product</a></li>';
+        $html .= '<li><a href="contact">Verwijder Product</a></li>';
+        $html .= '<li><a href="contact">Product Overzicht</a></li>';
+        $html .= '</ul>';
+        $html .= '</nav>';
+    } else {
+        $html = '<nav>';
+        $html .= '<ul>';
+        $html .= '<li><a href="home">Home</a></li>';
+        $html .= '<li><a href="contact">Contact</a></li>';
+        $html .= '</ul>';
+        $html .= '</nav>';
+    }
+    echo $html;
+    echo $_SESSION['name'] . " " . $_SESSION['pass'];
+
+?>

@@ -25,8 +25,8 @@ class ContactsController {
     			break;
     		}
             switch ($op) {
-                case 'create':
-                $this->collectCreateContact();
+                case 'login':
+                $this->collectReadAdmin($_REQUEST['userName'], $_REQUEST['userPass']);
                 break;
                 case 'reads':
                 $this->collectReadsContacts();
@@ -46,6 +46,18 @@ class ContactsController {
         }
     }
     public function collectCreateContact(){}
+    public function collectReadAdmin($name, $pass) {
+        $login = $this->ContactsLogic->readAdmin($name, $pass);
+        if($login == true) {
+            //$this->collectReadContact();
+            header("Location: home");
+            die();
+        } else {
+            //include 'views/admin.php';
+            header("Location: admin");
+            die();
+        }
+    }
     public function collectReadContact(){
         $page = 1;
         $products = $this->ContactsLogic->displayProducts($page);

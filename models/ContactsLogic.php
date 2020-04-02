@@ -1,7 +1,6 @@
 <?php
 require_once 'DataHandler.php';
 
-
 class ContactsLogic {
 
     public function __construct()
@@ -46,17 +45,22 @@ class ContactsLogic {
     }
     public function readAdmin($name, $pass) {
         try {
-            $sql = "SELECT * FROM `admin` WHERE name = '$name' AND pass = '$pass'";
-            $res = $this->dataHandler->readData($sql);
+            $sql = "SELECT * FROM admin WHERE name = '$name' AND pass = '$pass'";
+            $res = $this->dataHandler->readsData($sql);
             $results = $res->fetchAll();
             if (!empty($results)) {
                 $results[0]['id'];
                 if($results >= 1) {
                     $_SESSION['name'] = $results[0]['name'];
                     $_SESSION['pass'] = $results[0]['pass'];
+                    $login = true;
+                } else {
+                    $login = false;
                 }
+            } else {
+                $login = false;
             }
-            return $results;
+            return $login;
         }catch (Exception $e) {
             throw $e;
         }
