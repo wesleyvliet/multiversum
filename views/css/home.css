@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     margin-left: auto;
     margin-right: auto;
-    height: 100%;
+    height: fit-content;
     width: 100%;
     grid-row-gap: 5%;
     margin-bottom: 4%;

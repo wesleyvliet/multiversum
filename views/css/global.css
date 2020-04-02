@@ -13,7 +13,7 @@ html {
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 body { margin: 0px; font-family: monospace; font-size: 18px; color: white;}
-footer { background: var(--grey); width: 100%; text-align: center; height: max-content; height: 5%;}
+footer { background: var(--grey); width: 100%; text-align: center;bottom:0; height: 2.5rem;position: absolute;}
 footer > p {
 	float: left;
 	margin-left: 30px;
@@ -42,7 +42,7 @@ li a:hover {
 	color: var(--yellow);
 }
 .wrapper {
-	min-height: 65%;
+	padding-bottom: 2.5rem;    /* Footer height */
 }
 .header {
 	height: 25%;
@@ -52,7 +52,7 @@ li a:hover {
 	background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url('../img/header.jpg');
 }
 .header > div {
-	width: 25%;
+	width: 420;
     height: 100%;
     margin: auto;
 }
@@ -83,3 +83,7 @@ li a:hover {
 .span > p {
 	margin: 0;
 }
+#page-container {
+	position: relative;
+	min-height: 100vh;
+  }
