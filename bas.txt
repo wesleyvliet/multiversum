@@ -20,38 +20,58 @@ view {
 }
 
 controller {
-public function __destruct() {}
-public function handleRequest() {
-    try {
-        $op = isset($_REQUEST['op'])?$_REQUEST['op']:null;
-        $lowerCaseUrl = strtolower($_GET['url']);
-        switch($lowerCaseUrl){
-            case "home": $this->collectUpdateContact(); break;
-            case "contact": Controller::CreateView('contact'); break;
-            case "admin": Controller::CreateView('admin'); break;
-            default:
-                //echo $_SERVER['REQUEST_URI'];
-                //echo "<br>Sorry cannot find your page :(" ;
-                Controller::CreateView('invalidLink'); $lowerCaseUrl; break;
-            break;
-        }
-        switch ($op) {
+    public function __destruct() {}
+    public function handleRequest() {
+        try {
+            $op = isset($_REQUEST['op'])?$_REQUEST['op']:null;
+            $lowerCaseUrl = strtolower($_GET['url']);
+            switch($lowerCaseUrl){
+                case "home": $this->collectUpdateContact(); break;
+                case "contact": Controller::CreateView('contact'); break;
+                case "admin": Controller::CreateView('admin'); break;
+                default:
+                    //echo $_SERVER['REQUEST_URI'];
+                    //echo "<br>Sorry cannot find your page :(" ;
+                    Controller::CreateView('invalidLink'); $lowerCaseUrl; break;
+                break;
+            }
+            switch ($op) {
 
-        !--- hier defineer je je vraagtekentje ? ---!
+            !--- hier defineer je je vraagtekentje ? ---!
 
-            case 'admin': !--- zoals hier ---!
-            $this->collectCreateContact($REQUEST(formGegevens)); !--- defineer je functie ---!
-            break;
+                case 'admin': !--- zoals hier ---!
+                $this->collectReadContact($REQUEST(formGegevens)); !--- defineer je functie ---!
+                break;
+            }
+        } catch (ValidationException $e) {
+            $errors = $e->getErrors();
         }
-    } catch (ValidationException $e) {
-        $errors = $e->getErrors();
     }
+    public function collectReadContact($name $email $text){
+        $admins = $this->ContactsLogic->displayProducts($page $email $text); !--- link je gegevens door naar de model en roep functie aan ---!
+        include 'views/home.p !--- defineer view ---!
 }
-public function collectCreateContact(){}
-public function collectReadContact(){
-    $page = 1;
-    $products = $this->ContactsLogic->displayProducts($page);
-    $actions = $this->ContactsLogic->readActions();
-    $content = $this->ContactsLogic->readContent(1);
-    include 'views/home.p
+
+
+model {
+    public function collectReadContact($name $email $text) {
+        !--- hier stuur je email controleer of die gestuird is en geef een waarde terug ---!
+        email stuff
+
+        if email == send return true else
+        return false; !--- geef waarde terug ---!
+    }
+
+}
+
+
+controller {
+    public function collectReadContact($name $email $text){
+        $admins = $this->ContactsLogic->displayProducts($page $email $text);
+        !-- nu is email gestuurd en in $admings hoor je een boolion te hebben; --!
+        if $admings == true {
+            include 'views/emailSend.php'
+        } else {
+            include 'views/emailError.php'
+        }
 }
