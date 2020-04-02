@@ -12,16 +12,16 @@ class ContactsController {
         try {
             $op = isset($_REQUEST['op'])?$_REQUEST['op']:null;
             $lowerCaseUrl = strtolower($_GET['url']);
-    		//switch($lowerCaseUrl){
-                //case "home": Controller::CreateView('home'); break;
-    			//case "contact": Controller::CreateView('contact'); break;
-                //case "admin": Controller::CreateView('admin'); break;
-    			//default:
+    		switch($lowerCaseUrl){
+                case "home": $this->collectUpdateContact(); break;
+    			case "contact": Controller::CreateView('contact'); break;
+                case "admin": Controller::CreateView('admin'); break;
+    			default:
     				//echo $_SERVER['REQUEST_URI'];
     				//echo "<br>Sorry cannot find your page :(" ;
-    				//Controller::CreateView('invalidLink'); $lowerCaseUrl; break;
-    			//break;
-    		//}
+    				Controller::CreateView('invalidLink'); $lowerCaseUrl; break;
+    			break;
+    		}
             switch ($op) {
                 case 'create':
                 $this->collectCreateContact();
