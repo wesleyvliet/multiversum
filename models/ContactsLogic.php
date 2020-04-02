@@ -33,16 +33,6 @@ class ContactsLogic {
         $res = $this->dataHandler->createData($sql);
         return $res;
     }
-    public function readContact($id) {
-        try {
-            $sql = 'SELECT * FROM producten WHERE id =' . $id;
-            $res = $this->dataHandler->readData($sql);
-            $results = $res->fetchAll();
-            return $results;
-        }catch (Exception $e) {
-            throw $e;
-        }
-    }
     public function readAdmin($name, $pass) {
         try {
             $sql = "SELECT * FROM admin WHERE name = '$name' AND pass = '$pass'";
@@ -151,6 +141,16 @@ class ContactsLogic {
         $res = $this->dataHandler->readsData($sql);
         $results = $res->fetchAll();
         return $results;
+    }
+    public function readOneProduct($id) {
+        try {
+            $sql = "SELECT * FROM producten WHERE id = '$id'";
+            $res = $this->dataHandler->readsData($sql);
+            $results = $res->fetchAll();
+            return $results;
+        }catch (Exception $e) {
+            throw $e;
+        }
     }
 public function updateContact(){}
 public function deleteContact(){}

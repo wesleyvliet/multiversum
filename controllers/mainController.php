@@ -12,34 +12,37 @@ class ContactsController {
         try {
             $op = isset($_REQUEST['op'])?$_REQUEST['op']:null;
             $lowerCaseUrl = strtolower($_GET['url']);
-    		switch($lowerCaseUrl){
-                case "":
-                case "index.php":
-                case "home": $this->collectReadContact(); break;
-    			case "contact": $this->collectLoadContact(); break;
-                case "admin": $this->collectLoadAdmin(); break;
-    			default:
-    				//echo $_SERVER['REQUEST_URI'];
-    				//echo "<br>Sorry cannot find your page :(" ;
-    				Controller::CreateView('invalidLink'); echo $lowerCaseUrl; break;
-    			break;
-    		}
-            switch ($op) {
-                case 'login':
-                $this->collectReadAdmin($_REQUEST['userName'], $_REQUEST['userPass']);
-                break;
-                case 'reads':
-                $this->collectReadsContacts();
-                break;
-                case 'read':
-                $this->collectReadContact();
-                break;
-                case 'email':
-                $this->collectUpdateContact();
-                break;
-                default:
-                //$this->collectReadContact();
-                break;
+            if(empty($op)) {
+        		switch($lowerCaseUrl){
+                    case "":
+                    case "index.php":
+                    case "home": $this->collectReadProductsDisplay(); break;
+        			case "contact": $this->collectLoadContact(); break;
+                    case "admin": $this->collectLoadAdmin(); break;
+        			default:
+        				//echo $_SERVER['REQUEST_URI'];
+        				//echo "<br>Sorry cannot find your page :(" ;
+        				Controller::CreateView('invalidLink'); echo $lowerCaseUrl; break;
+        			break;
+        		}
+            } else {
+                switch ($op) {
+                    case 'login':
+                    $this->collectReadAdmin($_REQUEST['userName'], $_REQUEST['userPass']);
+                    break;
+                    case 'reads':
+                    $this->collectReadsContacts();
+                    break;
+                    case 'read':
+                    $this->collectReadProduct($_REQUEST['id']);
+                    break;
+                    case 'email':
+                    $this->collectUpdateContact();
+                    break;
+                    default:
+                    //$this->collectReadContact();
+                    break;
+                }
             }
         } catch (ValidationException $e) {
             $errors = $e->getErrors();
@@ -58,12 +61,16 @@ class ContactsController {
             die();
         }
     }
-    public function collectReadContact(){
+    public function collectReadProductsDisplay(){
         $page = 1;
         $products = $this->ContactsLogic->displayProducts($page);
         $actions = $this->ContactsLogic->readActions();
         $content = $this->ContactsLogic->readContent(1);
         include 'views/home.php';
+    }
+    public function collectReadProduct($id) {
+        $product = $this->ContactsLogic->readOneProduct($id);
+        include 'views/productDetails.php';
     }
     public function collectUpdateContact(){
     }
