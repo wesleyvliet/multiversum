@@ -32,7 +32,7 @@ class ContactsController {
                 case 'read':
                 $this->collectReadContact();
                 break;
-                case 'update':
+                case 'email':
                 $this->collectUpdateContact();
                 break;
                 default:
@@ -51,7 +51,8 @@ class ContactsController {
         $content = $this->ContactsLogic->readContent(1);
         include 'views/home.php';
     }
-    public function collectUpdateContact(){}
+    public function collectUpdateContact(){
+    }
     public function collectDeleteContact(){}
 }
 

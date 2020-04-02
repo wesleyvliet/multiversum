@@ -1,0 +1,57 @@
+ga naar views en stuur je formulier naar de controller dat doe je met ?op=email;
+ga naar de controller en maak in de switch een case voor emils;
+zorg dat hij in de case de formulier gegevens krijg door een REQUEST('formExampleEmail');
+dan roep je in die case met je gegevens van je form een functie aan;
+ga naar de functie in de controller en maak een variable aan $checkEmail;
+met die variable verwijz je naar de model met je formulier gegevens wat dan weer naar  een andere functie verwijz;
+ga naar de model en naar die functie die je aanroep en daar doe je je php denkwerk;
+nadat je daarmee klaar ben return je een gegevens bijvoorbeeld true of false als de email gestuird is;
+en met die waarde bepaal je in je controller welke view je laad;
+
+ps kijk in backup naar andere functies die hetzelfde zijn
+geef in elke functie je formulier gegevens door
+
+
+voorbeeld
+
+
+view {
+    <form ?op=email
+}
+
+controller {
+public function __destruct() {}
+public function handleRequest() {
+    try {
+        $op = isset($_REQUEST['op'])?$_REQUEST['op']:null;
+        $lowerCaseUrl = strtolower($_GET['url']);
+        switch($lowerCaseUrl){
+            case "home": $this->collectUpdateContact(); break;
+            case "contact": Controller::CreateView('contact'); break;
+            case "admin": Controller::CreateView('admin'); break;
+            default:
+                //echo $_SERVER['REQUEST_URI'];
+                //echo "<br>Sorry cannot find your page :(" ;
+                Controller::CreateView('invalidLink'); $lowerCaseUrl; break;
+            break;
+        }
+        switch ($op) {
+
+        !--- hier defineer je je vraagtekentje ? ---!
+
+            case 'admin': !--- zoals hier ---!
+            $this->collectCreateContact($REQUEST(formGegevens)); !--- defineer je functie ---!
+            break;
+        }
+    } catch (ValidationException $e) {
+        $errors = $e->getErrors();
+    }
+}
+public function collectCreateContact(){}
+public function collectReadContact(){
+    $page = 1;
+    $products = $this->ContactsLogic->displayProducts($page);
+    $actions = $this->ContactsLogic->readActions();
+    $content = $this->ContactsLogic->readContent(1);
+    include 'views/home.p
+}
