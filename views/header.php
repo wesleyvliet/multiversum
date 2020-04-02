@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="views/css/contact.css">
     <link rel="stylesheet" type="text/css" href="views/css/admin.css">
     <link rel="stylesheet" type="text/css" href="views/css/invalidLink.css">
+    <link rel="stylesheet" type="text/css" href="views/css/productDetails.css">
 </head>
 <body>
     <div class="header">
