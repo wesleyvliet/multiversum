@@ -1,3 +1,4 @@
+<div id="page-container">
 <?php
 include 'header.php';
 ?>
@@ -30,3 +31,4 @@ include 'header.php';
 <?php
 include 'footer.php';
 ?>
+</div>
