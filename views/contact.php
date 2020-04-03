@@ -6,7 +6,7 @@ include 'header.php';
 
     <span class="span">
         <h1>heeft u vragen over uw besteling?</h1>
-        <p>neem contact met ons op via de formulier beneden!</p>
+        <p>neem contact met ons op via het formulier hier beneden!</p>
     </span>
 
     <div class="contact-grid">
@@ -21,6 +21,7 @@ include 'header.php';
                     <input name='name' placeholder="Uw naam">
                     <input name='email' placeholder="Uw email">
                     <textarea rows="4" cols="30" placeholder="type uw bericht..."></textarea>
+                    <input type="submit" id="knop" value="Verzenden">
                 </form>
             </div>
         </div>
