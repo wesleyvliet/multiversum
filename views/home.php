@@ -43,13 +43,13 @@ $displayLength = count($display);
 $html = "<div id='products' class='product-display' display='1' page='home'>";
 for($i = 0; $i < 9; $i++){
     $html .= "<div class='item' id=" . $display[$i]['id'] . ">";
-        
+
         $html .= "<h1>" . $display[$i]['title'] . '</h1><h1>€ '. $display[$i]['prijs'] . "</h1>";
-      
+
         $html .= "<img src='views/img/products/" . $display[$i]['id'] . ".jpg'>";
         $html .= "<p>Platform: " . $display[$i]['platform'] . "</p>";
-        $html .= "<p>Resolutie: " . $display[$i]['resolutie'] . "</p>";
-       
+        $html .= "<p>Resolutie: " . $display[$i]['resulatie'] . "</p>";
+
     $html .= "</div>";
 }
 $html .= "</div>";
