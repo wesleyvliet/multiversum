@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="views/css/admin.css">
     <link rel="stylesheet" type="text/css" href="views/css/invalidLink.css">
     <link rel="stylesheet" type="text/css" href="views/css/productDetails.css">
+    <link rel="stylesheet" type="text/css" href="views/css/nieuwProduct.css">
+    <link rel="stylesheet" type="text/css" href="views/css/deleteProduct.css">
+    <link rel="stylesheet" type="text/css" href="views/css/updateProduct.css">
 </head>
 <body>
     <div class="header">
@@ -27,9 +30,9 @@
         $html .= '<ul style="grid-template-columns: 7% 10% 14% 14% 15% 15%">';
         $html .= '<li><a href="home">Home</a></li>';
         $html .= '<li><a href="contact">Contact</a></li>';
-        $html .= '<li><a href="home">Nieuw Product</a></li>';
-        $html .= '<li><a href="contact">Update Product</a></li>';
-        $html .= '<li><a href="contact">Verwijder Product</a></li>';
+        $html .= '<li><a href="nieuw-product">Nieuw Product</a></li>';
+        $html .= '<li><a href="update">Update Product</a></li>';
+        $html .= '<li><a href="delete-product">Verwijder Product</a></li>';
         $html .= '<li><a href="contact">Product Overzicht</a></li>';
         $html .= '</ul>';
         $html .= '</nav>';

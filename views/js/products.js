@@ -9,41 +9,43 @@ function init_js() {
 	})
 
 	function displayActionsLoop() {
-		var stop = document.getElementById("actions").getAttribute("stop");
-		if(stop == 'false') {
-			var view = parseInt(document.getElementById("actions").getAttribute("display"));
-			var view = view + 1;
-			var arrEnd = view * 3;
-			var arrStart = arrEnd - 3;
-			var display = actions.slice(arrStart, arrEnd);
-			if(display.length == 0) {
-				var display = actions.slice(0, 3);
-				document.getElementById("actions").setAttribute("display", 1)
+		var page = document.getElementById("products").getAttribute("page");
+		if(page == 'home') {
+			var stop = document.getElementById("actions").getAttribute("stop");
+			if(stop == 'false') {
+				var view = parseInt(document.getElementById("actions").getAttribute("display"));
+				var view = view + 1;
+				var arrEnd = view * 3;
+				var arrStart = arrEnd - 3;
+				var display = actions.slice(arrStart, arrEnd);
+				if(display.length == 0) {
+					var display = actions.slice(0, 3);
+					document.getElementById("actions").setAttribute("display", 1)
+				} else {
+					document.getElementById("actions").setAttribute("display", view)
+				}
+				var html = "";
+				for (var i = 0; i < display.length; i++) {
+					var discount = parseInt(display[i]['prijs']);
+					discount = discount - parseInt(display[i]['korting']);
+					html += "<div class='item'>";
+						html += "<h1>" + display[i]['title'] + '</h1><h1><p style="margin: 0; float: left;">€ ' + discount + ' </p><p style="margin: 0; font-size: 14px; padding-bottom: 10px; color: var(--green);">-' + display[i]['korting'] + "</p></h1>";
+						html += "<img src='views/img/products/" + display[i]['id'] + ".jpg'>";
+						html += "<p>Platform: " + display[i]['platform'] + "</p>";
+						html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
+					html += "</div>";
+				}
+				document.getElementById("actions").innerHTML = html;
+
+				switch (display.length) {
+					case 1: document.getElementById("actions").setAttribute('style', 'grid-template-columns: 1fr;'); break;
+					case 2: document.getElementById("actions").setAttribute('style', 'grid-template-columns: 1fr 1fr;'); break;
+					default: document.getElementById("actions").setAttribute('style', 'grid-template-columns: 1fr 1fr 1fr;'); break;
+				}
 			} else {
-				document.getElementById("actions").setAttribute("display", view)
+				document.getElementById("actions").setAttribute("stop", 'false');
 			}
-			var html = "";
-			for (var i = 0; i < display.length; i++) {
-				var discount = parseInt(display[i]['prijs']);
-				discount = discount - parseInt(display[i]['korting']);
-				html += "<div class='item'>";
-					html += "<h1>" + display[i]['title'] + '</h1><h1><p style="margin: 0; float: left;">€ ' + discount + ' </p><p style="margin: 0; font-size: 14px; padding-bottom: 10px; color: var(--green);">-' + display[i]['korting'] + "</p></h1>";
-					html += "<img src='views/img/products/" + display[i]['id'] + ".jpg'>";
-					html += "<p>Platform: " + display[i]['platform'] + "</p>";
-					html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
-				html += "</div>";
-			}
-			document.getElementById("actions").innerHTML = html;
-
-			switch (display.length) {
-				case 1: document.getElementById("actions").setAttribute('style', 'grid-template-columns: 1fr;'); break;
-				case 2: document.getElementById("actions").setAttribute('style', 'grid-template-columns: 1fr 1fr;'); break;
-				default: document.getElementById("actions").setAttribute('style', 'grid-template-columns: 1fr 1fr 1fr;'); break;
-			}
-		} else {
-			document.getElementById("actions").setAttribute("stop", 'false');
 		}
-
 	}
 	var slideInterval = setInterval(displayActionsLoop,12000)
 }

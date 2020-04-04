@@ -19,6 +19,9 @@ class ContactsController {
                     case "home": $this->collectReadProductsDisplay(); break;
         			case "contact": $this->collectLoadContact(); break;
                     case "admin": $this->collectLoadAdmin(); break;
+                    case 'nieuw-product': $this->collectLoadAddProduct(); break;
+                    case 'delete-product': $this->collectLoadDeleteProduct(); break;
+                    case 'update': $this->collectLoadUpdateProduct(); break;
         			default:
         				//echo $_SERVER['REQUEST_URI'];
         				//echo "<br>Sorry cannot find your page :(" ;
@@ -30,14 +33,17 @@ class ContactsController {
                     case 'login':
                     $this->collectReadAdmin($_REQUEST['userName'], $_REQUEST['userPass']);
                     break;
-                    case 'reads':
-                    $this->collectReadsContacts();
+                    case 'create':
+                    $this->collectCreateProduct($_REQUEST['title'], $_FILES["upload"], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU']);
                     break;
                     case 'read':
                     $this->collectReadProduct($_REQUEST['id']);
                     break;
-                    case 'email':
-                    $this->collectUpdateContact();
+                    case 'delete':
+                    $this->collectDeleteProduct($_REQUEST['id']);
+                    break;
+                    case 'recover':
+                    $this->collectRecoverProduct($_REQUEST['id']);
                     break;
                     default:
                     //$this->collectReadContact();
@@ -61,11 +67,25 @@ class ContactsController {
             die();
         }
     }
+    public function collectRecoverProduct($id) {
+        $product = $this->ContactsLogic->recoverProduct($id);
+        if($product == 0) {
+            $h1 = 'Product is Hersteld!';
+            $p = 'Product is nu zichtbaar voor klanten.';
+        } else {
+            $h1 = 'Error product is niet hersteld!';
+            $p = 'Proebeer nogmaals opnieuw.';
+        }
+        $products = $this->ContactsLogic->readDeleteProducts();
+        $archive = $this->ContactsLogic->readDeleteArchive();
+        include 'views/deleteProduct.php';
+    }
     public function collectReadProductsDisplay(){
         $page = 1;
         $products = $this->ContactsLogic->displayProducts($page);
         $actions = $this->ContactsLogic->readActions();
         $content = $this->ContactsLogic->readContent(1);
+        //echo var_dump($actions);
         include 'views/home.php';
     }
     public function collectReadProduct($id) {
@@ -74,12 +94,52 @@ class ContactsController {
     }
     public function collectUpdateContact(){
     }
-    public function collectDeleteContact(){}
+    public function collectDeleteProduct($id){
+        $product = $this->ContactsLogic->deleteProduct($id);
+        if($product == 1) {
+            $h1 = 'Product is verwijdert!';
+            $p = 'Product kan hersteld worden onder archive tabel.';
+        } else {
+            $h1 = 'Error product is niet verwijdert';
+            $p = 'Proebeer nogmaals te verwijderen';
+        }
+        $products = $this->ContactsLogic->readDeleteProducts();
+        $archive = $this->ContactsLogic->readDeleteArchive();
+        include 'views/deleteProduct.php';
+    }
     public function collectLoadContact() {
         include 'views/contact.php';
     }
     public function collectLoadAdmin() {
         include 'views/admin.php';
+    }
+    public function collectLoadAddProduct() {
+        include 'views/nieuwProduct.php';
+    }
+    public function collectCreateProduct($title, $file, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU){
+        $productId = $this->ContactsLogic->createProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU);
+        $checkId = $this->ContactsLogic->readOneProduct($productId);
+        $checkId = $checkId[0]['id'];
+        $upload = $this->ContactsLogic->uploadImg($file, $checkId);
+        if($upload == true) {
+            $h1 = 'Product is toegevoegd!';
+            $p = 'U kan gerust verder gaan met de onderstaande formulier';
+            include 'views/nieuwProduct.php';
+        } else {
+            $h1 = 'kon foto niet uploaden!';
+            $p = 'foto is niet geupload voeg opnieuw toe bij het updaten product ID: ' . $checkId;
+            include 'views/nieuwProduct.php';
+        }
+    }
+    public function collectLoadDeleteProduct() {
+        $products = $this->ContactsLogic->readDeleteProducts();
+        $archive = $this->ContactsLogic->readDeleteArchive();
+        include 'views/deleteProduct.php';
+    }
+    public function collectLoadUpdateProduct() {
+        $page = 1;
+        $products = $this->ContactsLogic->displayProducts($page);
+        include 'views/updateProduct.php';
     }
 }
 
