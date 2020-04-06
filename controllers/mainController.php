@@ -22,6 +22,7 @@ class ContactsController {
                     case 'nieuw-product': $this->collectLoadAddProduct(); break;
                     case 'delete-product': $this->collectLoadDeleteProduct(); break;
                     case 'update': $this->collectLoadUpdateProduct(); break;
+                    case 'inhoudoverzicht': $this->collectLoadContentDisplay(); break;
         			default:
         				//echo $_SERVER['REQUEST_URI'];
         				//echo "<br>Sorry cannot find your page :(" ;
@@ -47,6 +48,12 @@ class ContactsController {
                     break;
                     case 'update':
                     $this->collectReadUpdateProduct($_REQUEST['id']);
+                    break;
+                    case 'updateProduct':
+                    $this->collectUpdateProduct($_REQUEST['title'], $_FILES["upload"], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU'], $_REQUEST['id']);
+                    break;
+                    case 'updateContent':
+                    $this->collectUpdateContent($_REQUEST['content'], $_REQUEST["title"], $_REQUEST['text']);
                     break;
                     default:
                     //$this->collectReadContact();
@@ -87,7 +94,7 @@ class ContactsController {
         $page = 1;
         $products = $this->ContactsLogic->displayProducts($page);
         $actions = $this->ContactsLogic->readActions();
-        $content = $this->ContactsLogic->readContent(1);
+        $content = $this->ContactsLogic->readContent('home');
         //echo var_dump($actions);
         include 'views/home.php';
     }
@@ -115,6 +122,7 @@ class ContactsController {
         include 'views/deleteProduct.php';
     }
     public function collectLoadContact() {
+        $content = $this->ContactsLogic->readContent('contact');
         include 'views/contact.php';
     }
     public function collectLoadAdmin() {
@@ -138,6 +146,20 @@ class ContactsController {
             include 'views/nieuwProduct.php';
         }
     }
+    public function collectUpdateProduct($title, $file, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $id){
+        $productId = $this->ContactsLogic->updateProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $id);
+        $h1 = 'Product is toegevoegd!';
+        $p = 'U kan gerust verder gaan met de onderstaande formulier';
+        $page = 1;
+        $products = $this->ContactsLogic->displayProducts($page);
+        include 'views/updateProduct.php';
+    }
+    public function collectUpdateContent($content, $title, $text) {
+        $content = $this->ContactsLogic->updateContent($content, $title, $text);
+        $contentHome = $this->ContactsLogic->readContent('home');
+        $contentContact = $this->ContactsLogic->readContent('contact');
+        include 'views/contentDisplay.php';
+    }
     public function collectLoadDeleteProduct() {
         $products = $this->ContactsLogic->readDeleteProducts();
         $archive = $this->ContactsLogic->readDeleteArchive();
@@ -147,6 +169,11 @@ class ContactsController {
         $page = 1;
         $products = $this->ContactsLogic->displayProducts($page);
         include 'views/updateProduct.php';
+    }
+    public function collectLoadContentDisplay() {
+        $contentHome = $this->ContactsLogic->readContent('home');
+        $contentContact = $this->ContactsLogic->readContent('contact');
+        include 'views/contentDisplay.php';
     }
 }
 

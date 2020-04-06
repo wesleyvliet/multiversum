@@ -1,20 +1,19 @@
 <?php
 include 'header.php';
-?>
-<div class="wrapper" id='page' page='update'>
-
-    <span class="span">
-        <h1>heeft u vragen over uw besteling?</h1>
-        <p>neem contact met ons op via de formulier beneden!</p>
-    </span>
-
-</div>
-
-<?php
+$html = "<div class='wrapper' id='page' page='update'>";
+$html .= "<span class='span'>";
+if(empty($h1)) {
+    $html .=    "<h1>heeft u vragen over uw besteling?</h1>";
+    $html .=    "<p>neem contact met ons op via de formulier beneden!</p>";
+} else {
+    $html .=    "<h1>" . $h1 . "</h1>";
+    $html .=    "<p>" . $p . "</p>";
+}
+$html .= "</span>";
 $display = $products;
 $page = $page;
 $displayLength = count($display);
-$html = "<div id='products' class='product-display update' display='1' page='update'>";
+$html .= "<div id='products' class='product-display update' display='1' page='update'>";
 for($i = 0; $i < 9; $i++){
     $id = $display[$i]['id'];
     $html .= "<div class='item' id=" . $display[$i]['id'] . ">";
@@ -31,11 +30,14 @@ $html .= "<button onclick='backword()' style='margin-right: 0px;'><</button>";
 $html .= "<button id='page-display' page=" . $page . " >" . $page . "</button>";
 $html .= "<button onclick='forward()' style='margin-left:0px;'>></button>";
 $html .= "</div>";
+
+$html .= "</div>";
+
 echo $html;
 ?>
 </div>
 <?php
-//include 'footer.php';
+include 'footer.php';
 
 function utf8ize($d) {
     if (is_array($d))

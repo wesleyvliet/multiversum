@@ -1,0 +1,33 @@
+.content-edit {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 30px;
+}
+.content-edit > div {
+    text-align: center;
+    width: 85%;
+    background: var(--green);
+}
+.content-edit > div > form > h1 {
+    background: var(--grey);
+    width: 100%;
+    margin: 0;
+}
+.content-edit > div > form > button {
+    background: var(--grey);
+    margin-bottom: 15px;
+    color: var(--yellow);
+    border: none;
+    box-shadow: 0 0 6px 0px black;
+    font-size: 30px;
+    padding: 5px;
+}
+.content-edit > div > form > textarea {
+    text-align: left;
+    width: 90%;
+    margin-bottom: 30px;
+    resize: vertical;
+    padding: 30px;
+}

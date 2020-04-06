@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="views/css/nieuwProduct.css">
     <link rel="stylesheet" type="text/css" href="views/css/deleteProduct.css">
     <link rel="stylesheet" type="text/css" href="views/css/updateProduct.css">
+    <link rel="stylesheet" type="text/css" href="views/css/contentDisplay.css">
 </head>
 <body>
     <div class="header">
@@ -27,13 +28,14 @@
 
     if($_SESSION['name'] == 'webmaster' || $_SESSION['pass'] == 'test') {
         $html = '<nav>';
-        $html .= '<ul style="grid-template-columns: 7% 10% 14% 14% 15% 15%">';
+        $html .= '<ul style="grid-template-columns: 7% 13% 15% 15% 15% 15% 15%">';
         $html .= '<li><a href="home">Home</a></li>';
         $html .= '<li><a href="contact">Contact</a></li>';
         $html .= '<li><a href="nieuw-product">Nieuw Product</a></li>';
         $html .= '<li><a href="update">Update Product</a></li>';
         $html .= '<li><a href="delete-product">Verwijder Product</a></li>';
         $html .= '<li><a href="contact">Product Overzicht</a></li>';
+        $html .= '<li><a href="inhoudOverzicht">inhoud Overzicht</a></li>';
         $html .= '</ul>';
         $html .= '</nav>';
     } else {
@@ -45,6 +47,5 @@
         $html .= '</nav>';
     }
     echo $html;
-    echo $_SESSION['name'] . " " . $_SESSION['pass'];
 
 ?>

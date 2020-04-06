@@ -25,11 +25,25 @@ class ContactsLogic {
         $res = $this->dataHandler->createData($sql);
         return $res;
     }
-    public function updateContent($title1, $text1, $title2, $text2) {
-        //$sql = "UPDATE content SET lastname='Doe' WHERE id=2";
-        $sql = "UPDATE content SET title = '$title1', text = '$text1' WHERE id = 1";
+    public function updateProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $id) {
+        $newPlatform = "";
+        $i = 0;
+        $last = count($platform);
+        foreach ($platform as $value) {
+            $i++;
+            if($i == $last) {
+                $newPlatform .= $value;
+            } else {
+                $newPlatform .= $value . ", ";
+            }
+        }
+        $sql = "UPDATE `producten` SET `title` = '$title', `prijs` = '$prijs', `platform` = '$newPlatform', `eigenDisplay` = '$eigenDisplay', `resulatie` = '$resulatie', `actie` = '$actie', `korting` = '$korting', `functies` = '$functies'," .
+        " `aansluitingen` = '$aansluitingen', `refreshRate` = '$refreshRate', `accessoires` = '$accessoires', `garantie` = '$garantie', `infoProduct` = '$infoProduct', `infoMerk` = '$infoMerk', `infoTweakers` = '$infoTweakers', `infoEAN` = '$infoEAN', `infoSKU` = '$infoSKU' WHERE `producten`.`id` = '$id' ";
         $res = $this->dataHandler->createData($sql);
-        $sql = "UPDATE content SET title = '$title2', text = '$text2' WHERE id = 3";
+        return $res;
+    }
+    public function updateContent($content, $title, $text) {
+        $sql = "UPDATE `content` SET `title` = '$title', `text` = '$text' WHERE `content`.`page` = '$content' ";
         $res = $this->dataHandler->createData($sql);
         return $res;
     }
@@ -159,15 +173,19 @@ class ContactsLogic {
             return false;
         }
     }
-    public function readContent($content) {
-        $sql = 'SELECT * FROM content WHERE page =' . $content;
-        $res = $this->dataHandler->readsData($sql);
-        $results = $res->fetchAll();
-        return $results;
-    }
     public function readOneProduct($id) {
         try {
             $sql = "SELECT * FROM producten WHERE id = '$id'";
+            $res = $this->dataHandler->readsData($sql);
+            $results = $res->fetchAll();
+            return $results;
+        }catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function readContent($page) {
+        try {
+            $sql = "SELECT * FROM content WHERE page = '$page'";
             $res = $this->dataHandler->readsData($sql);
             $results = $res->fetchAll();
             return $results;

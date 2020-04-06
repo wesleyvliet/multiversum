@@ -1,14 +1,15 @@
 <div id="page-container">
 <?php
 include 'header.php';
+$html = "<div class='wrapper' id='page' page='contact'>";
+
+$html .= "<span style='margin-top: 3%!important;' class='span'>";
+    $html .= "<h1>" . $content[0]['title'] . "</h1>";
+    $html .= "<p>" . $content[0]['text'] . "</p>";
+$html .= "</span>";
+
+echo $html;
 ?>
-<div class="wrapper" id='page' page='contact'>
-
-    <span class="span">
-        <h1>heeft u vragen over uw besteling?</h1>
-        <p>neem contact met ons op via het formulier hier beneden!</p>
-    </span>
-
     <div class="contact-grid">
         <div>
             <h1>Waar wij gevestigd zijn.</h1>

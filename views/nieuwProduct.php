@@ -143,8 +143,8 @@ if(empty($product)) {
     }
 
     $html = '<button class="exit-button"><a href="home">X</a></button>';
-    $html = "<form method='POST' action='?op=create' enctype='multipart/form-data' style='padding-top: 50px; padding-bottom: 50px;'>";
-    $html .= "<input style='display: none;' name='op' placeholder='Naam:' value='create'>";
+    $html = "<form method='POST'  action='?op=updateProduct&id=" . $product[0]['id'] . "' enctype='multipart/form-data' style='padding-top: 50px; padding-bottom: 50px;'>";
+    $html .= "<input style='display: none;' name='op' placeholder='Naam:' value='updateProduct'>";
     $html .= "<div class='product-addForm'>";
     $html .= 	"<div>";
     $html .= 	   '<table class="detail-table">';
@@ -226,7 +226,7 @@ if(empty($product)) {
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Actie</th></tr>";
-    $html .= 	       "<tr><td style='padding: 0px;'>" . "<select id='actie-select' name='actie'><option value='0'>Nee</option><option value='1'>Ja</option></select>";
+    $html .= 	       "<tr><td style='padding: 0px;'>" . "<select id='actie-select' name='actie'><option value='0' selected>Nee</option><option value='1'>Ja</option></select>";
     $html .=           "<input id='actie-korting' name='korting' placeholder='prijs:'>";
     $html .=           "</td></tr>";
     $html .=	   "</table>";
