@@ -2,7 +2,7 @@
 include 'header.php';
 ?>
 
-<div class="wrapper">
+<div class="wrapper" id='page' page='login'>
 
     <div class="admin">
         <div>

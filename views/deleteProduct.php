@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 ?>
-<div class="wrapper">
+<div class="wrapper" id='page' page='delete'>
 <?php
 if(empty($h1)) {
     $html = "<span class='span'>";

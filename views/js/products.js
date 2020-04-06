@@ -137,12 +137,16 @@ function display(view) {
 			}
 		}
 		var html = "";
+		checkPage = document.getElementById('page').getAttribute('page');
 		for (var i = 0; i < display.length; i++) {
 			html += "<div class='item'>";
 				html += "<h1>" + display[i]['title'] + '<h1>€ '+ display[i]['prijs'] + "</h1></h1>";
 				html += "<img src='views/img/products/" + display[i]['id'] + ".jpg'>";
 				html += "<p>Platform: " + display[i]['platform'] + "</p>";
 				html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
+				if(checkPage == 'update') {
+					html += "<button><a href='?op=update&id=" + display[i]['id'] + "'>Update</a></button>";
+				}
 			html += "</div>";
 		}
 		document.getElementById("products").innerHTML = html;

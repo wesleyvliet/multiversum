@@ -45,6 +45,9 @@ class ContactsController {
                     case 'recover':
                     $this->collectRecoverProduct($_REQUEST['id']);
                     break;
+                    case 'update':
+                    $this->collectReadUpdateProduct($_REQUEST['id']);
+                    break;
                     default:
                     //$this->collectReadContact();
                     break;
@@ -91,6 +94,10 @@ class ContactsController {
     public function collectReadProduct($id) {
         $product = $this->ContactsLogic->readOneProduct($id);
         include 'views/productDetails.php';
+    }
+    public function collectReadUpdateProduct($id) {
+        $product = $this->ContactsLogic->readOneProduct($id);
+        include 'views/nieuwProduct.php';
     }
     public function collectUpdateContact(){
     }

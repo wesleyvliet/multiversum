@@ -3,7 +3,7 @@
 include 'header.php';
 ?>
 
-<div class="wrapper">
+<div class="wrapper" id='page' page='home'>
 <?php
 
 if(!empty($actions)) {
@@ -16,6 +16,9 @@ if(!empty($actions)) {
     $html = "<div class='product-display-actions'>";
     $html .= "<button onclick='actionBackword()'><</button>";
     $html .= "<div id='actions' class='display-actions' display='1' stop='true' clicked='none' style='$style' >";
+    if($displayLength > 3) {
+        $displayLength = 3;
+    }
     for($i = 0; $i < $displayLength; $i++){
         $discount = intval($actions[$i]['prijs']);
         $discount = $discount - intval($actions[$i]['korting']);

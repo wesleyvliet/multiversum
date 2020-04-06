@@ -1,8 +1,7 @@
 <?php
 include 'header.php';
 ?>
-
-<div class="wrapper" style="min-height: 56%;">
+<div class="wrapper" id='page' page='invalidLink' style="min-height: 56%;">
 
 <div class="invalid-link">
     <div><h1 class="sad-face">:(</h1></div>

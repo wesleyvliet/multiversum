@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 ?>
-<div class="wrapper">
+<div class="wrapper" id='page' page='details'>
 
     <span class="span">
         <h1>heeft u vragen over uw besteling?</h1>
