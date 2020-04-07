@@ -2,21 +2,45 @@
     grid-template-rows: 15% 15% 40% 10% 10% 10%;
 }
 .update > div > h1 {
-    height: 100%;
-    padding: 0;
-    margin: 0;
+    background: var(--grey);
+    margin: 0px;
+    font-size: 20px;
+    padding: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    height: 30px;
+    padding-left: 15px;
 }
 .update > div > p {
-    height: 100%;
-    padding: 0;
+    padding: 20px;
+    background: var(--green);
     margin: 0;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    height: fit-content;
+    height: 30px;
+    padding-left: 15px;
 }
-.update > div > button {
+.update > div > a{
     background: var(--grey);
     border: none;
-    margin: 0;
+    margin: auto;
     height: 100%;
+    padding: 0;
 }
-.update > div > button > a {
+.update > div > a>  input{
+    background-color: none;
     color: var(--yellow);
+    width: 580px;
+    height: 40px;
+    border: 0px;
+    
+}
+.update > div > a>  input:hover{
+    background-color: grey;
+    color: var(--yellow);
+    width: 580px;
+    height: 40px;
+    border: 0px;
+    
 }
