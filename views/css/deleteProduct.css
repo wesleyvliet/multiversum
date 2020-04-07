@@ -32,12 +32,13 @@
     background: var(--grey);
     color:white;
     border: none;
-    box-shadow: 0 0 6px 0px black;
+    
     float: right;
 }
 .product-view > .item > p > button > a {
   background: var(--grey);
     text-decoration: none;
+    color: white;
 }
 ::-webkit-scrollbar {
   width: 20px;

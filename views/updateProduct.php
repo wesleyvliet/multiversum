@@ -22,15 +22,17 @@ for($i = 0; $i < 9; $i++){
         $html .= "<img src='views/img/products/" . $display[$i]['id'] . ".jpg'>";
         $html .= "<p>Platform: " . $display[$i]['platform'] . "</p>";
         $html .= "<p>Resulatie: " . $display[$i]['resulatie'] . "</p>";
-        $html .= "<button><a href='?op=update&id=$id'>Update</a></button>";
+ 
+        $html .= "<a href='?op=update&id=$id'><input type=button value='HOME'></a>";
     $html .= "</div>";
 }
+$html .= "</div>";
 $html .= "</div>";
 $html .= "<div class='buttons'>";
 $html .= "<button onclick='backword()' style='margin-right: 0px;'><</button>";
 $html .= "<button id='page-display' page=" . $page . " >" . $page . "</button>";
 $html .= "<button onclick='forward()' style='margin-left:0px;'>></button>";
-$html .= "</div>";
+
 
 $html .= "</div>";
 
