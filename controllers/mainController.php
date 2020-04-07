@@ -55,6 +55,9 @@ class ContactsController {
                     case 'updateContent':
                     $this->collectUpdateContent($_REQUEST['content'], $_REQUEST["title"], $_REQUEST['text']);
                     break;
+                    case 'checkout':
+                    $this->collectLoadCheckout($_REQUEST['product']);
+                    break;
                     default:
                     //$this->collectReadContact();
                     break;
@@ -174,6 +177,11 @@ class ContactsController {
         $contentHome = $this->ContactsLogic->readContent('home');
         $contentContact = $this->ContactsLogic->readContent('contact');
         include 'views/contentDisplay.php';
+    }
+    public function collectLoadCheckout($product) {
+        $checkId = $this->ContactsLogic->readOneProduct($product);
+        $content = $this->ContactsLogic->readContent('contact');
+        include 'views/checkout.php';
     }
 }
 

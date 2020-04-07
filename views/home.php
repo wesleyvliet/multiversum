@@ -27,6 +27,7 @@ if(!empty($actions)) {
             $html .= "<img src='views/img/products/" . $actions[$i]['id'] . ".jpg'>";
             $html .= "<p>Platform: " . $actions[$i]['platform'] . "</p>";
             $html .= "<p>Resulatie: " . $actions[$i]['resulatie'] . "</p>";
+            $html .= "<button><a href='?op=checkout&product=" . $actions[$i]['id'] . "'>Bestel</a></button>";
         $html .= "</div>";
     }
     $html .= "</div>";

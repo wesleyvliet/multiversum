@@ -33,6 +33,7 @@ function init_js() {
 						html += "<img src='views/img/products/" + display[i]['id'] + ".jpg'>";
 						html += "<p>Platform: " + display[i]['platform'] + "</p>";
 						html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
+						html += "<button><a href='?op=checkout&product=" + display[i]['id'] + "'>Bestel</a></button>";
 					html += "</div>";
 				}
 				document.getElementById("actions").innerHTML = html;
@@ -91,6 +92,7 @@ function displayActions(view) {
 			html += "<img src='views/img/products/" + display[i]['id'] + ".jpg'>";
 			html += "<p>Platform: " + display[i]['platform'] + "</p>";
 			html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
+			html += "<button><a href='?op=checkout&product=" + display[i]['id'] + "'>Bestel</a></button>";
 		html += "</div>";
 	}
 	document.getElementById("actions").innerHTML = html;
@@ -144,6 +146,7 @@ function display(view) {
 				html += "<img src='views/img/products/" + display[i]['id'] + ".jpg'>";
 				html += "<p>Platform: " + display[i]['platform'] + "</p>";
 				html += "<p>Resulatie: " + display[i]['resulatie'] + "</p>";
+				html += "<button><a href='?op=checkout&product=" + display[i]['id'] + "'>Bestel</a></button>";
 				if(checkPage == 'update') {
 					html += "<button><a href='?op=update&id=" + display[i]['id'] + "'>Update</a></button>";
 				}
