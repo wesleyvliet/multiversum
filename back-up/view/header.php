@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../multiversum/view/assets/css/products.css">
     <link rel="stylesheet" type="text/css" href="../multiversum/view/assets/css/contact.css">
     <link rel="stylesheet" type="text/css" href="../multiversum/view/assets/css/actions.css">
+    <link rel="stylesheet" type="text/css" href="../multiversum/view/assets/css/nieuwProduct.css">
 </head>
 <body>
 <ul id="slides" stop="false">

@@ -1,6 +1,11 @@
 <?php
 session_start();
-
+if(empty($_SESSION['name'])) {
+    $_SESSION['name'] = 'unkown';
+}
+if(empty($_SESSION['pass'])) {
+    $_SESSION['pass'] = 'unkown';
+}
 define('PATH', getcwd());
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);

@@ -1,0 +1,22 @@
+.update > div {
+    grid-template-rows: 15% 15% 40% 10% 10% 10%;
+}
+.update > div > h1 {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+.update > div > p {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+.update > div > button {
+    background: var(--grey);
+    border: none;
+    margin: 0;
+    height: 100%;
+}
+.update > div > button > a {
+    color: var(--yellow);
+}

@@ -1,0 +1,105 @@
+.exit-button {
+    position: absolute;
+    float: right;
+    right: 5%;
+    bottom: 3.6%;
+    font-size: 27px;
+    height: min-content;
+    margin: auto;
+    background: var(--grey);
+    border: none;
+    box-shadow: 0 0 6px 0px black;
+    /* width: 55%; */
+    padding: 10px;
+}
+.exit-button > a {
+    color: var(--yellow);
+    text-decoration: none;
+}
+.addform-buttons {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+.addform-buttons > button {
+    font-size: 27px;
+    height: min-content;
+    margin: auto;
+    background: var(--grey);
+    color: var(--yellow);
+    border: none;
+    box-shadow: 0 0 6px 0px black;
+    width: 55%;
+    padding: 10px;
+}
+.product-addForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: fit-content;
+    width: 80%;
+    margin: auto;
+    opacity: 0.9;
+    padding-bottom: 40px;
+}
+.product-addForm > div >  h1 {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 15px;
+}
+.product-addForm > div > table {
+    margin-bottom: 20px;
+}
+.product-addForm > div > table > tbody > tr > td {
+    padding: 5px;
+}
+.product-addForm > div > table > tbody > tr > td > input {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border: none;
+    background: none;
+    box-shadow: none;
+    outline: none;
+}
+.product-addForm > div > table > tbody > tr > td > input[type="checkbox"] {
+    height: 100px;
+}
+.product-addForm > div > table > tbody > tr > td > textarea {
+    resize: vertical;
+    width: 100%;
+}
+.DetailsImgOverlay {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 90%;
+    height: 70%;
+    max-height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.detail-table {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+#check-box {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    text-align: center;
+}
+#check-box > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+#check-box > div > input {
+    margin: auto;
+    background: none;
+    outline: none;
+    border: none;
+    box-shadow: none;
+}

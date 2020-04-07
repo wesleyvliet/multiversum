@@ -1,0 +1,59 @@
+.delete-Tabels {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 25px;
+}
+.delete-Tabels > div {
+  background: var(--grey)
+    width: 80%;
+    margin: auto;
+}
+.delete-Tabels > div > h1 {
+    background: var(--grey);
+    margin: 0;
+    text-align: center;
+    padding: 10px;
+}
+.product-view {
+    overflow-y: auto;
+    height: 600px;
+    padding-top: 20px;
+}
+.product-view > .item {
+    height: min-content;
+    margin-bottom: 35px;
+}
+.product-view > .item > p > button {
+    font-size: 20px;
+    height: min-content;
+    background: var(--grey);
+    color:white;
+    border: none;
+    box-shadow: 0 0 6px 0px black;
+    float: right;
+}
+.product-view > .item > p > button > a {
+  background: var(--grey);
+    text-decoration: none;
+}
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--green);
+  height: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

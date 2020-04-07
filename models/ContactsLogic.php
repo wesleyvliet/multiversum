@@ -9,7 +9,7 @@ class ContactsLogic {
     }
 
     public function __destruct() {}
-    public function createContact($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU) {
+    public function createProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU) {
         $newPlatform = "";
         $i = 0;
         $last = count($platform);
@@ -25,11 +25,25 @@ class ContactsLogic {
         $res = $this->dataHandler->createData($sql);
         return $res;
     }
-    public function updateContent($title1, $text1, $title2, $text2) {
-        //$sql = "UPDATE content SET lastname='Doe' WHERE id=2";
-        $sql = "UPDATE content SET title = '$title1', text = '$text1' WHERE id = 1";
+    public function updateProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $id) {
+        $newPlatform = "";
+        $i = 0;
+        $last = count($platform);
+        foreach ($platform as $value) {
+            $i++;
+            if($i == $last) {
+                $newPlatform .= $value;
+            } else {
+                $newPlatform .= $value . ", ";
+            }
+        }
+        $sql = "UPDATE `producten` SET `title` = '$title', `prijs` = '$prijs', `platform` = '$newPlatform', `eigenDisplay` = '$eigenDisplay', `resulatie` = '$resulatie', `actie` = '$actie', `korting` = '$korting', `functies` = '$functies'," .
+        " `aansluitingen` = '$aansluitingen', `refreshRate` = '$refreshRate', `accessoires` = '$accessoires', `garantie` = '$garantie', `infoProduct` = '$infoProduct', `infoMerk` = '$infoMerk', `infoTweakers` = '$infoTweakers', `infoEAN` = '$infoEAN', `infoSKU` = '$infoSKU' WHERE `producten`.`id` = '$id' ";
         $res = $this->dataHandler->createData($sql);
-        $sql = "UPDATE content SET title = '$title2', text = '$text2' WHERE id = 3";
+        return $res;
+    }
+    public function updateContent($content, $title, $text) {
+        $sql = "UPDATE `content` SET `title` = '$title', `text` = '$text' WHERE `content`.`page` = '$content' ";
         $res = $this->dataHandler->createData($sql);
         return $res;
     }
@@ -55,9 +69,53 @@ class ContactsLogic {
             throw $e;
         }
     }
+    public function deleteProduct($id) {
+        try {
+            $sql = 'UPDATE producten SET archived = 1 WHERE id =' . $id;
+            $res = $this->dataHandler->readsData($sql);
+            $sql = 'SELECT archived FROM producten WHERE id =' . $id;
+            $res = $this->dataHandler->readsData($sql);
+            $results = $res->fetchAll();
+            return $results[0]['archived'];
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function recoverProduct($id) {
+        try {
+            $sql = 'UPDATE producten SET archived = 0 WHERE id =' . $id;
+            $res = $this->dataHandler->readsData($sql);
+            $sql = 'SELECT archived FROM producten WHERE id =' . $id;
+            $res = $this->dataHandler->readsData($sql);
+            $results = $res->fetchAll();
+            return $results[0]['archived'];
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function readDeleteProducts() {
+        try {
+            $sql = 'SELECT id, title, prijs, platform, resulatie FROM producten WHERE archived = 0 ORDER BY id ASC';
+            $res = $this->dataHandler->readsData($sql);
+            $results = $res->fetchAll();
+            return $results;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function readDeleteArchive() {
+        try {
+            $sql = 'SELECT id, title, prijs, platform, resulatie FROM producten WHERE archived = 1 ORDER BY id ASC';
+            $res = $this->dataHandler->readsData($sql);
+            $results = $res->fetchAll();
+            return $results;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
     public function readProducts($page) {
         try {
-            $sql = 'SELECT id, title, prijs, platform, resulatie FROM producten ORDER BY id ASC';
+            $sql = 'SELECT id, title, prijs, platform, resulatie FROM producten WHERE archived = 0 ORDER BY id ASC';
             $res = $this->dataHandler->readsData($sql);
             $results = $res->fetchAll();
             $arrEnd = $page * 9;
@@ -78,7 +136,7 @@ class ContactsLogic {
     }
     public function displayProducts($page) {
         try {
-            $sql = 'SELECT * FROM producten ORDER BY id ASC';
+            $sql = 'SELECT * FROM producten WHERE archived = 0 ORDER BY id ASC';
             $res = $this->dataHandler->readsData($sql);
             $results = $res->fetchAll();
             return $results;
@@ -87,7 +145,7 @@ class ContactsLogic {
         }
     }
     public function readActions() {
-        $sql = 'SELECT * FROM producten WHERE actie = 1 ORDER BY id ASC';
+        $sql = 'SELECT id, title, prijs, platform, resulatie, korting FROM producten WHERE archived = 0 AND actie = 1';
         $res = $this->dataHandler->readsData($sql);
         $results = $res->fetchAll();
         return $results;
@@ -107,44 +165,27 @@ class ContactsLogic {
         return $include;
     }
     public function uploadImg($file, $id) {
-        var_dump($file);
-        $total = count($file['name']);
-        // Loop through each file
-        for( $i=0 ; $i < $total ; $i++ ) {
-            //Get the temp file path
-            $tmpFilePath = $file['tmp_name'][$i];
-            //Make sure we have a file path
-            if ($tmpFilePath != ""){
-                $counter = 1;
-                //Setup our new file path
-                //$newFilePath = "view/assets/img/products/" . $file['name'][$i];
-                $newfilename = $id . "-" . $counter;
-                $end = 10;
-                for ($i=0; $i < $end; $i++) {
-                    $path = 'view/assets/img/products/' . $newfilename . '.jpg';
-                    if (file_exists($path)) {
-                        $counter = $counter + 1;
-                        $newfilename = $id . "-" . $counter;
-                        echo 'new file name<br>';
-                    } else {
-                        $end = 1;
-                        echo 'free name<br>';
-                    }
-                }
-                echo $newfilename . "<br>";
-                move_uploaded_file($tmpFilePath, "view/assets/img/products/" . $newfilename . ".jpg");
-            }
+        $tmpFilePath = $file['tmp_name'];
+        $path = 'views/img/products/' . $id . '.jpg';
+        if(move_uploaded_file($tmpFilePath, $path)) {
+            return true;
+        } else {
+            return false;
         }
-    }
-    public function readContent($content) {
-        $sql = 'SELECT * FROM content WHERE page =' . $content;
-        $res = $this->dataHandler->readsData($sql);
-        $results = $res->fetchAll();
-        return $results;
     }
     public function readOneProduct($id) {
         try {
             $sql = "SELECT * FROM producten WHERE id = '$id'";
+            $res = $this->dataHandler->readsData($sql);
+            $results = $res->fetchAll();
+            return $results;
+        }catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function readContent($page) {
+        try {
+            $sql = "SELECT * FROM content WHERE page = '$page'";
             $res = $this->dataHandler->readsData($sql);
             $results = $res->fetchAll();
             return $results;

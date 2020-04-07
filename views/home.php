@@ -3,15 +3,23 @@
 include 'header.php';
 ?>
 
-<div class="wrapper">
+<div class="wrapper" id='page' page='home'>
 <?php
 
 if(!empty($actions)) {
     $displayLength = count($actions);
+    switch ($displayLength) {
+        case 1: $style = 'grid-template-columns: 1fr'; break;
+        case 2: $style = 'grid-template-columns: 1fr 1fr'; break;
+        default: $style = 'grid-template-columns: 1fr 1fr 1fr'; break;
+    }
     $html = "<div class='product-display-actions'>";
     $html .= "<button onclick='actionBackword()'><</button>";
-    $html .= "<div id='actions' class='display-actions' display='1' stop='true' clicked='none' >";
-    for($i = 0; $i < 3; $i++){
+    $html .= "<div id='actions' class='display-actions' display='1' stop='true' clicked='none' style='$style' >";
+    if($displayLength > 3) {
+        $displayLength = 3;
+    }
+    for($i = 0; $i < $displayLength; $i++){
         $discount = intval($actions[$i]['prijs']);
         $discount = $discount - intval($actions[$i]['korting']);
         $html .= "<div class='item' id=" . $actions[$i]['id'] . ">";
@@ -35,16 +43,17 @@ echo $html;
 $display = $products;
 $page = $page;
 $displayLength = count($display);
-$html = "<div id='products' class='product-display' display='1' >";
+$html = "<div id='products' class='product-display' display='1' page='home'>";
 for($i = 0; $i < 9; $i++){
     $html .= "<div class='item' id=" . $display[$i]['id'] . ">";
-        
+
         $html .= "<h1>" . $display[$i]['title'] . '</h1><h1>€ '. $display[$i]['prijs'] . "</h1>";
-      
+
         $html .= "<img src='views/img/products/" . $display[$i]['id'] . ".jpg'>";
         $html .= "<p>Platform: " . $display[$i]['platform'] . "</p>";
-        $html .= "<p>Resolutie: " . $display[$i]['resolutie'] . "</p>";
-       
+        $html .= "<p>Resolutie: " . $display[$i]['resulatie'] . "</p>";
+        $html .= "<button><a href='?op=checkout&product=" . $display[$i]['id'] . "'>Bestel</a></button>";
+
     $html .= "</div>";
 }
 $html .= "</div>";
@@ -63,14 +72,11 @@ function utf8ize($d) {
     if (is_array($d))
         foreach ($d as $k => $v)
             $d[$k] = utf8ize($v);
-
      else if(is_object($d))
         foreach ($d as $k => $v)
             $d->$k = utf8ize($v);
-
      else
         return utf8_encode($d);
-
     return $d;
 }
 
