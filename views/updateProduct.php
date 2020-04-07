@@ -1,3 +1,4 @@
+<div id="page-container">
 <?php
 include 'header.php';
 $html = "<div class='wrapper' id='page' page='update'>";
@@ -52,6 +53,7 @@ function utf8ize($d) {
 }
 
 ?>
+</div>
 <script type="text/javascript">
     const products = <?php echo json_encode(utf8ize($products)); ?>;
     init_js();

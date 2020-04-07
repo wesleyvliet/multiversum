@@ -82,7 +82,7 @@
     max-height: 300px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 .detail-table {
     width: 90%;
