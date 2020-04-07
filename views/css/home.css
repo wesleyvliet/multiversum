@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     margin-left: auto;
     margin-right: auto;
-    height: min-content;
+    height: fit-content;
     width: 100%;
     grid-row-gap: 5%;
     margin-bottom: 50px;
@@ -92,6 +92,7 @@
     grid-template-columns: 35% 30% 35%;
     width: 45%;
     margin: auto;
+    margin-bottom: 30px;
 }
 .buttons > button {
     font-size: 74px;
