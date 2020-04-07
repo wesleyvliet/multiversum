@@ -6,12 +6,12 @@
     margin-top: 25px;
 }
 .delete-Tabels > div {
-  background: var(--grey)
+  background: var(--grey);
     width: 80%;
     margin: auto;
 }
 .delete-Tabels > div > h1 {
-    background: var(--grey);
+    background: var(--white);
     margin: 0;
     text-align: center;
     padding: 10px;
@@ -20,6 +20,7 @@
     overflow-y: auto;
     height: 600px;
     padding-top: 20px;
+    background-color: white;
 }
 .product-view > .item {
     height: min-content;

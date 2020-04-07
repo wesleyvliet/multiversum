@@ -13,7 +13,7 @@ html {
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 body { margin: 0px; font-family: monospace; font-size: 18px; color: white;}
-footer { background: var(--grey); width: 100%; text-align: center;bottom:0; height: 2.5rem;position: absolute;}
+footer { background: var(--grey); width: 100%; text-align: center;bottom:0; height: 2.5rem;position: relative;}
 footer > p {
 	float: left;
 	margin-left: 30px;
@@ -43,6 +43,7 @@ li a:hover {
 }
 .wrapper {
 	padding-bottom: 2.5rem;    /* Footer height */
+	margin-bottom: 120px;
 }
 .header {
 	height: 25%;

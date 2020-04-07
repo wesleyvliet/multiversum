@@ -58,11 +58,12 @@ for($i = 0; $i < 9; $i++){
     $html .= "</div>";
 }
 $html .= "</div>";
+$html .= "</div>";
 $html .= "<div class='buttons'>";
 $html .= "<button onclick='backword()' style='margin-right: 0px;'><</button>";
 $html .= "<button id='page-display' page=" . $page . " >" . $page . "</button>";
 $html .= "<button onclick='forward()' style='margin-left:0px;'>></button>";
-$html .= "</div>";
+
 echo $html;
 ?>
 </div>
@@ -82,7 +83,7 @@ function utf8ize($d) {
 }
 
 ?>
- </div>
+
 
 <script type="text/javascript">
     const products = <?php echo json_encode(utf8ize($products)); ?>;
@@ -90,3 +91,4 @@ function utf8ize($d) {
     const actions = <?php echo json_encode($actions); ?>;
     init_js();
 </script>
+</div>
