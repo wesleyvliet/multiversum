@@ -58,6 +58,9 @@ class ContactsController {
                     case 'checkout':
                     $this->collectLoadCheckout($_REQUEST['product']);
                     break;
+                    case 'checkedout':
+                    $this->collectLoadCheckedout($_REQUEST['postcode'], $_REQUEST['houseNumber'], $_REQUEST['city'], $_REQUEST['streetname'], $_REQUEST['firstname'], $_REQUEST['secondName'], $_REQUEST['email'], $_REQUEST['payMethod'], $_REQUEST['product']);
+                    break;
                     default:
                     //$this->collectReadContact();
                     break;
@@ -179,9 +182,12 @@ class ContactsController {
         include 'views/contentDisplay.php';
     }
     public function collectLoadCheckout($product) {
-        $checkId = $this->ContactsLogic->readOneProduct($product);
+        $product = $this->ContactsLogic->readOneProduct($product);
         $content = $this->ContactsLogic->readContent('contact');
         include 'views/checkout.php';
+    }
+    public function collectLoadCheckedout($postcode, $houseNumber, $city, $streetname, $firstname, $secondName, $email, $payMethod, $product) {
+        $sendMail = $this->ContactsLogic->sendMail($postcode, $houseNumber, $city, $streetname, $firstname, $secondName, $email, $payMethod, $product);
     }
 }
 

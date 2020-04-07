@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="views/css/deleteProduct.css">
     <link rel="stylesheet" type="text/css" href="views/css/updateProduct.css">
     <link rel="stylesheet" type="text/css" href="views/css/contentDisplay.css">
+    <link rel="stylesheet" type="text/css" href="views/css/checkout.css">
 </head>
 <body>
     <div class="header">

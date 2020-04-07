@@ -1,0 +1,42 @@
+.checkout {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+}
+.checkout > div > h1 {
+    background: var(--grey);
+    margin: 0px;
+    margin-top: 40px;
+    padding: 15px;
+    padding-bottom: 5px;
+    font-size: 26px;
+}
+.checkout > div > form > h1 {
+    background: var(--grey);
+    margin: 0px;
+    margin-top: 40px;
+    padding: 15px;
+    padding-bottom: 5px;
+    font-size: 26px;
+}
+
+.box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    background: var(--green);
+    padding: 40px;
+    padding-top: 10px;
+}
+.box > img {
+    width: 100%;
+    margin: auto;
+}
+.checkout > div > form > label {
+
+}
+.checkout > div > form > input {
+
+}
