@@ -27,8 +27,6 @@
     padding-top: 10px;
     height: 50px;
     padding-left: 15px;
-    
-    
 }
 .item > img {
     width: 100%;
@@ -44,6 +42,18 @@
     height: fit-content;
     height: 30px;
     padding-left: 15px;
+}
+.item > button {
+    padding: 10px;
+    background: var(--grey);
+    border: 0;
+}
+.item > button > a {
+    padding: 30%;
+    padding-bottom: 0;
+    color: var(--yellow);
+    text-decoration: none;
+    font-size: 20px;
 }
 .product-display-actions {
     display: grid;
@@ -96,7 +106,7 @@
 }
 .buttons > button {
     font-size: 74px;
-    
+
     margin: auto;
     background: var(--grey);
     color: var(--yellow);

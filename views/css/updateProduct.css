@@ -29,18 +29,30 @@
     padding: 0;
 }
 .update > div > a>  input{
-    background-color: none;
+    background-color: var(--grey);
     color: var(--yellow);
     width: 580px;
     height: 40px;
     border: 0px;
-    
+
 }
 .update > div > a>  input:hover{
-    background-color: grey;
+    background-color: #314559;
     color: var(--yellow);
     width: 580px;
     height: 40px;
     border: 0px;
-    
+
+}
+.item > button {
+    padding: 10px;
+    background: var(--grey);
+    border: 0;
+}
+.item > button > a {
+    padding: 30%;
+    padding-bottom: 0;
+    color: var(--yellow);
+    text-decoration: none;
+    font-size: 20px;
 }
