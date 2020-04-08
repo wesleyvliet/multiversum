@@ -23,6 +23,7 @@ class ContactsController {
                     case 'delete-product': $this->collectLoadDeleteProduct(); break;
                     case 'update': $this->collectLoadUpdateProduct(); break;
                     case 'inhoudoverzicht': $this->collectLoadContentDisplay(); break;
+                    case 'product-overzicht': $this->collectLoadBestelingDisplay(); break;
         			default:
         				//echo $_SERVER['REQUEST_URI'];
         				//echo "<br>Sorry cannot find your page :(" ;
@@ -197,6 +198,10 @@ class ContactsController {
             $p = "Wij hebben uw besteling niet door kunnen voeren controleer of u een geldig email adress doorgeev";
         }
         include "views/checkoutResults.php";
+    }
+    public function collectLoadBestelingDisplay() {
+        $orders = $this->ContactsLogic->readOrders();
+        include "views/orderDisplay.php";
     }
 }
 

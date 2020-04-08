@@ -194,6 +194,11 @@ class ContactsLogic {
         }
     }
     public function sendMail($postcode, $houseNumber, $city, $streetname, $firstname, $secondName, $email, $payMethod, $product) {
+        $productId = $product[0]['id'];
+        $date = date("Y-m-d");
+        $sql = "INSERT INTO `bestelingen` (`bestelingID`, `productID`, `datumBesteling`, `postcode`, `stad`, `straatNaam`, `huisnumer`, `voornaam`, `achternaam`, `betaling`) VALUES (NULL, '$productId', '$date', '$postcode', '$city', '$streetname', '$houseNumber', '$firstname', '$secondName', '$payMethod')";
+        $res = $this->dataHandler->createData($sql);
+
         $to = $email;
         $subject = "Besteling bevesteging";
 
@@ -240,6 +245,16 @@ class ContactsLogic {
           //echo "Mail Not Sent";
         }
 
+    }
+    public function readOrders() {
+        try {
+            $sql = "SELECT * FROM bestelingen ORDER BY bestelingID DESC";
+            $res = $this->dataHandler->readsData($sql);
+            $results = $res->fetchAll();
+            return $results;
+        }catch (Exception $e) {
+            throw $e;
+        }
     }
 public function updateContact(){}
 public function deleteContact(){}
