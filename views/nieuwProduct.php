@@ -249,5 +249,5 @@ if(empty($product)) {
 }
 echo $html;
 
-//include 'footer.php';
+include 'footer.php';
 ?>
