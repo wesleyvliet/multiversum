@@ -18,7 +18,7 @@ echo $html;
         <div>
             <h1>alle velden met * is verplicht.</h1>
             <div>
-                <form>
+                <form ?op=email>
                     <input name='name' placeholder="Uw naam">
                     <input name='email' placeholder="Uw email">
                     <textarea rows="4" cols="30" placeholder="type uw bericht..."></textarea>
