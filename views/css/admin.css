@@ -28,3 +28,13 @@
     margin: auto;
     padding: 3%;
 }
+
+.admin > div > form > input[type=submit] {
+    background: var(--grey);
+    border: none;
+    color: var(--yellow);
+    font-size: 26px;
+}
+.admin > div > form > input[type=submit]:hover {
+    background-color: #314559;
+}
