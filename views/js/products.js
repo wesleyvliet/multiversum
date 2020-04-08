@@ -130,12 +130,12 @@ function display(view) {
 			document.getElementById("products").setAttribute("display", view)
 		}
 		if(display.length <= 3) {
-			document.getElementById("products").setAttribute('style', 'grid-template-rows: 1fr; height: 33.3%;');
+			document.getElementById("products").setAttribute('style', 'grid-template-rows: 1fr;');
 		} else {
 			if(display.length <= 6) {
-				document.getElementById("products").setAttribute('style', 'grid-template-rows: 1fr 1fr; height: 66.6%;');
+				document.getElementById("products").setAttribute('style', 'grid-template-rows: 1fr 1fr;');
 			} else {
-				document.getElementById("products").setAttribute('style', 'grid-template-rows: 1fr 1fr 1fr; height: 100%;');
+				document.getElementById("products").setAttribute('style', 'grid-template-rows: 1fr 1fr 1fr;');
 			}
 		}
 		var html = "";

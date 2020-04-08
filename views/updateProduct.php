@@ -22,8 +22,8 @@ for($i = 0; $i < 9; $i++){
         $html .= "<img src='views/img/products/" . $display[$i]['id'] . ".jpg'>";
         $html .= "<p>Platform: " . $display[$i]['platform'] . "</p>";
         $html .= "<p>Resulatie: " . $display[$i]['resulatie'] . "</p>";
- 
-        $html .= "<a href='?op=update&id=$id'><input type=button value='HOME'></a>";
+
+        $html .= "<a href='?op=update&id=$id'><input type=button value='Update'></a>";
     $html .= "</div>";
 }
 $html .= "</div>";
