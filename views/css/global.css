@@ -13,7 +13,7 @@ html {
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 body { margin: 0px; font-family: monospace; font-size: 18px; color: white;}
-footer { background: var(--grey); width: 100%; text-align: center;bottom:0; position: relative; margin: 0px;}
+footer { background: var(--grey); width: 100%; text-align: center;bottom:0; position: relative; margin: 0px; margin-bottom: 0px}
 footer > p {
 	text-align: left;
 	margin: 0px;
@@ -26,12 +26,13 @@ footer > div > a {
 	background-color: #238b76; /* Green */
 	border: none;
 	color: white;
-	padding: 20px;
+	padding: 18px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 18px;
 	cursor: pointer;
+	margin-bottom: 15px; 
 }
 nav { width: 100%; height: 5%; margin: 0; background: var(--grey); position: relative; z-index: 1;}
 nav > ul {
