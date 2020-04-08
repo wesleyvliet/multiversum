@@ -53,7 +53,7 @@ for($i = 0; $i < 9; $i++){
         $html .= "<img src='views/img/products/" . $display[$i]['id'] . ".jpg'>";
         $html .= "<p>Platform: " . $display[$i]['platform'] . "</p>";
         $html .= "<p>Resolutie: " . $display[$i]['resulatie'] . "</p>";
-        $html .= "<button><a href='?op=checkout&product=" . $display[$i]['id'] . "'>Bestel</a></button>";
+        $html .= "<a href='?op=checkout&product=" . $display[$i]['id'] . "'>Bestel</a>";
 
     $html .= "</div>";
 }
