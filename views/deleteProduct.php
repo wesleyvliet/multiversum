@@ -6,7 +6,7 @@ include 'header.php';
 <?php
 if(empty($h1)) {
     $html = "<span class='span'>";
-    $html .= '<h1>' . 'Verkeerde product verwijdert?' . '</h1>';
+    $html .= '<h1>' . 'Verkeerd product verwijdert?' . '</h1>';
     $html .= '<p>' . 'Producten kunnen hersteld worden onder de archiveer tabel.' . '</p>';
     $html .= "</span>";
 } else {

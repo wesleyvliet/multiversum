@@ -33,3 +33,4 @@ $html .= "</div>";
 echo $html;
 include 'footer.php';
 ?>
+</div>
