@@ -9,7 +9,7 @@ class ContactsLogic {
     }
 
     public function __destruct() {}
-    public function createProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU) {
+    public function createProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad) {
         $newPlatform = "";
         $i = 0;
         $last = count($platform);
@@ -21,11 +21,11 @@ class ContactsLogic {
                 $newPlatform .= $value . ", ";
             }
         }
-        $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `korting`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`) VALUES (NULL, '$title', '$prijs', '$newPlatform', '$eigenDisplay', '$resulatie', '$actie', '$korting', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', '$infoMerk', '$infoTweakers', '$infoEAN', '$infoSKU')";
+        $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `korting`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`, `vooraad`) VALUES (NULL, '$title', '$prijs', '$newPlatform', '$eigenDisplay', '$resulatie', '$actie', '$korting', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', '$infoMerk', '$infoTweakers', '$infoEAN', '$infoSKU', '$vooraad')";
         $res = $this->dataHandler->createData($sql);
         return $res;
     }
-    public function updateProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $id) {
+    public function updateProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad, $id) {
         $newPlatform = "";
         $i = 0;
         $last = count($platform);
@@ -38,7 +38,7 @@ class ContactsLogic {
             }
         }
         $sql = "UPDATE `producten` SET `title` = '$title', `prijs` = '$prijs', `platform` = '$newPlatform', `eigenDisplay` = '$eigenDisplay', `resulatie` = '$resulatie', `actie` = '$actie', `korting` = '$korting', `functies` = '$functies'," .
-        " `aansluitingen` = '$aansluitingen', `refreshRate` = '$refreshRate', `accessoires` = '$accessoires', `garantie` = '$garantie', `infoProduct` = '$infoProduct', `infoMerk` = '$infoMerk', `infoTweakers` = '$infoTweakers', `infoEAN` = '$infoEAN', `infoSKU` = '$infoSKU' WHERE `producten`.`id` = '$id' ";
+        " `aansluitingen` = '$aansluitingen', `refreshRate` = '$refreshRate', `accessoires` = '$accessoires', `garantie` = '$garantie', `infoProduct` = '$infoProduct', `infoMerk` = '$infoMerk', `infoTweakers` = '$infoTweakers', `infoEAN` = '$infoEAN', `infoSKU` = '$infoSKU', `vooraad` = '$vooraad' WHERE `producten`.`id` = '$id' ";
         $res = $this->dataHandler->createData($sql);
         return $res;
     }
@@ -194,39 +194,52 @@ class ContactsLogic {
         }
     }
     public function sendMail($postcode, $houseNumber, $city, $streetname, $firstname, $secondName, $email, $payMethod, $product) {
-        $to = "507503@edu.rocmn.nl";
-        $subject = "HTML email";
+        $to = $email;
+        $subject = "Besteling bevesteging";
 
         $message = "
         <html>
         <head>
-        <title>HTML email</title>
+        <title>Besteling bevesteging</title>
         </head>
         <body>
-        <p>This email contains HTML Tags!</p>
-        <table>
+        <div style='width: max-content;  background=var(--grey);height: min-content;margin: auto;background: #57575712;'>
+        <h1 style='margin: 0;background: #233241;color: white; text-align:center;'>Email bevesteging</h1>
+        <p style='padding: 10px; text-align:center;'>Wy hebben uw bestelling: " . $product[0]['title'] . " doorgekregen.</p>
+        <p style='padding: 10px; text-align:center;'>U zal uw bestelling zo spoedig mogelijk krijgen op de onderstaande gegevens.</p>
+        <table style='padding: 10px;margin: auto;width: 100%;text-align: center;'>
         <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
+        <th>Postcode</th>
+        <th>Plaats</th>
+        <th>Straat</th>
+        <th>Huisnummer</th>
         </tr>
         <tr>
-        <td>John</td>
-        <td>Doe</td>
-        </tr>
+        <td>" . $postcode . "</td>
+        <td>" . $city . "</td>
+        <td>" . $streetname . "</td>
+        <td>" . $houseNumber . "</td>
         </table>
+        </div>
         </body>
         </html>
         ";
-
         // Always set content-type when sending HTML email
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
         // More headers
         $headers .= 'From: <webmaster@example.com>' . "\r\n";
         $headers .= 'Cc: myboss@example.com' . "\r\n";
-
         mail($to,$subject,$message,$headers);
+
+        if(@mail($to,$subject,$message,$headers)) {
+          //echo "Mail Sent Successfully";
+          return true;
+        }else{
+          return false;
+          //echo "Mail Not Sent";
+        }
+
     }
 public function updateContact(){}
 public function deleteContact(){}

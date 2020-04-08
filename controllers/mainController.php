@@ -35,7 +35,7 @@ class ContactsController {
                     $this->collectReadAdmin($_REQUEST['userName'], $_REQUEST['userPass']);
                     break;
                     case 'create':
-                    $this->collectCreateProduct($_REQUEST['title'], $_FILES["upload"], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU']);
+                    $this->collectCreateProduct($_REQUEST['title'], $_FILES["upload"], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU'], $_REQUEST['vooraad']);
                     break;
                     case 'read':
                     $this->collectReadProduct($_REQUEST['id']);
@@ -50,7 +50,7 @@ class ContactsController {
                     $this->collectReadUpdateProduct($_REQUEST['id']);
                     break;
                     case 'updateProduct':
-                    $this->collectUpdateProduct($_REQUEST['title'], $_FILES["upload"], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU'], $_REQUEST['id']);
+                    $this->collectUpdateProduct($_REQUEST['title'], $_FILES["upload"], $_REQUEST['prijs'], $_REQUEST['platform'], $_REQUEST['eigenDisplay'], $_REQUEST['resulatie'], $_REQUEST['actie'], $_REQUEST['korting'], $_REQUEST['functies'], $_REQUEST['aansluitingen'], $_REQUEST['refreshRate'], $_REQUEST['accessoires'], $_REQUEST['garantie'], $_REQUEST['infoProduct'], $_REQUEST['infoMerk'], $_REQUEST['infoTweakers'], $_REQUEST['infoEAN'], $_REQUEST['infoSKU'], $_REQUEST['vooraad'], $_REQUEST['id']);
                     break;
                     case 'updateContent':
                     $this->collectUpdateContent($_REQUEST['content'], $_REQUEST["title"], $_REQUEST['text']);
@@ -137,8 +137,8 @@ class ContactsController {
     public function collectLoadAddProduct() {
         include 'views/nieuwProduct.php';
     }
-    public function collectCreateProduct($title, $file, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU){
-        $productId = $this->ContactsLogic->createProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU);
+    public function collectCreateProduct($title, $file, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad){
+        $productId = $this->ContactsLogic->createProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad);
         $checkId = $this->ContactsLogic->readOneProduct($productId);
         $checkId = $checkId[0]['id'];
         $upload = $this->ContactsLogic->uploadImg($file, $checkId);
@@ -152,8 +152,8 @@ class ContactsController {
             include 'views/nieuwProduct.php';
         }
     }
-    public function collectUpdateProduct($title, $file, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $id){
-        $productId = $this->ContactsLogic->updateProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $id);
+    public function collectUpdateProduct($title, $file, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad, $id){
+        $productId = $this->ContactsLogic->updateProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad, $id);
         $h1 = 'Product is toegevoegd!';
         $p = 'U kan gerust verder gaan met de onderstaande formulier';
         $page = 1;
@@ -187,7 +187,16 @@ class ContactsController {
         include 'views/checkout.php';
     }
     public function collectLoadCheckedout($postcode, $houseNumber, $city, $streetname, $firstname, $secondName, $email, $payMethod, $product) {
+        $product = $this->ContactsLogic->readOneProduct($product);
         $sendMail = $this->ContactsLogic->sendMail($postcode, $houseNumber, $city, $streetname, $firstname, $secondName, $email, $payMethod, $product);
+        if($sendMail == true) {
+            $h1 = "Wy hebben uw besteling doorgekregen!";
+            $p = "controleer het bevesteging mail: " . $email . " of al uw gegevens klopen.";
+        } else {
+            $h1 = "Oops er ging iest fout!";
+            $p = "Wij hebben uw besteling niet door kunnen voeren controleer of u een geldig email adress doorgeev";
+        }
+        include "views/checkoutResults.php";
     }
 }
 
