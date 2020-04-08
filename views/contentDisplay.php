@@ -29,6 +29,7 @@ $html .=    "</form>";
 $html .= "</div>";
 
 $html .= "</div>";
+$html .= "</div>";
 echo $html;
 include 'footer.php';
 ?>

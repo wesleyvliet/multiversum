@@ -20,25 +20,28 @@
     overflow-y: auto;
     height: 600px;
     padding-top: 20px;
-    background-color: white;
+    background-color: #d7d7d7;
 }
 .product-view > .item {
     height: min-content;
     margin-bottom: 35px;
+    background: white;
 }
 .product-view > .item > p > button {
     font-size: 20px;
-    height: min-content;
+    height: 40px;
     background: var(--grey);
-    color:white;
     border: none;
-    
     float: right;
+    text-align: center;
+    margin-top: -15px;
 }
 .product-view > .item > p > button > a {
-  background: var(--grey);
     text-decoration: none;
-    color: white;
+    color: var(--yellow);
+    width: 100%;
+    padding: 30px;
+    text-align: center
 }
 ::-webkit-scrollbar {
   width: 20px;

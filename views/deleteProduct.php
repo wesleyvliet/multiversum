@@ -1,3 +1,4 @@
+<div id="page-container">
 <?php
 include 'header.php';
 ?>
@@ -63,6 +64,7 @@ $html .= "</div>";
 
 
 
+$html .= "</div>";
 $html .= "</div>";
 echo $html;
 include 'footer.php';

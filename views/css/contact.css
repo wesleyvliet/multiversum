@@ -48,13 +48,14 @@
 	background-size: cover;
 	background-image: linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url('../img/location.PNG');
 }
-
 #knop {
     margin-top: 50px;
     margin-bottom: 50px;
-    
+    background: var(--grey);
+    border: none;
+    color: var(--yellow);
+    font-size: 24px;
 }
-
 .span {
     padding: 20px;
 }

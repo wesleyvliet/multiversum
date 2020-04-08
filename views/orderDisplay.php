@@ -10,7 +10,7 @@ $html .= "<div>";
 $counter = 1;
 for($i = 0; $i < $displayLength; $i++){
     if($counter == 2) {
-    $html .= "<div style='background: #bdbdbd;'>";
+    $html .= "<div style='background: #2eac93;'>";
     $counter = 1;
     } else {
         $html .= "<div>";

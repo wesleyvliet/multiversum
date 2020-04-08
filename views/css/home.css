@@ -48,6 +48,9 @@
     background: var(--grey);
     border: 0;
 }
+.item > button:hover {
+    background-color: #314559;
+}
 .item > button > a {
     padding: 30%;
     padding-bottom: 0;
@@ -106,7 +109,6 @@
 }
 .buttons > button {
     font-size: 74px;
-
     margin: auto;
     background: var(--grey);
     color: var(--yellow);
@@ -115,4 +117,7 @@
     width: 55%;
     padding: 0;
     margin-bottom: 10%;
+}
+.buttons > button:hover {
+    background-color: #314559;
 }

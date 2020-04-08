@@ -20,6 +20,7 @@ footer > p {
 }
 footer > div {
 	margin: 0px;
+	padding-top: 1px;
 }
 
 footer > div > a {
@@ -32,7 +33,7 @@ footer > div > a {
 	display: inline-block;
 	font-size: 18px;
 	cursor: pointer;
-	margin-bottom: 15px; 
+	margin-bottom: 15px;
 }
 nav { width: 100%; height: 5%; margin: 0; background: var(--grey); position: relative; z-index: 1;}
 nav > ul {
