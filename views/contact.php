@@ -3,10 +3,17 @@
 include 'header.php';
 $html = "<div class='wrapper' id='page' page='contact'>";
 
-$html .= "<span style='margin-top: 3%!important;' class='span'>";
-    $html .= "<h1>" . $content[0]['title'] . "</h1>";
-    $html .= "<p>" . $content[0]['text'] . "</p>";
-$html .= "</span>";
+if(empty($h1)) {
+    $html .= "<span style='margin-top: 3%!important;' class='span'>";
+        $html .= "<h1>" . $content[0]['title'] . "</h1>";
+        $html .= "<p>" . $content[0]['text'] . "</p>";
+    $html .= "</span>";
+} else {
+    $html .= "<span style='margin-top: 3%!important;' class='span'>";
+        $html .= "<h1>" . $h1 . "</h1>";
+        $html .= "<p>" . $p . "</p>";
+    $html .= "</span>";
+}
 
 echo $html;
 ?>
@@ -18,10 +25,10 @@ echo $html;
         <div>
             <h1>alle velden met * is verplicht.</h1>
             <div>
-                <form ?op=email>
+                <form action='?op=email' method='POST' enctype='multipart/form-data'>
                     <input name='name' placeholder="Uw naam">
                     <input name='email' placeholder="Uw email">
-                    <textarea rows="4" cols="30" placeholder="type uw bericht..."></textarea>
+                    <textarea rows="4" cols="30" name='text' placeholder="type uw bericht..."></textarea>
                     <input type="submit" id="knop" value="Verzenden">
                 </form>
             </div>

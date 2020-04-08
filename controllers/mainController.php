@@ -23,7 +23,7 @@ class ContactsController {
                     case 'delete-product': $this->collectLoadDeleteProduct(); break;
                     case 'update': $this->collectLoadUpdateProduct(); break;
                     case 'inhoudoverzicht': $this->collectLoadContentDisplay(); break;
-                    case 'product-overzicht': $this->collectLoadBestelingDisplay(); break;
+                    case 'besteling-overzicht': $this->collectLoadBestelingDisplay(); break;
         			default:
         				//echo $_SERVER['REQUEST_URI'];
         				//echo "<br>Sorry cannot find your page :(" ;
@@ -61,6 +61,9 @@ class ContactsController {
                     break;
                     case 'checkedout':
                     $this->collectLoadCheckedout($_REQUEST['postcode'], $_REQUEST['houseNumber'], $_REQUEST['city'], $_REQUEST['streetname'], $_REQUEST['firstname'], $_REQUEST['secondName'], $_REQUEST['email'], $_REQUEST['payMethod'], $_REQUEST['product']);
+                    break;
+                    case 'email':
+                    $this->collectLoadMail($_REQUEST['name'], $_REQUEST['email'], $_REQUEST['text']);
                     break;
                     default:
                     //$this->collectReadContact();
@@ -202,6 +205,17 @@ class ContactsController {
     public function collectLoadBestelingDisplay() {
         $orders = $this->ContactsLogic->readOrders();
         include "views/orderDisplay.php";
+    }
+    public function collectLoadMail($name, $email, $text) {
+        $sendMail = $this->ContactsLogic->sendMailContact($name, $email, $text);
+        if($sendMail == true) {
+            $h1 = "Wy hebben uw bericht doorgekregen!";
+            $p = "controleer het bevesteging mail: " . $email . " of al uw gegevens klopen.";
+        } else {
+            $h1 = "Oops er ging iest fout!";
+            $p = "Wij hebben uw besteling niet door kunnen voeren controleer of u een geldig email adress doorgeev";
+        }
+        include "views/contact.php";
     }
 }
 

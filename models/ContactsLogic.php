@@ -256,6 +256,41 @@ class ContactsLogic {
             throw $e;
         }
     }
+    public function sendMailContact($name, $email, $text) {
+        $to = $email;
+        $subject = "Uw contact berigt";
+
+        $message = "
+        <html>
+        <head>
+        <title>Besteling bevesteging</title>
+        </head>
+        <body>
+        <div style='width: max-content;  background=var(--grey);height: min-content;margin: auto;background: #57575712;'>
+        <h1 style='margin: 0;background: #233241;color: white; text-align:center;'>Contact berigt</h1>
+        <p style='padding: 10px; text-align:center;'>Wy hebben uw berigt doorgekregen.</p>
+        <p style='padding: 10px; text-align:center;'>U zal ons antwoord zo spoedig mogelijk krijgen op uw onderstaande berigt.</p>
+        <p style='padding: 10px; text-align:center;'>" . $text . "</p>
+        </div>
+        </body>
+        </html>
+        ";
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        // More headers
+        $headers .= 'From: <webmaster@example.com>' . "\r\n";
+        $headers .= 'Cc: myboss@example.com' . "\r\n";
+        mail($to,$subject,$message,$headers);
+
+        if(@mail($to,$subject,$message,$headers)) {
+          //echo "Mail Sent Successfully";
+          return true;
+        }else{
+          return false;
+          //echo "Mail Not Sent";
+        }
+    }
 public function updateContact(){}
 public function deleteContact(){}
 }

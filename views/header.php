@@ -36,7 +36,7 @@
         $html .= '<li><a href="nieuw-product">Nieuw Product</a></li>';
         $html .= '<li><a href="update">Update Product</a></li>';
         $html .= '<li><a href="delete-product">Verwijder Product</a></li>';
-        $html .= '<li><a href="product-overzicht">Product Overzicht</a></li>';
+        $html .= '<li><a href="besteling-overzicht">besteling Overzicht</a></li>';
         $html .= '<li><a href="inhoudOverzicht">inhoud Overzicht</a></li>';
         $html .= '</ul>';
         $html .= '</nav>';
