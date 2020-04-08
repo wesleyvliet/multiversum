@@ -2,18 +2,29 @@
 echo "<div id='page-container'>";
 include 'header.php';
 
-$html = "<div>";
-$html .= "<h1>Besteling overzicht</h1>"
-$html .= "<div>";
-
+$html = "<div class='orders'>";
+$html .= "<h1>Besteling overzicht</h1>";
 $display = $orders;
 $displayLength = count($display);
-$html = "<div id='products' class='product-display' display='1' page='home'>";
+$html .= "<div>";
+$counter = 1;
 for($i = 0; $i < $displayLength; $i++){
-    $html .= "<div>";
-        $html .= "<p>Platform: " . $display[$i]['platform'] . "</p>";
-        $html .= "<p>Resolutie: " . $display[$i]['resulatie'] . "</p>";
-        $html .= "<button><a href='?op=checkout&product=" . $display[$i]['id'] . "'>Bestel</a></button>";
+    if($counter == 2) {
+    $html .= "<div style='background: #bdbdbd;'>";
+    $counter = 1;
+    } else {
+        $html .= "<div>";
+        $counter++;
+    }
+        $html .= "<p>datumBesteling: " . $display[$i]['datumBesteling'] . "</p>";
+        $html .= "<p>postcode: " . $display[$i]['postcode'] . "</p>";
+        $html .= "<p>stad: " . $display[$i]['stad'] . "</p>";
+        $html .= "<p>straatNaam: " . $display[$i]['straatNaam'] . "</p>";
+        $html .= "<p>huisnumer: " . $display[$i]['huisnumer'] . "</p>";
+        $html .= "<p>voornaam: " . $display[$i]['voornaam'] . "</p>";
+        $html .= "<p>achternaam: " . $display[$i]['achternaam'] . "</p>";
+        $html .= "<p>betaling: " . $display[$i]['betaling'] . "</p>";
+        $html .= "<button><a href='?op=read&id=" . $display[$i]['productID'] . "'>Product</a></button>";
     $html .= "</div>";
 }
 
@@ -22,7 +33,7 @@ $html .= "</div>";
 $html .= "</div>";
 
 
-
+echo $html;
 echo "</div>";
 include 'footer.php';
 ?>
