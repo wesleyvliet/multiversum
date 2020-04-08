@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="views/css/updateProduct.css">
     <link rel="stylesheet" type="text/css" href="views/css/contentDisplay.css">
     <link rel="stylesheet" type="text/css" href="views/css/checkout.css">
+    <link rel="stylesheet" type="text/css" href="views/css/orderDisplay.css">
 </head>
 <body>
     <div class="header">
@@ -35,7 +36,7 @@
         $html .= '<li><a href="nieuw-product">Nieuw Product</a></li>';
         $html .= '<li><a href="update">Update Product</a></li>';
         $html .= '<li><a href="delete-product">Verwijder Product</a></li>';
-        $html .= '<li><a href="contact">Product Overzicht</a></li>';
+        $html .= '<li><a href="product-overzicht">Product Overzicht</a></li>';
         $html .= '<li><a href="inhoudOverzicht">inhoud Overzicht</a></li>';
         $html .= '</ul>';
         $html .= '</nav>';

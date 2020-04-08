@@ -98,6 +98,10 @@ if(empty($product)) {
     $html .= 	       "<tr><td><input name='infoSKU' placeholder='SKU:' required></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
+    $html .=	       "<tr><th style='background: var(--grey);'>Product Vooraad</th></tr>";
+    $html .= 	       "<tr><td><input name='vooraad' placeholder='Vooraad:' required></td></tr>";
+    $html .=	   "</table>";
+    $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Actie</th></tr>";
     $html .= 	       "<tr><td style='padding: 0px;'>" . "<select id='actie-select' name='actie'><option value='0'>Nee</option><option value='1'>Ja</option></select>";
     $html .=           "<input id='actie-korting' name='korting' placeholder='prijs:'>";
@@ -223,6 +227,10 @@ if(empty($product)) {
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie SKU</th></tr>";
     $html .= 	       "<tr><td><input name='infoSKU' value=" . $product[0]['infoSKU'] . " required></td></tr>";
+    $html .=	   "</table>";
+    $html .= 	   '<table class="detail-table">';
+    $html .=	       "<tr><th style='background: var(--grey);'>Vooraad Product</th></tr>";
+    $html .= 	       "<tr><td><input name='vooraad' value=" . $product[0]['vooraad'] . " required></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Actie</th></tr>";

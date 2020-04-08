@@ -65,6 +65,7 @@ $html .= 			"<tr><td>Merk: " . $contacts[0]['infoMerk'] . "</td></tr>";
 $html .= 			"<tr><td>Tweakers ID: " . $contacts[0]['infoTweakers'] . "</td></tr>";
 $html .= 			"<tr><td>EAN: " . $contacts[0]['infoEAN'] . "</td></tr>";
 $html .= 			"<tr><td>SKU: " . $contacts[0]['infoSKU'] . "</td></tr>";
+$html .=            "<tr><td>Op vooraad: " . $contacts[0]['vooraad'] . "</td></tr>";
 $html .=			"</table>";
 $html .=		"</div>";
 

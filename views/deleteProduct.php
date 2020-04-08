@@ -65,5 +65,5 @@ $html .= "</div>";
 
 $html .= "</div>";
 echo $html;
-//include 'footer.php';
+include 'footer.php';
 ?>
