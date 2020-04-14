@@ -10,20 +10,70 @@ class ContactsLogic {
 
     public function __destruct() {}
     public function createProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad) {
+        $error = false;
+        $message = "";
+        if(empty($title)) {
+            $error = true;
+            $message .= 'Geen titel';
+        }
+        if(empty($prijs)) {
+            $error = true;
+            $message .= 'Geen prijs';
+        } else {
+            if (!preg_match('/^[0-9,]+$/', $prijs)) {
+                $error = true;
+                $message .= 'Ongeldige waarde bij prijs.';
+            }
+        }
         $newPlatform = "";
         $i = 0;
         $last = count($platform);
+        if($last == 1) {
+            $error = true;
+            $message .= 'Geen Platform gekozen.';
+        }
         foreach ($platform as $value) {
-            $i++;
-            if($i == $last) {
-                $newPlatform .= $value;
+            if($value == "None") {
             } else {
-                $newPlatform .= $value . ", ";
+                $i++;
+                if($i == $last) {
+                    $newPlatform .= $value;
+                } else {
+                    $newPlatform .= $value . ", ";
+                }
             }
         }
-        $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `korting`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`, `vooraad`) VALUES (NULL, '$title', '$prijs', '$newPlatform', '$eigenDisplay', '$resulatie', '$actie', '$korting', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', '$infoMerk', '$infoTweakers', '$infoEAN', '$infoSKU', '$vooraad')";
-        $res = $this->dataHandler->createData($sql);
-        return $res;
+        if($actie !== '0') {
+            if(empty($korting)) {
+                $error = true;
+                $message .= 'Korting gezet zonder korting prijs.';
+            } else {
+                if (!preg_match('/^[0-9,]+$/', $prijs)) {
+                    $error = true;
+                    $message .= 'Ongeldige waarde bij actie prijs.';
+                }
+            }
+        }
+        if($error == false) {
+            if(empty($eigenDisplay)) {$eigenDisplay = '0';}
+            if(empty($resulatie)) {$resulatie = 'Niet inbegrepen';}
+            if(empty($functies)) {$functies = 'Niet inbegrepen';}
+            if(empty($aansluitingen)) {$aansluitingen = 'Niet inbegrepen';}
+            if(empty($refreshRate)) {$refreshRate = 'Niet inbegrepen';}
+            if(empty($accessoires)) {$accessoires = 'Niet inbegrepen';}
+            if(empty($garantie)) {$garantie = 'Niet inbegrepen';}
+            if(empty($infoProduct)) {$infoProduct = 'Niet inbegrepen';}
+            if(empty($infoMerk)) {$infoMerk = 'Niet inbegrepen';}
+            if(empty($infoTweakers)) {$infoTweakers = 'Niet inbegrepen';}
+            if(empty($infoEAN)) {$infoEAN = 'Niet inbegrepen';}
+            if(empty($infoSKU)) {$infoSKU = 'Niet inbegrepen';}
+            if(empty($vooraad)) {$vooraad = '0';}
+            $sql = "INSERT INTO `producten` (`id`, `title`, `prijs`, `platform`, `eigenDisplay`, `resulatie`, `actie`, `korting`, `functies`, `aansluitingen`, `refreshRate`, `accessoires`, `garantie`, `infoProduct`, `infoMerk`, `infoTweakers`, `infoEAN`, `infoSKU`, `vooraad`) VALUES (NULL, '$title', '$prijs', '$newPlatform', '$eigenDisplay', '$resulatie', '$actie', '$korting', '$functies', '$aansluitingen', '$refreshRate', '$accessoires', '$garantie', '$infoProduct', '$infoMerk', '$infoTweakers', '$infoEAN', '$infoSKU', '$vooraad')";
+            $res = $this->dataHandler->createData($sql);
+            return $res;
+        } else {
+            return 'error';
+        }
     }
     public function updateProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad, $id) {
         $newPlatform = "";

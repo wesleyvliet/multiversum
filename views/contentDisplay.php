@@ -5,8 +5,8 @@ include 'header.php';
 $html = "<div class='wrapper' id='page' page='contact'>";
 
 $html .= "<span class='span'>";
-$html .=    "<h1>heeft u vragen over uw besteling?</h1>";
-$html .=    "<p>neem contact met ons op via het formulier hier beneden!</p>";
+$html .=    "<h1>Pas de Text aan wat uw klanten zien.</h1>";
+$html .=    "<p>Beneden staan formulieren met de huidege text dat de klanten zien.<br>U kan de text aan passen door in de doos te kliken,<br> daarna als u op de update knop drukt kunnen de klanten de nieuwe text zien.</p>";
 $html .= "</span>";
 $html .= "<div class='content-edit'>";
 $html .= "<div>";

@@ -142,27 +142,43 @@ class ContactsController {
         include 'views/nieuwProduct.php';
     }
     public function collectCreateProduct($title, $file, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad){
-        $productId = $this->ContactsLogic->createProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad);
-        $checkId = $this->ContactsLogic->readOneProduct($productId);
-        $checkId = $checkId[0]['id'];
-        $upload = $this->ContactsLogic->uploadImg($file, $checkId);
-        if($upload == true) {
-            $h1 = 'Product is toegevoegd!';
-            $p = 'U kan gerust verder gaan met de onderstaande formulier';
-            include 'views/nieuwProduct.php';
+        if(!empty($file['name'])) {
+            $productId = $this->ContactsLogic->createProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad);
+            if($productId == 'error') {
+                $h1 = 'Product is niet toegevoegd!';
+                $p = 'niet alle vereisde gegevens zijn ingevuld.';
+                include 'views/nieuwProduct.php';
+            } else {
+                $checkId = $this->ContactsLogic->readOneProduct($productId);
+                $checkId = $checkId[0]['id'];
+                $upload = $this->ContactsLogic->uploadImg($file, $checkId);
+                if($upload == true) {
+                    $h1 = 'Product is toegevoegd!';
+                    $p = 'U kan gerust verder gaan met de onderstaande formulier';
+                    include 'views/nieuwProduct.php';
+                } else {
+                    $h1 = 'kon foto niet uploaden!';
+                    $p = 'foto is niet geupload voeg opnieuw toe bij het updaten product ID: ' . $checkId;
+                    include 'views/nieuwProduct.php';
+                }
+            }
         } else {
-            $h1 = 'kon foto niet uploaden!';
-            $p = 'foto is niet geupload voeg opnieuw toe bij het updaten product ID: ' . $checkId;
+            $h1 = 'Geen foto gekozen.';
+            $p = 'elk product moet een foto hebben.';
             include 'views/nieuwProduct.php';
         }
     }
     public function collectUpdateProduct($title, $file, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad, $id){
         $productId = $this->ContactsLogic->updateProduct($title, $prijs, $platform, $eigenDisplay, $resulatie, $actie, $korting, $functies, $aansluitingen, $refreshRate, $accessoires, $garantie, $infoProduct, $infoMerk, $infoTweakers, $infoEAN, $infoSKU, $vooraad, $id);
+        if(!empty($file['name'])) {
+            $upload = $this->ContactsLogic->uploadImg($file, $productId);
+            var_dump($upload);
+        }
         $h1 = 'Product is toegevoegd!';
         $p = 'U kan gerust verder gaan met de onderstaande formulier';
         $page = 1;
         $products = $this->ContactsLogic->displayProducts($page);
-        include 'views/updateProduct.php';
+        //include 'views/updateProduct.php';
     }
     public function collectUpdateContent($content, $title, $text) {
         $content = $this->ContactsLogic->updateContent($content, $title, $text);

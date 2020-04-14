@@ -2,7 +2,14 @@
 echo "<div id='page-container'>";
 include 'header.php';
 
-$html = "<div class='orders'>";
+$html = "<span class='span'>";
+$html .=    "<h1>Besteling overzicht.</h1>";
+$html .=    "<p>Beneden staat een schema van alle bestelingen die geplaatst zijn.</p>";
+$html .=    "<p>De meest recente bestelingen staan bovenaan.</p>";
+$html .=    "<p>Met de product knop kan u bekijken welk product besteld is.</p>";
+$html .= "</span>";
+
+$html .= "<div class='orders'>";
 $html .= "<h1>Besteling overzicht</h1>";
 $display = $orders;
 $displayLength = count($display);

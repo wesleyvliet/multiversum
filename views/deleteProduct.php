@@ -6,8 +6,11 @@ include 'header.php';
 <?php
 if(empty($h1)) {
     $html = "<span class='span'>";
-    $html .= '<h1>' . 'Verkeerd product verwijdert?' . '</h1>';
-    $html .= '<p>' . 'Producten kunnen hersteld worden onder de archiveer tabel.' . '</p>';
+    $html .= '<h1>' . 'Producten verwijderen.' . '</h1>';
+    $html .= '<p>' . 'u kan producten verwijderen door op de Archiveer knop te druken.' . '</p>';
+    $html .= '<p>' . 'daarna wordt de product verplaatst naar de Archiveer tabel.' . '</p>';
+    $html .= '<p>' . 'Als u op hertelen drukt wordt de product hersteld en kunnen klanten de product weer zien.' . '</p>';
+    $html .= '<p>' . 'Als u op de delete knop drukt wordt de product verwijders en kan niet meer hersteld worden. ' . '</p>';
     $html .= "</span>";
 } else {
     $html = "<span class='span'>";

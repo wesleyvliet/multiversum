@@ -1,6 +1,7 @@
 .orders {
     width: 80%;
     margin: auto;
+    margin-bottom: 50px;
     background: var(--green);
     box-shadow: 0px 4px 20px 4px #888888
 }

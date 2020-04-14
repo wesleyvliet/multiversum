@@ -1,40 +1,44 @@
 <?php
 include 'header.php';
 
-if(empty($h1)) {
-    $html = "<div class='wrapper' id='page' page='nieuwProduct'>";
-    $html .= '<span class="span">';
-    $html .= '<h1 id="title">upload nieuwe producten</h1>';
-    $html .= '<p>alle gegevens zijn verijst om ingevuld te worden behalve de actie label en de display.</p>';
-    $html .= '</span>';
-} else {
-    $html = "<div class='wrapper' id='page' page='nieuwProduct'>";
-    $html .= '<span class="span">';
-    $html .= '<h1 id="title">' . $h1 . '</h1>';
-    $html .= '<p>' . $p . '</p>';
-    $html .= '</span>';
-}
-echo $html;
 if(empty($product)) {
+
+    if(empty($h1)) {
+        $html = "<div class='wrapper' id='page' page='nieuwProduct'>";
+        $html .= '<span class="span">';
+        $html .= '<h1 id="title">upload nieuwe producten</h1>';
+        $html .= '<p>Hier kan u producten toevoegen met de onderstaande formulier.</p>';
+        $html .= '<p>alle gegevens zijn verijst om ingevuld te worden behalve de actie label en de display.</p>';
+        $html .= '</span>';
+    } else {
+        $html = "<div class='wrapper' id='page' page='nieuwProduct'>";
+        $html .= '<span class="span">';
+        $html .= '<h1 id="title">' . $h1 . '</h1>';
+        $html .= '<p>' . $p . '</p>';
+        $html .= '</span>';
+    }
+    echo $html;
+
     $html = '<button class="exit-button"><a href="home">X</a></button>';
     $html = "<form method='POST' action='?op=create' enctype='multipart/form-data' style='padding-top: 50px; padding-bottom: 50px;'>";
     $html .= "<input style='display: none;' name='op' placeholder='Naam:' value='create'>";
     $html .= "<div class='product-addForm'>";
     $html .= 	"<div>";
     $html .= 	   '<table class="detail-table">';
-    $html .=	       "<tr><th style='background: var(--grey);'>Naam product</th></tr>";
-    $html .= 	       "<tr><td><input name='title' placeholder='Naam:' required></td></tr>";
+    $html .=	       "<tr><th style='background: var(--grey);'>* Naam product</th></tr>";
+    $html .= 	       "<tr><td><input name='title' placeholder='Naam:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
-    $html .=	       "<tr><th style='background: var(--grey);'>Profile foto</th></tr>";
+    $html .=	       "<tr><th style='background: var(--grey);'>* Profile foto</th></tr>";
     $html .= 	       "<tr><td><input name='upload' id='fileToUpload' type='file'></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
-    $html .=	       "<tr><th style='background: var(--grey);'>Platform (VR-brillen)</th></tr>";
+    $html .=	       "<tr><th style='background: var(--grey);'>* Platform (VR-brillen)</th></tr>";
     $html .= 	       "<tr><td><div id='check-box'>";
     $html .=           "<div>";
     $html .=           "<p>Pc</p><p>Telefoon</p><p>Ps4</p><p>Standalone</p>";
     $html .=           "</div><div>";
+    $html .=           "<input type='checkbox' name='platform[]' value='None' style='display:none;' checked>";
     $html .=           "<input type='checkbox' name='platform[]' value='Pc'>";
     $html .=           "<input type='checkbox' name='platform[]' value='Telefoon'>";
     $html .=           "<input type='checkbox' name='platform[]' value='Ps4'>";
@@ -48,58 +52,58 @@ if(empty($product)) {
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Resolutie:</th></tr>";
-    $html .= 	       "<tr><td><input name='resulatie' placeholder='Resolutie:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='resulatie' placeholder='Resolutie:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Functies (VR-bril)</th></tr>";
-    $html .= 	       "<tr><td><input name='functies' placeholder='Functies (VR-bril):' required></td></tr>";
+    $html .= 	       "<tr><td><input name='functies' placeholder='Functies (VR-bril):' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Aansluitingen VR-bril</th></tr>";
-    $html .= 	       "<tr><td><input name='aansluitingen' placeholder='Aansluitingen VR-bril:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='aansluitingen' placeholder='Aansluitingen VR-bril:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Refresh rate</th></tr>";
-    $html .= 	       "<tr><td><input name='refreshRate' placeholder='Refresh rate:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='refreshRate' placeholder='Refresh rate:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
-    $html .=	       "<tr><th style='background: var(--grey);'>Prijs</th></tr>";
-    $html .= 	       "<tr><td><input name='prijs' placeholder='prijs:' required></td></tr>";
+    $html .=	       "<tr><th style='background: var(--grey);'>* Prijs</th></tr>";
+    $html .= 	       "<tr><td><input name='prijs' placeholder='prijs:' ></td></tr>";
     $html .=	   "</table>";
     $html .=    "</div>";
 
     $html .= 	"<div>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Garantie</th></tr>";
-    $html .= 	       "<tr><td><input name='garantie' placeholder='Fabrieksgarantie:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='garantie' placeholder='Fabrieksgarantie:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Accu en accessories</th></tr>";
-    $html .= 	       "<tr><td><input name='accessoires' placeholder='Meegeleverde VR-bril accessoires:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='accessoires' placeholder='Meegeleverde VR-bril accessoires:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie Product</th></tr>";
-    $html .= 	       "<tr><td><input name='infoProduct' placeholder='informatie Product:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='infoProduct' placeholder='informatie Product:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie Merk</th></tr>";
-    $html .= 	       "<tr><td><input name='infoMerk' placeholder='Merk:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='infoMerk' placeholder='Merk:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie Tweakers ID</th></tr>";
-    $html .= 	       "<tr><td><input name='infoTweakers' placeholder='Tweakers ID:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='infoTweakers' placeholder='Tweakers ID:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie EAN</th></tr>";
-    $html .= 	       "<tr><td><input name='infoEAN' placeholder='EAN:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='infoEAN' placeholder='EAN:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie SKU</th></tr>";
-    $html .= 	       "<tr><td><input name='infoSKU' placeholder='SKU:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='infoSKU' placeholder='SKU:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Product Vooraad</th></tr>";
-    $html .= 	       "<tr><td><input name='vooraad' placeholder='Vooraad:' required></td></tr>";
+    $html .= 	       "<tr><td><input name='vooraad' placeholder='Vooraad:' ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Actie</th></tr>";
@@ -116,6 +120,22 @@ if(empty($product)) {
     $html .= '<button class="exit-button" style="bottom: 3.6%;"><a href="home">X</a></button>';
     $html .= "</div>";
 } else {
+
+    if(empty($h1)) {
+        $html = "<div class='wrapper' id='page' page='nieuwProduct'>";
+        $html .= '<span class="span">';
+        $html .= '<h1 id="title">Update producten</h1>';
+        $html .= '<p>Hier kan u producten aanpassen met de onderstaande formulier.</p>';
+        $html .= '</span>';
+    } else {
+        $html = "<div class='wrapper' id='page' page='nieuwProduct'>";
+        $html .= '<span class="span">';
+        $html .= '<h1 id="title">' . $h1 . '</h1>';
+        $html .= '<p>' . $p . '</p>';
+        $html .= '</span>';
+    }
+    echo $html;
+
     if($product[0]['eigenDisplay'] == 1) {
         $options = "<option value='0'>✘: Is niet inbegrepen</option><option value='1' selected>✔: Is inbegrepen</option>";
     } else {
@@ -153,7 +173,7 @@ if(empty($product)) {
     $html .= 	"<div>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Naam product</th></tr>";
-    $html .= 	       "<tr><td><input name='title' value=" . $product[0]['title'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='title' value=" . $product[0]['title'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Profile foto</th></tr>";
@@ -179,58 +199,58 @@ if(empty($product)) {
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Resolutie:</th></tr>";
-    $html .= 	       "<tr><td><input name='resulatie' value=" . $product[0]['resulatie'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='resulatie' value=" . $product[0]['resulatie'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Functies (VR-bril)</th></tr>";
-    $html .= 	       "<tr><td><input name='functies' value=" . $product[0]['functies'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='functies' value=" . $product[0]['functies'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Aansluitingen VR-bril</th></tr>";
-    $html .= 	       "<tr><td><input name='aansluitingen' value=" . $product[0]['aansluitingen'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='aansluitingen' value=" . $product[0]['aansluitingen'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Refresh rate</th></tr>";
-    $html .= 	       "<tr><td><input name='refreshRate' value=" . $product[0]['refreshRate'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='refreshRate' value=" . $product[0]['refreshRate'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Prijs</th></tr>";
-    $html .= 	       "<tr><td><input name='prijs' value=" . $product[0]['prijs'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='prijs' value=" . $product[0]['prijs'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .=    "</div>";
 
     $html .= 	"<div>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Garantie</th></tr>";
-    $html .= 	       "<tr><td><input name='garantie' value=" . $product[0]['garantie'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='garantie' value=" . $product[0]['garantie'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Accu en accessories</th></tr>";
-    $html .= 	       "<tr><td><input name='accessoires' value=" . $product[0]['accessoires'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='accessoires' value=" . $product[0]['accessoires'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie Product</th></tr>";
-    $html .= 	       "<tr><td><input name='infoProduct' value=" . $product[0]['infoProduct'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='infoProduct' value=" . $product[0]['infoProduct'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie Merk</th></tr>";
-    $html .= 	       "<tr><td><input name='infoMerk' value=" . $product[0]['infoMerk'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='infoMerk' value=" . $product[0]['infoMerk'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie Tweakers ID</th></tr>";
-    $html .= 	       "<tr><td><input name='infoTweakers' value=" . $product[0]['infoTweakers'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='infoTweakers' value=" . $product[0]['infoTweakers'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie EAN</th></tr>";
-    $html .= 	       "<tr><td><input name='infoEAN' value=" . $product[0]['infoEAN'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='infoEAN' value=" . $product[0]['infoEAN'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Extra informatie SKU</th></tr>";
-    $html .= 	       "<tr><td><input name='infoSKU' value=" . $product[0]['infoSKU'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='infoSKU' value=" . $product[0]['infoSKU'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Vooraad Product</th></tr>";
-    $html .= 	       "<tr><td><input name='vooraad' value=" . $product[0]['vooraad'] . " required></td></tr>";
+    $html .= 	       "<tr><td><input name='vooraad' value=" . $product[0]['vooraad'] . " ></td></tr>";
     $html .=	   "</table>";
     $html .= 	   '<table class="detail-table">';
     $html .=	       "<tr><th style='background: var(--grey);'>Actie</th></tr>";

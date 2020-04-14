@@ -4,8 +4,9 @@ include 'header.php';
 $html = "<div class='wrapper' id='page' page='update'>";
 $html .= "<span class='span'>";
 if(empty($h1)) {
-    $html .=    "<h1>heeft u vragen over uw besteling?</h1>";
-    $html .=    "<p>neem contact met ons op via de formulier beneden!</p>";
+    $html .=    "<h1>Producten aanpassen.</h1>";
+    $html .=    "<p>u kan producten aanpassen door op de update knop te druken.</p>";
+    $html .=    "<p>Daarna wordt u gebracht naar een formulier waarin u alle gegevens kan aanpassen.</p>";
 } else {
     $html .=    "<h1>" . $h1 . "</h1>";
     $html .=    "<p>" . $p . "</p>";

@@ -86,7 +86,7 @@ li a:hover {
     padding-top: 8px;
     padding-bottom: 8px;
     margin-top: 1%;
-	height: 8%;
+	height: min-content;
 }
 .span > h1 {
 	margin: 0;
