@@ -44,6 +44,9 @@ class ContactsController {
                     case 'delete':
                     $this->collectDeleteProduct($_REQUEST['id']);
                     break;
+                    case 'permaDelete':
+                    $this->collectPermaDeleteProduct($_REQUEST['id']);
+                    break;
                     case 'recover':
                     $this->collectRecoverProduct($_REQUEST['id']);
                     break;
@@ -131,6 +134,14 @@ class ContactsController {
         $archive = $this->ContactsLogic->readDeleteArchive();
         include 'views/deleteProduct.php';
     }
+    public function collectPermaDeleteProduct($id) {
+        $product = $this->ContactsLogic->deletePermaProduct($id);
+        $products = $this->ContactsLogic->readDeleteProducts();
+        $archive = $this->ContactsLogic->readDeleteArchive();
+        $h1 = 'Product is verwijdert.';
+        $p = 'Het product is verwijdert en kan niet hersteld worden.';
+        include 'views/deleteProduct.php';
+    }
     public function collectLoadContact() {
         $content = $this->ContactsLogic->readContent('contact');
         include 'views/contact.php';
@@ -178,7 +189,7 @@ class ContactsController {
         $p = 'U kan gerust verder gaan met de onderstaande formulier';
         $page = 1;
         $products = $this->ContactsLogic->displayProducts($page);
-        //include 'views/updateProduct.php';
+        include 'views/updateProduct.php';
     }
     public function collectUpdateContent($content, $title, $text) {
         $content = $this->ContactsLogic->updateContent($content, $title, $text);

@@ -131,6 +131,15 @@ class ContactsLogic {
             throw $e;
         }
     }
+    public function deletePermaProduct($id) {
+        try {
+            $sql = 'DELETE FROM producten WHERE id =' . $id;
+            $res = $this->dataHandler->deleteData($sql);
+            return $res;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
     public function recoverProduct($id) {
         try {
             $sql = 'UPDATE producten SET archived = 0 WHERE id =' . $id;

@@ -57,6 +57,7 @@ if(empty($archive)) {
             $html .= "<img src='views/img/products/" . $display[$i]['id'] . ".jpg'>";
             $html .= "<p>Platform: " . $display[$i]['platform'] . "</p>";
             $html .= "<p>Resulatie: " . $display[$i]['resulatie'] . "<button><a href='?op=recover&id=$id'>Herstel</a></button>" . "</p>";
+            $html .= "<p>Resulatie: " . $display[$i]['resulatie'] . "<button><a href='?op=permaDelete&id=$id'>Delete</a></button>" . "</p>";
         $html .= "</div>";
         $html .= "<hr>";
     }
